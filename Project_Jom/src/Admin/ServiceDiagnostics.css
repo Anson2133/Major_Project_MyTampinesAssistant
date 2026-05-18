@@ -1,0 +1,469 @@
+/* ============================================================
+   Service Journey Diagnostics
+   Government Admin Dashboard
+   ============================================================ */
+
+.admin-hero-compact {
+  padding: 34px 42px;
+  margin-bottom: 22px;
+}
+
+.admin-hero-compact h1 {
+  font-size: clamp(2rem, 3.2vw, 3.25rem);
+}
+
+.admin-refresh-btn {
+  margin-top: 22px;
+  min-height: 44px;
+  border: none;
+  border-radius: 999px;
+  padding: 0 18px;
+  background: #ffffff;
+  color: #c1121f;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.admin-refresh-btn:hover {
+  background: #fff1f3;
+}
+
+.admin-diagnostics-summary-box {
+  max-width: 1320px;
+  margin: 0 auto 24px;
+}
+
+/* ============================================================
+   Summary Cards
+   ============================================================ */
+
+.admin-diagnostics-summary-grid {
+  max-width: 1320px;
+  margin: 0 auto 42px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.admin-diagnostics-summary-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  padding: 22px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.05);
+}
+
+.admin-diagnostics-summary-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 17px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.admin-diagnostics-summary-card span {
+  display: block;
+  color: #667085;
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.admin-diagnostics-summary-card strong {
+  display: block;
+  color: #101828;
+  font-size: 1.45rem;
+  margin-bottom: 5px;
+}
+
+.admin-diagnostics-summary-card p {
+  margin: 0;
+  color: #667085;
+  line-height: 1.5;
+}
+
+.tone-blue .admin-diagnostics-summary-icon {
+  color: #1d4ed8;
+  background: #eff6ff;
+}
+
+.tone-red .admin-diagnostics-summary-icon {
+  color: #c1121f;
+  background: #fff1f3;
+}
+
+.tone-orange .admin-diagnostics-summary-icon {
+  color: #c2410c;
+  background: #fff7ed;
+}
+
+.tone-green .admin-diagnostics-summary-icon {
+  color: #047857;
+  background: #ecfdf5;
+}
+
+/* ============================================================
+   Diagnostics Table
+   ============================================================ */
+
+.admin-diagnostics-table-section {
+  max-width: 1320px;
+  margin: 0 auto 42px;
+}
+
+.admin-diagnostics-table-wrap {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  overflow: auto;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.05);
+}
+
+.admin-diagnostics-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1050px;
+}
+
+.admin-diagnostics-table th {
+  background: #f9fafb;
+  color: #475467;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: left;
+  padding: 16px;
+}
+
+.admin-diagnostics-table td {
+  vertical-align: top;
+  padding: 18px 16px;
+  border-top: 1px solid #eaecf0;
+  color: #344054;
+}
+
+.admin-diagnostics-table td strong {
+  display: block;
+  color: #101828;
+  margin-bottom: 5px;
+}
+
+.admin-diagnostics-table td span {
+  display: block;
+  color: #667085;
+  font-size: 0.86rem;
+}
+
+.admin-diagnostics-table td p {
+  margin: 0;
+  color: #475467;
+  line-height: 1.5;
+  max-width: 280px;
+}
+
+.admin-score-pill {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 9px 12px;
+  border-radius: 14px;
+  background: #fff1f3;
+  color: #c1121f;
+  font-weight: 900;
+}
+
+.admin-score-pill span {
+  color: #9f1239 !important;
+  font-size: 0.72rem !important;
+  font-weight: 800;
+}
+
+.admin-success-rate {
+  color: #047857 !important;
+  font-weight: 900;
+}
+
+.admin-dropoff-rate {
+  color: #b42318 !important;
+  font-weight: 900;
+  margin-top: 4px;
+}
+
+/* ============================================================
+   Category Summary
+   ============================================================ */
+
+.admin-diagnostics-category-section {
+  max-width: 1320px;
+  margin: 0 auto 42px;
+}
+
+.admin-diagnostics-category-grid {
+  max-width: 1320px;
+  margin: 0 auto 42px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.admin-diagnostics-category-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  padding: 22px;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.05);
+}
+
+.admin-category-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+.admin-category-top strong {
+  color: #101828;
+}
+
+.admin-category-top span {
+  color: #c1121f;
+  font-weight: 900;
+}
+
+.admin-diagnostics-category-card p {
+  margin: 0 0 12px;
+  color: #667085;
+}
+
+.admin-category-track {
+  height: 10px;
+  border-radius: 999px;
+  background: #f2f4f7;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.admin-category-track div {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #c1121f, #f97316);
+}
+
+.admin-diagnostics-category-card small {
+  color: #667085;
+  font-weight: 800;
+}
+
+/* ============================================================
+   QuickSight Readiness Panel
+   ============================================================ */
+
+.admin-quicksight-panel {
+  max-width: 1320px;
+  margin: 0 auto 42px;
+}
+
+.admin-quicksight-grid {
+  max-width: 1320px;
+  margin: 0 auto 42px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.admin-quicksight-grid article {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  padding: 22px;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.05);
+}
+
+.admin-quicksight-grid article svg {
+  color: #c1121f;
+  margin-bottom: 12px;
+}
+
+.admin-quicksight-grid article strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #101828;
+}
+
+.admin-quicksight-grid article p {
+  margin: 0;
+  color: #667085;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+
+@media (max-width: 1100px) {
+  .admin-diagnostics-summary-grid,
+  .admin-diagnostics-category-grid,
+  .admin-quicksight-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-diagnostics-table {
+    min-width: 900px;
+  }
+}
+
+@media (max-width: 720px) {
+  .admin-hero-compact {
+    padding: 30px 24px;
+  }
+
+  .admin-diagnostics-summary-card {
+    flex-direction: column;
+  }
+}
+.admin-section-header.with-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+}
+
+.admin-table-count {
+  flex-shrink: 0;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  color: #475467;
+  border-radius: 999px;
+  padding: 9px 14px;
+  font-size: 0.86rem;
+  font-weight: 900;
+}
+
+.admin-diagnostics-filter-row {
+  max-width: 1320px;
+  margin: 0 auto 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.admin-diagnostics-filter-btn {
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  color: #475467;
+  border-radius: 999px;
+  padding: 9px 14px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.admin-diagnostics-filter-btn:hover {
+  background: #fff1f3;
+  color: #c1121f;
+  border-color: #fecdd3;
+}
+
+.admin-diagnostics-filter-btn.active {
+  background: #c1121f;
+  border-color: #c1121f;
+  color: #ffffff;
+}
+
+.admin-signal-stack {
+  display: grid;
+  gap: 6px;
+}
+
+.admin-signal-stack span {
+  color: #667085 !important;
+  font-size: 0.86rem !important;
+  line-height: 1.45;
+}
+
+.admin-signal-stack strong {
+  display: inline !important;
+  color: #344054 !important;
+  font-weight: 900;
+}
+
+.admin-neutral-rate {
+  color: #667085 !important;
+  font-weight: 800;
+  margin-top: 4px;
+}
+
+.admin-entry-point {
+  display: inline-flex !important;
+  width: fit-content;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  color: #344054 !important;
+  font-weight: 900;
+}
+
+.admin-table-empty {
+  padding: 28px;
+  text-align: center;
+  color: #667085;
+  font-weight: 800;
+}
+
+.admin-pagination-row {
+  max-width: 1320px;
+  margin: 18px auto 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-pagination-row button {
+  min-height: 42px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  color: #344054;
+  padding: 0 16px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.admin-pagination-row button:hover:not(:disabled) {
+  background: #fff1f3;
+  color: #c1121f;
+  border-color: #fecdd3;
+}
+
+.admin-pagination-row button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.admin-pagination-row span {
+  color: #667085;
+  font-weight: 900;
+}
+
+@media (max-width: 760px) {
+  .admin-section-header.with-action {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admin-table-count {
+    width: 100%;
+    text-align: center;
+  }
+
+  .admin-pagination-row {
+    justify-content: center;
+  }
+}

@@ -308,6 +308,19 @@
   background: #f3f4f6;
 }
 
+.app-navbar-admin .navbar-logo-icon {
+  background: linear-gradient(135deg, #7c2d12, #c1121f);
+}
 
+.app-navbar-admin .navbar-red-line {
+  background: linear-gradient(90deg, #7c2d12, #c1121f, #f97316);
+}
 
+.app-navbar-admin .navbar-links a.active {
+  color: #c1121f;
+  background: #fff1f3;
+}
 
+.app-navbar-admin .profile-dropdown-header p {
+  color: #7c2d12;
+}

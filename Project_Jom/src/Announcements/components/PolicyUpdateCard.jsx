@@ -24,7 +24,7 @@ function getUrgencyMeta(urgency) {
 
   if (urgency === "medium") {
     return {
-      label: "Review soon",
+      label: "Worth checking",
       className: "medium",
       icon: Info,
     };

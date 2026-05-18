@@ -1,0 +1,194 @@
+.document-summary-box {
+  max-width: 1320px;
+  margin: 0 auto 24px;
+}
+
+.document-summary-grid {
+  max-width: 1320px;
+  margin: 0 auto 42px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.document-summary-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  padding: 22px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.05);
+}
+
+.document-summary-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 17px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.document-summary-card span {
+  display: block;
+  color: #667085;
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.document-summary-card strong {
+  display: block;
+  color: #101828;
+  font-size: 1.45rem;
+  margin-bottom: 5px;
+}
+
+.document-summary-card p {
+  margin: 0;
+  color: #667085;
+  line-height: 1.5;
+}
+
+.document-breakdown-section,
+.scam-risk-section,
+.document-category-section {
+  max-width: 1320px;
+  margin: 0 auto 42px;
+}
+
+.document-breakdown-list {
+  display: grid;
+  gap: 14px;
+}
+
+.document-breakdown-row,
+.scam-risk-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 22px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+}
+
+.document-breakdown-top,
+.scam-risk-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 12px;
+}
+
+.document-breakdown-top strong,
+.scam-risk-top strong {
+  color: #101828;
+  text-transform: capitalize;
+}
+
+.document-breakdown-top span,
+.scam-risk-top span {
+  color: #344054;
+  font-weight: 900;
+}
+
+.document-breakdown-track,
+.scam-risk-track {
+  height: 12px;
+  border-radius: 999px;
+  background: #f2f4f7;
+  overflow: hidden;
+}
+
+.document-breakdown-track div,
+.scam-risk-track div {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #c1121f, #f97316);
+}
+
+.scam-risk-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.document-category-table-wrap {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  overflow: auto;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.05);
+}
+
+.document-category-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+}
+
+.document-category-table th {
+  background: #f9fafb;
+  color: #475467;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: left;
+  padding: 16px;
+}
+
+.document-category-table td {
+  vertical-align: top;
+  padding: 18px 16px;
+  border-top: 1px solid #eaecf0;
+  color: #344054;
+}
+
+.document-category-table td strong {
+  color: #101828;
+}
+
+.document-share-pill {
+  display: inline-flex;
+  width: fit-content;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: #fff1f3;
+  color: #c1121f;
+  font-weight: 900;
+}
+
+.tone-blue .document-summary-icon {
+  color: #1d4ed8;
+  background: #eff6ff;
+}
+
+.tone-red .document-summary-icon {
+  color: #c1121f;
+  background: #fff1f3;
+}
+
+.tone-orange .document-summary-icon {
+  color: #c2410c;
+  background: #fff7ed;
+}
+
+.tone-green .document-summary-icon {
+  color: #047857;
+  background: #ecfdf5;
+}
+
+@media (max-width: 1100px) {
+  .document-summary-grid,
+  .scam-risk-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .document-summary-card {
+    flex-direction: column;
+  }
+}

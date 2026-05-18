@@ -7,28 +7,33 @@ import {
   User,
   ChevronDown,
   Settings,
+  ShieldCheck,
 } from "lucide-react";
 import { NavLink, useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
 import "./AppNavbar.css";
 
-function AppNavbar() {
+function AppNavbar({ mode = "resident" }) {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [languageOpen, setLanguageOpen] = useState(false);
 
+  const isAdmin = mode === "admin";
+
   const profile = JSON.parse(localStorage.getItem("cachedProfile") || "{}");
 
-  const initials = profile?.displayName
-    ? profile.displayName
-      .split(" ")
-      .map((word) => word[0])
-      .join("")
-      .slice(0, 2)
-      .toUpperCase()
-    : "U";
+  const initials = isAdmin
+    ? "AD"
+    : profile?.displayName
+      ? profile.displayName
+        .split(" ")
+        .map((word) => word[0])
+        .join("")
+        .slice(0, 2)
+        .toUpperCase()
+      : "U";
 
   const currentLanguage = i18n.language?.split("-")[0] || "en";
 
@@ -46,37 +51,58 @@ function AppNavbar() {
   };
 
   const logout = () => {
+    const language = localStorage.getItem("i18nextLng");
+
     localStorage.clear();
+
+    if (language) {
+      localStorage.setItem("i18nextLng", language);
+    }
+
     navigate("/login");
   };
 
   return (
-    <header className="app-navbar">
+    <header className={`app-navbar ${isAdmin ? "app-navbar-admin" : ""}`}>
       <div className="navbar-red-line" />
 
       <div className="navbar-content">
-        <div className="navbar-logo" onClick={() => navigate("/chat")}>
+        <div
+          className="navbar-logo"
+          onClick={() => navigate(isAdmin ? "/admin" : "/chat")}
+        >
           <div className="navbar-logo-icon">
-            <MessageSquare size={24} />
+            {isAdmin ? <ShieldCheck size={24} /> : <MessageSquare size={24} />}
             <MapPin size={14} className="navbar-pin" />
           </div>
-          <span>{t("nav.appName")}</span>
+
+          <span>
+            {isAdmin
+              ? "Admin Dashboard"
+              : t("nav.appName") || "MyTampines Assistant"}
+          </span>
         </div>
 
         <nav className="navbar-links">
-          <NavLink to="/services">{t("nav.services")}</NavLink>
-
-          <NavLink to="/chat">{t("nav.chat")}</NavLink>
-
-          <NavLink to="/booking">{t("nav.booking") || "Booking"}</NavLink>
-
-          <NavLink to="/announcements">
-            {t("nav.announcements") || "Announcements"}
-          </NavLink>
-
-          <NavLink to="/directory">{t("nav.directory")}</NavLink>
-
-          <NavLink to="/help">{t("nav.help")}</NavLink>
+          {isAdmin ? (
+            <>
+              <NavLink to="/admin">Overview</NavLink>
+              <NavLink to="/admin/service-diagnostics">Service Diagnostics</NavLink>
+              <NavLink to="/admin/policy-gaps">Policy Gaps</NavLink>
+              <NavLink to="/admin/documents">Documents</NavLink>
+            </>
+          ) : (
+            <>
+              <NavLink to="/services">{t("nav.services")}</NavLink>
+              <NavLink to="/chat">{t("nav.chat")}</NavLink>
+              <NavLink to="/booking">{t("nav.booking") || "Booking"}</NavLink>
+              <NavLink to="/announcements">
+                {t("nav.announcements") || "Announcements"}
+              </NavLink>
+              <NavLink to="/directory">{t("nav.directory")}</NavLink>
+              <NavLink to="/help">{t("nav.help")}</NavLink>
+            </>
+          )}
         </nav>
 
         <div className="navbar-actions">
@@ -93,12 +119,18 @@ function AppNavbar() {
 
             {languageOpen && (
               <div className="language-dropdown">
-                <button onClick={() => changeLanguage("en")}>English</button>
-                <button onClick={() => changeLanguage("ms")}>
+                <button type="button" onClick={() => changeLanguage("en")}>
+                  English
+                </button>
+                <button type="button" onClick={() => changeLanguage("ms")}>
                   Bahasa Melayu
                 </button>
-                <button onClick={() => changeLanguage("zh")}>中文</button>
-                <button onClick={() => changeLanguage("ta")}>தமிழ்</button>
+                <button type="button" onClick={() => changeLanguage("zh")}>
+                  中文
+                </button>
+                <button type="button" onClick={() => changeLanguage("ta")}>
+                  தமிழ்
+                </button>
               </div>
             )}
           </div>
@@ -118,34 +150,46 @@ function AppNavbar() {
                 <div className="profile-dropdown-header">
                   <div className="dropdown-avatar">{initials}</div>
                   <div>
-                    <strong>{profile?.displayName || "Demo Resident"}</strong>
-                    <p>{profile?.partialUinfin || "Active profile"}</p>
+                    <strong>
+                      {isAdmin
+                        ? "Demo Admin"
+                        : profile?.displayName || "Demo Resident"}
+                    </strong>
+                    <p>
+                      {isAdmin
+                        ? "Confidential analytics view"
+                        : profile?.partialUinfin || "Active profile"}
+                    </p>
                   </div>
                 </div>
 
-                <button
-                  className="dropdown-item"
-                  type="button"
-                  onClick={() => {
-                    setDropdownOpen(false);
-                    navigate("/profile");
-                  }}
-                >
-                  <User size={18} />
-                  {t("common.editProfile")}
-                </button>
+                {!isAdmin && (
+                  <>
+                    <button
+                      className="dropdown-item"
+                      type="button"
+                      onClick={() => {
+                        setDropdownOpen(false);
+                        navigate("/profile");
+                      }}
+                    >
+                      <User size={18} />
+                      {t("common.editProfile")}
+                    </button>
 
-                <button
-                  className="dropdown-item"
-                  type="button"
-                  onClick={() => {
-                    setDropdownOpen(false);
-                    navigate("/settings");
-                  }}
-                >
-                  <Settings size={18} />
-                  Settings
-                </button>
+                    <button
+                      className="dropdown-item"
+                      type="button"
+                      onClick={() => {
+                        setDropdownOpen(false);
+                        navigate("/settings");
+                      }}
+                    >
+                      <Settings size={18} />
+                      Settings
+                    </button>
+                  </>
+                )}
 
                 <button
                   className="dropdown-item logout"
@@ -153,7 +197,7 @@ function AppNavbar() {
                   onClick={logout}
                 >
                   <LogOut size={18} />
-                  {t("logout")}
+                  {t("logout") || "Logout"}
                 </button>
               </div>
             )}

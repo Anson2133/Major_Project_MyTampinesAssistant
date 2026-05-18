@@ -25,7 +25,7 @@ function readDisplaySettings() {
   }
 }
 
-function AppLayout() {
+function AdminLayout() {
   const [settings, setSettings] = useState(readDisplaySettings);
 
   useEffect(() => {
@@ -47,7 +47,7 @@ function AppLayout() {
   }, []);
 
   const appClassName = [
-    "app-wrapper",
+    "app-wrapper admin-wrapper",
     settings.textSize === "large" ? "text-large" : "",
     settings.textSize === "extraLarge" ? "text-extra-large" : "",
     settings.simpleView ? "simple-view" : "",
@@ -59,10 +59,10 @@ function AppLayout() {
 
   return (
     <div className={appClassName}>
-      <AppNavbar mode="resident" />
+      <AppNavbar mode="admin" />
       <Outlet />
     </div>
   );
 }
 
-export default AppLayout;
+export default AdminLayout;
