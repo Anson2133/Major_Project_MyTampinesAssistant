@@ -2,6 +2,7 @@ import PolicyGapSummary from "../components/PolicyGaps/PolicyGapSummary";
 import PolicyGapCards from "../components/PolicyGaps/PolicyGapCards";
 import PolicyGapCategoryTable from "../components/PolicyGaps/PolicyGapCategoryTable";
 import usePolicyGaps from "../hooks/usePolicyGaps";
+import AdminLoadingState from "../components/AdminLoadingState";
 import "../admin.css";
 import "../PolicyGaps.css";
 
@@ -10,11 +11,10 @@ export default function AdminPolicyGapsPage() {
 
   if (loading) {
     return (
-      <main className="admin-dashboard-page">
-        <section className="admin-state-card">
-          Loading policy gap analysis...
-        </section>
-      </main>
+      <AdminLoadingState
+        title="Detecting policy gap signals"
+        message="We are comparing demand, difficulty, document-linked journeys, and successful next-step completion."
+      />
     );
   }
 

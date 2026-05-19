@@ -324,3 +324,17 @@
 .app-navbar-admin .profile-dropdown-header p {
   color: #7c2d12;
 }
+
+.app-navbar-admin .navbar-links a {
+  color: #667085;
+}
+
+.app-navbar-admin .navbar-links a.active {
+  color: #c1121f;
+  background: #fff1f3;
+}
+
+.app-navbar-admin .navbar-links a:hover {
+  color: #c1121f;
+  background: #fff1f3;
+}

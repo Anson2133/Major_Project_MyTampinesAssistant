@@ -435,4 +435,126 @@
     font-style: normal;
     font-weight: 800;
 }
+/* ============================================================
+   Admin Shared Loading State
+   Matches Profile Page Loader
+   ============================================================ */
 
+.admin-loader-shell {
+  min-height: calc(100vh - 140px);
+  display: grid;
+  place-items: center;
+}
+
+.admin-loader-card {
+  width: min(560px, 100%);
+  padding: 42px;
+  border-radius: 30px;
+  background: #ffffff;
+  border: 1px solid #e4e7ec;
+  box-shadow: 0 24px 54px rgba(15, 23, 42, 0.1);
+  text-align: center;
+}
+
+.admin-loader-icon {
+  width: 74px;
+  height: 74px;
+  margin: 0 auto 22px;
+  border-radius: 24px;
+  display: grid;
+  place-items: center;
+  background: #fff1f3;
+  color: #c1121f;
+}
+
+.admin-loader-icon svg {
+  animation: adminSpin 1s linear infinite;
+}
+
+.admin-loader-card h1 {
+  margin: 0 0 10px;
+  color: #101828;
+  font-size: 1.7rem;
+  letter-spacing: -0.03em;
+}
+
+.admin-loader-card p {
+  margin: 0 auto 24px;
+  max-width: 420px;
+  color: #667085;
+  line-height: 1.6;
+}
+
+.admin-loader-progress {
+  width: 100%;
+  height: 12px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: #f1f5f9;
+}
+
+.admin-loader-progress span {
+  display: block;
+  width: 45%;
+  height: 100%;
+  border-radius: 999px;
+  background: #c1121f;
+  animation: adminLoadingBar 1.25s ease-in-out infinite;
+}
+
+.admin-skeleton-grid {
+  margin-top: 26px;
+  display: grid;
+  gap: 12px;
+}
+
+.admin-skeleton-grid div {
+  height: 16px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #f1f5f9, #e5e7eb, #f1f5f9);
+  background-size: 200% 100%;
+  animation: adminSkeleton 1.4s ease infinite;
+}
+
+.admin-skeleton-grid div:nth-child(2) {
+  width: 78%;
+  margin: 0 auto;
+}
+
+.admin-skeleton-grid div:nth-child(3) {
+  width: 55%;
+  margin: 0 auto;
+}
+
+@keyframes adminSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes adminLoadingBar {
+  0% {
+    transform: translateX(-110%);
+  }
+
+  100% {
+    transform: translateX(240%);
+  }
+}
+
+@keyframes adminSkeleton {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .admin-loader-card {
+    padding: 30px 22px;
+    border-radius: 24px;
+  }
+}

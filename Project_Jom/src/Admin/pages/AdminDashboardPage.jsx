@@ -3,6 +3,7 @@ import AdminOverviewCard from "../components/AdminOverviewCard";
 import AdminInsightPanel from "../components/AdminInsightPanel";
 import AdminDemandSnapshot from "../components/AdminDemandSnapshot";
 import useAdminOverview from "../hooks/useAdminOverview";
+import AdminLoadingState from "../components/AdminLoadingState";
 import "../admin.css";
 
 export default function AdminDashboardPage() {
@@ -10,9 +11,10 @@ export default function AdminDashboardPage() {
 
     if (loading) {
         return (
-            <main className="admin-dashboard-page">
-                <section className="admin-state-card">Loading admin overview...</section>
-            </main>
+            <AdminLoadingState
+                title="Preparing admin overview"
+                message="We are loading anonymised profiles, service interactions, demand signals, and policy indicators."
+            />
         );
     }
 

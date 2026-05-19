@@ -3,6 +3,7 @@ import DocumentTypeBreakdown from "../components/DocumentInsights/DocumentTypeBr
 import ScamRiskPanel from "../components/DocumentInsights/ScamRiskPanel";
 import DocumentCategoryTable from "../components/DocumentInsights/DocumentCategoryTable";
 import useDocumentInsights from "../hooks/useDocumentInsights";
+import AdminLoadingState from "../components/AdminLoadingState";
 import "../admin.css";
 import "../DocumentInsights.css";
 

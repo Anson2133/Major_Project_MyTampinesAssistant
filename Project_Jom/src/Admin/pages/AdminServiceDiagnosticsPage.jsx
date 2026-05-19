@@ -3,6 +3,7 @@ import ServiceDiagnosticsTable from "../components/ServiceDiagnostic/ServiceDiag
 import ServiceDiagnosticsCategories from "../components/ServiceDiagnostic/ServiceDiagnosticsCategories";
 import QuickSightReadinessPanel from "../components/ServiceDiagnostic/QuickSightReadinessPanel";
 import useServiceDiagnostics from "../hooks/useServiceDiagnostics";
+import AdminLoadingState from "../components/AdminLoadingState";
 import "../ServiceDiagnostics.css";
 
 export default function AdminServiceDiagnosticsPage() {
@@ -11,11 +12,10 @@ export default function AdminServiceDiagnosticsPage() {
 
   if (loading) {
     return (
-      <main className="admin-dashboard-page">
-        <section className="admin-state-card">
-          Loading service journey diagnostics...
-        </section>
-      </main>
+      <AdminLoadingState
+        title="Preparing service diagnostics"
+        message="We are analysing anonymised journey signals, session duration, difficulty rates, and completion patterns."
+      />
     );
   }
 

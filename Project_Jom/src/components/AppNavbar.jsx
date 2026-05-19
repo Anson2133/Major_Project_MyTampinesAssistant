@@ -86,10 +86,21 @@ function AppNavbar({ mode = "resident" }) {
         <nav className="navbar-links">
           {isAdmin ? (
             <>
-              <NavLink to="/admin">Overview</NavLink>
-              <NavLink to="/admin/service-diagnostics">Service Diagnostics</NavLink>
-              <NavLink to="/admin/policy-gaps">Policy Gaps</NavLink>
-              <NavLink to="/admin/documents">Documents</NavLink>
+              <NavLink to="/admin" end>
+                Overview
+              </NavLink>
+
+              <NavLink to="/admin/service-diagnostics">
+                Service Diagnostics
+              </NavLink>
+
+              <NavLink to="/admin/policy-gaps">
+                Policy Gaps
+              </NavLink>
+
+              <NavLink to="/admin/documents">
+                Documents
+              </NavLink>
             </>
           ) : (
             <>
