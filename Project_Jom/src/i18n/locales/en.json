@@ -126,5 +126,118 @@
     "hdbLoanHousingSupport": "HDB loan or housing support",
     "incomeTax": "income tax",
     "townCouncilServices": "town council services"
+  },
+  "wizard": {
+    "title": "Life Situations Wizard",
+    "subtitle": "Tell us what you're going through in your own words. We'll generate a personalised action plan — the exact schemes you qualify for, in the order you should act on them.",
+    "inputLabel": "Describe your situation",
+    "placeholder": "For example:\n\"I just lost my job and have two kids to feed\"\n\"My mother has dementia and I don't know where to start\"\n\"I'm pregnant and I'm 17 years old\"",
+    "privacy": "Your information is used only to match you with relevant services. No NRIC, exact income, or personal details are stored.",
+    "orPick": "Or pick a common situation:",
+    "generateBtn": "Generate My Action Plan",
+    "generating": "Generating your plan...",
+    "chips": {
+      "newBaby": "New Baby",
+      "lostJob": "Lost Job",
+      "eldercare": "Eldercare",
+      "turning65": "Turning 65",
+      "financialHelp": "Financial Help",
+      "justMarried": "Just Married",
+      "school": "School",
+      "disability": "Disability",
+      "pregnancy": "Pregnancy",
+      "retrenchment": "Retrenchment",
+      "texts": {
+        "newBaby": "I just had a baby",
+        "lostJob": "I lost my job",
+        "eldercare": "My parent has dementia and needs care",
+        "turning65": "I'm turning 65 this year",
+        "financialHelp": "I'm struggling financially and need help",
+        "justMarried": "I just got married",
+        "school": "My child is starting school",
+        "disability": "I or a family member has a disability",
+        "pregnancy": "I had an unexpected pregnancy",
+        "retrenchment": "I was retrenched from my job"
+      }
+    },
+    "tabs": {
+      "timeline": "Action Timeline",
+      "schemes": "Your Schemes",
+      "documents": "Documents",
+      "places": "Tampines Places"
+    },
+    "buttons": {
+      "tryAnother": "← Try Another Situation",
+      "export": "⬇ Export / Print PDF",
+      "save": "💾 Save Plan",
+      "saving": "Saving..."
+    },
+    "planTitle": "Your Personalised Action Plan",
+    "hiddenGems": "Often Missed — Also Consider",
+    "urgency": {
+      "high": "Urgent Action Needed",
+      "medium": "Act Soon",
+      "low": "Plan Ahead"
+    },
+    "timeline": {
+      "thisWeek": "This Week",
+      "thisMonth": "This Month",
+      "next3Months": "Within 3 Months"
+    },
+    "loading": {
+      "title": "Generating your personalised action plan...",
+      "subtitle": "Searching 150+ Singapore government schemes for your situation",
+      "step1": "🔍 Analysing your situation",
+      "step2": "📋 Matching relevant schemes",
+      "step3": "📍 Finding Tampines resources",
+      "step4": "⚡ Building your action timeline",
+      "sub1": "Understanding your needs and circumstances",
+      "sub2": "Checking eligibility across all schemes",
+      "sub3": "Locating nearby services and offices",
+      "sub4": "Ordering steps by urgency and deadlines",
+      "done": "Done",
+      "inProgress": "In progress",
+      "pending": "Pending"
+    },
+    "plan": {
+      "immediateSupport": "Immediate Support Available",
+      "crisisFallback": "You're not alone. Free, confidential support is available right now.",
+      "supportHotline": "Support Hotline",
+      "contactAvailable": "Contact available",
+      "whyQualify": "Why you likely qualify:",
+      "match": "match",
+      "applyOnline": "Apply online →",
+      "less": "▲ Less",
+      "moreDetails": "▼ More details",
+      "noDocuments": "No document information available.",
+      "documentsIntro": "Gather these before visiting any agency — it will speed up your applications.",
+      "documentsSmartIntro": "Based on your profile, here's a personalised document checklist.",
+      "likelyHave": "You likely already have these",
+      "locateBeforeAppointment": "Locate them before your appointment",
+      "needToGet": "You'll need to obtain these",
+      "paperworkReminder": "Don't let missing paperwork slow you down",
+      "get": "GET",
+      "hiddenGemsTitle": "Often Missed — People Like You Also Qualified For...",
+      "noSchemes": "No schemes found for this situation.",
+      "generated": "Generated",
+      "footer": "MyTampines Assistant — Life Situations Wizard"
+    },
+    "shortSubtitle": "Tell us what you're going through. We'll find the exact schemes you qualify for and build your action plan.",
+    "inputQuestion": "What are you going through?",
+    "steps": {
+      "yourSituation": "Your Situation",
+      "matching": "Matching",
+      "yourPlan": "Your Plan"
+    },
+    "voice": {
+      "stopListening": "Stop listening",
+      "startVoiceInput": "Start voice input"
+    },
+    "errors": {
+      "generateFailed": "Something went wrong generating your plan. Please try again."
+    },
+    "alerts": {
+      "planSaved": "Plan saved! You can access it from your profile."
+    }
   }
 }

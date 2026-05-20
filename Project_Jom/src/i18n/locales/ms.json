@@ -100,19 +100,19 @@
     "startDemoAs": "Mulakan Demo sebagai {{name}}"
   },
   "chat": {
-  "currentConversation": "Perbualan semasa",
-  "personalisedSupport": "Sokongan penduduk yang diperibadikan",
-  "askPlaceholder": "Tanya tentang CPF, HDB, penjagaan kesihatan, manfaat, atau perkhidmatan tempatan...",
-   "newChat": "Sembang Baharu",
-  "recentConversations": "Perbualan Terkini",
-  "searchConversations": "Cari perbualan...",
-  "noConversations": "Tiada perbualan ditemui",
-  "uploadDevice": "Muat naik dari peranti ini",
-  "supportedFormats": "PDF, JPG, PNG, WEBP sahaja",
-  "unsupportedFiles": "Hanya fail PDF, JPG, PNG, dan WEBP disokong.",
-  "failedAttach": "Gagal memuat naik fail. Sila cuba lagi.",
-  "translationDisclaimer": "Respons boleh diterjemahkan ke Bahasa Melayu, Mandarin, atau Tamil."
-},
+    "currentConversation": "Perbualan semasa",
+    "personalisedSupport": "Sokongan penduduk yang diperibadikan",
+    "askPlaceholder": "Tanya tentang CPF, HDB, penjagaan kesihatan, manfaat, atau perkhidmatan tempatan...",
+    "newChat": "Sembang Baharu",
+    "recentConversations": "Perbualan Terkini",
+    "searchConversations": "Cari perbualan...",
+    "noConversations": "Tiada perbualan ditemui",
+    "uploadDevice": "Muat naik dari peranti ini",
+    "supportedFormats": "PDF, JPG, PNG, WEBP sahaja",
+    "unsupportedFiles": "Hanya fail PDF, JPG, PNG, dan WEBP disokong.",
+    "failedAttach": "Gagal memuat naik fail. Sila cuba lagi.",
+    "translationDisclaimer": "Respons boleh diterjemahkan ke Bahasa Melayu, Mandarin, atau Tamil."
+  },
   "values": {
     "male": "Lelaki",
     "female": "Perempuan",
@@ -126,5 +126,118 @@
     "hdbLoanHousingSupport": "Pinjaman HDB atau sokongan perumahan",
     "incomeTax": "cukai pendapatan",
     "townCouncilServices": "perkhidmatan majlis bandaran"
+  },
+  "wizard": {
+    "title": "Wizard Situasi Kehidupan",
+    "subtitle": "Ceritakan situasi anda dengan kata-kata sendiri. Kami akan menjana pelan tindakan yang diperibadikan — skim yang anda layak, mengikut urutan yang perlu anda ambil tindakan.",
+    "inputLabel": "Huraikan situasi anda",
+    "placeholder": "Contohnya:\n\"Saya baru kehilangan pekerjaan dan mempunyai dua anak\"\n\"Ibu saya menghidap demensia\"\n\"Saya hamil dan berumur 17 tahun\"",
+    "privacy": "Maklumat anda hanya digunakan untuk memadankan anda dengan perkhidmatan yang berkaitan. Tiada NRIC atau butiran peribadi yang disimpan.",
+    "orPick": "Atau pilih situasi biasa:",
+    "generateBtn": "Jana Pelan Tindakan Saya",
+    "generating": "Menjana pelan anda...",
+    "chips": {
+      "newBaby": "Bayi Baru",
+      "lostJob": "Kehilangan Kerja",
+      "eldercare": "Penjagaan Warga Tua",
+      "turning65": "Menjelang 65",
+      "financialHelp": "Bantuan Kewangan",
+      "justMarried": "Baru Berkahwin",
+      "school": "Persekolahan",
+      "disability": "Ketidakupayaan",
+      "pregnancy": "Kehamilan",
+      "retrenchment": "Pemecatan",
+      "texts": {
+        "newBaby": "Saya baru sahaja mempunyai bayi",
+        "lostJob": "Saya kehilangan pekerjaan",
+        "eldercare": "Ibu bapa saya menghidap demensia dan memerlukan penjagaan",
+        "turning65": "Saya akan mencapai umur 65 tahun",
+        "financialHelp": "Saya menghadapi masalah kewangan dan memerlukan bantuan",
+        "justMarried": "Saya baru berkahwin",
+        "school": "Anak saya akan memulakan persekolahan",
+        "disability": "Saya atau ahli keluarga saya mempunyai ketidakupayaan",
+        "pregnancy": "Saya mengalami kehamilan yang tidak dirancang",
+        "retrenchment": "Saya telah dipecat daripada pekerjaan saya"
+      }
+    },
+    "tabs": {
+      "timeline": "Garis Masa Tindakan",
+      "schemes": "Skim Anda",
+      "documents": "Dokumen",
+      "places": "Tempat di Tampines"
+    },
+    "buttons": {
+      "tryAnother": "← Cuba Situasi Lain",
+      "export": "⬇ Eksport / Cetak PDF",
+      "save": "💾 Simpan Pelan",
+      "saving": "Menyimpan..."
+    },
+    "planTitle": "Pelan Tindakan Peribadi Anda",
+    "hiddenGems": "Sering Terlepas — Pertimbangkan Juga",
+    "urgency": {
+      "high": "Tindakan Segera Diperlukan",
+      "medium": "Bertindak Segera",
+      "low": "Rancang Ke Hadapan"
+    },
+    "timeline": {
+      "thisWeek": "Minggu Ini",
+      "thisMonth": "Bulan Ini",
+      "next3Months": "Dalam 3 Bulan"
+    },
+    "loading": {
+      "title": "Menjana pelan tindakan peribadi anda...",
+      "subtitle": "Mencari 150+ skim kerajaan Singapura untuk situasi anda",
+      "step1": "🔍 Menganalisis situasi anda",
+      "step2": "📋 Memadankan skim yang berkaitan",
+      "step3": "📍 Mencari sumber di Tampines",
+      "step4": "⚡ Membina garis masa tindakan anda",
+      "sub1": "Memahami keperluan dan keadaan anda",
+      "sub2": "Menyemak kelayakan merentas semua skim",
+      "sub3": "Mencari perkhidmatan dan pejabat berdekatan",
+      "sub4": "Menyusun langkah mengikut keutamaan dan tarikh akhir",
+      "done": "Selesai",
+      "inProgress": "Sedang berjalan",
+      "pending": "Menunggu"
+    },
+    "plan": {
+      "immediateSupport": "Sokongan Segera Tersedia",
+      "crisisFallback": "Anda tidak keseorangan. Sokongan percuma dan sulit tersedia sekarang.",
+      "supportHotline": "Talian Sokongan",
+      "contactAvailable": "Hubungan tersedia",
+      "whyQualify": "Mengapa anda mungkin layak:",
+      "match": "padanan",
+      "applyOnline": "Mohon dalam talian →",
+      "less": "▲ Kurang",
+      "moreDetails": "▼ Butiran lanjut",
+      "noDocuments": "Tiada maklumat dokumen tersedia.",
+      "documentsIntro": "Sediakan dokumen ini sebelum melawat mana-mana agensi — ia akan mempercepatkan permohonan anda.",
+      "documentsSmartIntro": "Berdasarkan profil anda, ini senarai semak dokumen yang diperibadikan.",
+      "likelyHave": "Anda mungkin sudah mempunyai dokumen ini",
+      "locateBeforeAppointment": "Cari dokumen ini sebelum janji temu anda",
+      "needToGet": "Anda perlu mendapatkan dokumen ini",
+      "paperworkReminder": "Jangan biarkan dokumen yang tiada melambatkan proses anda",
+      "get": "DAPATKAN",
+      "hiddenGemsTitle": "Sering Terlepas — Orang Seperti Anda Mungkin Juga Layak Untuk...",
+      "noSchemes": "Tiada skim ditemui untuk situasi ini.",
+      "generated": "Dijana",
+      "footer": "MyTampines Assistant — Wizard Situasi Kehidupan"
+    },
+    "shortSubtitle": "Ceritakan apa yang sedang anda lalui. Kami akan mencari skim yang anda mungkin layak dan membina pelan tindakan anda.",
+    "inputQuestion": "Apakah yang sedang anda lalui?",
+    "steps": {
+      "yourSituation": "Situasi Anda",
+      "matching": "Pemadanan",
+      "yourPlan": "Pelan Anda"
+    },
+    "voice": {
+      "stopListening": "Berhenti mendengar",
+      "startVoiceInput": "Mula input suara"
+    },
+    "errors": {
+      "generateFailed": "Sesuatu telah berlaku semasa menjana pelan anda. Sila cuba lagi."
+    },
+    "alerts": {
+      "planSaved": "Pelan disimpan! Anda boleh mengaksesnya daripada profil anda."
+    }
   }
 }

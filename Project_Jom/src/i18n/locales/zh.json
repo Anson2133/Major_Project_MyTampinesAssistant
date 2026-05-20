@@ -126,5 +126,118 @@
     "hdbLoanHousingSupport": "HDB 贷款或住房支持",
     "incomeTax": "所得税",
     "townCouncilServices": "市镇理事会服务"
+  },
+  "wizard": {
+    "title": "生活情境向导",
+    "subtitle": "用您自己的话描述您的情况。我们将生成个性化行动计划——按顺序列出您符合条件的所有计划。",
+    "inputLabel": "描述您的情况",
+    "placeholder": "例如：\n\"我刚失业，还有两个孩子要养\"\n\"我母亲患有失智症\"\n\"我怀孕了，我今年17岁\"",
+    "privacy": "您的信息仅用于为您匹配相关服务。不存储身份证号或个人详细信息。",
+    "orPick": "或选择常见情况：",
+    "generateBtn": "生成我的行动计划",
+    "generating": "正在生成您的计划...",
+    "chips": {
+      "newBaby": "新生儿",
+      "lostJob": "失业",
+      "eldercare": "老年护理",
+      "turning65": "即将65岁",
+      "financialHelp": "经济援助",
+      "justMarried": "新婚",
+      "school": "子女上学",
+      "disability": "残障",
+      "pregnancy": "怀孕",
+      "retrenchment": "裁员",
+      "texts": {
+        "newBaby": "我刚刚有了一个宝宝",
+        "lostJob": "我失业了",
+        "eldercare": "我的父母患有失智症需要照顾",
+        "turning65": "我今年即将满65岁",
+        "financialHelp": "我面临经济困难需要帮助",
+        "justMarried": "我刚刚结婚",
+        "school": "我的孩子即将入学",
+        "disability": "我或家人有残障",
+        "pregnancy": "我有一个意外怀孕",
+        "retrenchment": "我被裁员了"
+      }
+    },
+    "tabs": {
+      "timeline": "行动时间表",
+      "schemes": "您的计划",
+      "documents": "所需文件",
+      "places": "淡滨尼地点"
+    },
+    "buttons": {
+      "tryAnother": "← 尝试其他情况",
+      "export": "⬇ 导出/打印PDF",
+      "save": "💾 保存计划",
+      "saving": "保存中..."
+    },
+    "planTitle": "您的个性化行动计划",
+    "hiddenGems": "常被忽略 — 也请考虑",
+    "urgency": {
+      "high": "需要紧急行动",
+      "medium": "尽快行动",
+      "low": "提前规划"
+    },
+    "timeline": {
+      "thisWeek": "本周",
+      "thisMonth": "本月",
+      "next3Months": "3个月内"
+    },
+    "loading": {
+      "title": "正在生成您的个性化行动计划...",
+      "subtitle": "正在搜索150+个新加坡政府计划",
+      "step1": "🔍 分析您的情况",
+      "step2": "📋 匹配相关计划",
+      "step3": "📍 查找淡滨尼资源",
+      "step4": "⚡ 建立您的行动时间表",
+      "sub1": "了解您的需求和情况",
+      "sub2": "检查所有计划的资格条件",
+      "sub3": "查找附近的服务和办事处",
+      "sub4": "按紧急程度和截止日期排列步骤",
+      "done": "已完成",
+      "inProgress": "进行中",
+      "pending": "待处理"
+    },
+    "plan": {
+      "immediateSupport": "可获得即时支援",
+      "crisisFallback": "您并不孤单。现在可获得免费且保密的支援。",
+      "supportHotline": "支援热线",
+      "contactAvailable": "可联系",
+      "whyQualify": "您可能符合资格的原因：",
+      "match": "匹配",
+      "applyOnline": "在线申请 →",
+      "less": "▲ 收起",
+      "moreDetails": "▼ 查看更多详情",
+      "noDocuments": "暂无文件信息。",
+      "documentsIntro": "拜访任何机构前请准备这些文件，这将加快您的申请流程。",
+      "documentsSmartIntro": "根据您的资料，这是为您个性化整理的文件清单。",
+      "likelyHave": "您可能已经拥有这些文件",
+      "locateBeforeAppointment": "请在预约前找到这些文件",
+      "needToGet": "您需要获取这些文件",
+      "paperworkReminder": "不要让缺少文件拖慢您的申请",
+      "get": "获取",
+      "hiddenGemsTitle": "常被忽略 — 像您这样的居民也可能符合资格...",
+      "noSchemes": "未找到适合此情况的计划。",
+      "generated": "生成于",
+      "footer": "MyTampines Assistant — 生活情境向导"
+    },
+    "shortSubtitle": "告诉我们您正在经历的情况。我们会找出您可能符合资格的计划，并为您建立行动方案。",
+    "inputQuestion": "您正在经历什么情况？",
+    "steps": {
+      "yourSituation": "您的情况",
+      "matching": "匹配中",
+      "yourPlan": "您的计划"
+    },
+    "voice": {
+      "stopListening": "停止聆听",
+      "startVoiceInput": "开始语音输入"
+    },
+    "errors": {
+      "generateFailed": "生成您的计划时出现问题。请重试。"
+    },
+    "alerts": {
+      "planSaved": "计划已保存！您可以从个人资料中查看。"
+    }
   }
 }
