@@ -1,4 +1,5 @@
 import { Search } from "lucide-react";
+import { useNavigate } from "react-router";
 
 function getResidentName() {
   try {
@@ -23,6 +24,7 @@ function getResidentName() {
 
 function ServicesHero({ searchTerm, onSearchChange }) {
   const residentName = getResidentName();
+  const navigate = useNavigate();
 
   return (
     <section className="services-hero">
@@ -46,9 +48,18 @@ function ServicesHero({ searchTerm, onSearchChange }) {
         />
       </div>
 
-      <p className="services-search-helper">
-        We show the closest matches. For complex situations, start with the AI Assistant.
-      </p>
+      <div className="services-hero-divider">
+        <span />
+        <span className="services-hero-divider-label">or</span>
+        <span />
+      </div>
+
+      <div className="services-hero-wizard">
+        <span>Not sure what to search for?</span>
+        <button onClick={() => navigate("/life-situations")}>
+          Describe your situation instead →
+        </button>
+      </div>
     </section>
   );
 }
