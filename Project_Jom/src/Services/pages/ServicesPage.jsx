@@ -315,7 +315,8 @@ function ServicesPage() {
           <h2>Browse by Category</h2>
 
           <p>
-            Select a category to start your journey.
+            Choose the type of support you need. We’ll help you check fit,
+            prepare documents, and continue to the right next step.
           </p>
         </div>
 
@@ -330,69 +331,114 @@ function ServicesPage() {
         </div>
       </section>
 
-      <section className="services-chat-cta">
-        <div>
-          <h2>Need personalised help?</h2>
+      <section className="services-help-section">
+        <div className="services-section-header">
+          <h2>Need help choosing?</h2>
 
           <p>
-            Chat with our AI assistant to get customized
-            service recommendations.
+            Start with the AI Assistant or scan a document if you are not sure
+            which category applies.
           </p>
         </div>
 
-        <button onClick={() => navigate("/chat")}>
-          Start Chat
-        </button>
-      </section>
+        <div className="services-help-grid">
+          <article className="services-help-card services-help-chat-card">
+            <div className="services-help-chat-content">
+              <div className="services-help-card-top">
+                <span className="services-help-pill">AI Assistant</span>
 
-      <div className="document-scanner-cta">
-        <div className="document-scanner-cta-content">
-          <div className="document-scanner-pill">
-            New AI Feature
-          </div>
+                <h3>Describe your situation</h3>
 
-          <h2>Document Scanner</h2>
+                <p>
+                  Tell us what happened in your own words and we’ll suggest where
+                  to start.
+                </p>
 
-          <p>
-            Upload government letters, PDFs, screenshots, SMS messages,
-            or notices to understand what they mean, check scam risk,
-            and connect to the right service guidance flow.
-          </p>
+                <div className="services-help-tags">
+                  <span>Plain Language</span>
+                  <span>Service Suggestions</span>
+                  <span>Next Step</span>
+                </div>
+              </div>
 
-          <div className="document-scanner-tags">
-            <span>AI Summary</span>
-            <span>Scam Detection</span>
-            <span>Service Matching</span>
-            <span>Textract + Bedrock</span>
-          </div>
+              <button onClick={() => navigate("/chat")}>
+                Start Chat
+              </button>
+            </div>
 
-          <button
-            className="document-scanner-btn"
-            onClick={() => navigate("/document-scanner")}
-          >
-            Open Document Scanner
-          </button>
-        </div>
+            <div className="services-help-chat-preview">
+              <div className="services-mini-chat">
+                <div className="services-mini-chat-header">
+                  <div className="services-mini-chat-avatar">AI</div>
 
-        <div className="document-scanner-visual">
-          <div className="scanner-preview-window">
-            <div className="scanner-red-line" />
+                  <div>
+                    <strong>MyTampines Assistant</strong>
+                    <span>Online</span>
+                  </div>
+                </div>
 
-            <div className="scanner-preview-document">
-              <div className="scanner-preview-header" />
+                <div className="services-mini-chat-body">
+                  <div className="services-mini-message user">
+                    I need help with a medical bill
+                  </div>
 
-              <div className="scanner-preview-line short" />
-              <div className="scanner-preview-line" />
-              <div className="scanner-preview-line" />
-              <div className="scanner-preview-line medium" />
+                  <div className="services-mini-message bot">
+                    I can help check likely support options and what documents to prepare.
+                  </div>
+                </div>
 
-              <div className="scanner-preview-alert">
-                Scam Risk Analysis Complete
+                <div className="services-mini-chat-input">
+                  Ask about money, health, elderly care...
+                </div>
               </div>
             </div>
-          </div>
+          </article>
+
+          <article className="services-help-card services-help-card-featured services-help-scanner-card">
+            <div className="services-help-scanner-content">
+              <div className="services-help-card-top">
+                <span className="services-help-pill">Document Scanner</span>
+
+                <h3>Upload a bill, letter, or screenshot</h3>
+
+                <p>
+                  Understand what the document means, check scam risk, and connect
+                  to relevant support if needed.
+                </p>
+
+                <div className="services-help-tags">
+                  <span>AI Summary</span>
+                  <span>Scam Check</span>
+                  <span>Service Matching</span>
+                </div>
+              </div>
+
+              <button onClick={() => navigate("/document-scanner")}>
+                Open Scanner
+              </button>
+            </div>
+
+            <div className="services-help-scanner-visual">
+              <div className="mini-scanner-window">
+                <div className="scanner-red-line" />
+
+                <div className="mini-scanner-document">
+                  <div className="mini-scanner-header" />
+
+                  <div className="mini-scanner-line short" />
+                  <div className="mini-scanner-line" />
+                  <div className="mini-scanner-line" />
+                  <div className="mini-scanner-line medium" />
+
+                  <div className="mini-scanner-alert">
+                    Scam Risk Check Complete
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

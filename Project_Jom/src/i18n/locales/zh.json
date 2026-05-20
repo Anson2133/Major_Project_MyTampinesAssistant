@@ -239,5 +239,206 @@
     "alerts": {
       "planSaved": "计划已保存！您可以从个人资料中查看。"
     }
+  },
+  "booking": {
+    "walking": "步行",
+    "driving": "驾车",
+    "transit": "公共交通",
+    "startNavigation": "🟢 开始导航",
+    "stopNavigation": "🔴 停止导航",
+    "liveNavigationActive": "🟢 实时导航已启用",
+    "eyebrow": "淡滨尼设施",
+    "title": "查找并预约附近设施",
+    "pill": "所有服务集中一处",
+    "yourLocation": "您的位置",
+    "useMyLocation": "📍 使用我的当前位置",
+    "startTracking": "🟢 开始实时追踪",
+    "stopTracking": "🔴 停止实时追踪",
+    "liveTrackingActive": "🟢 实时追踪已启用",
+    "or": "或",
+    "addressPlaceholder": "输入您的地址...",
+    "go": "前往",
+    "filterByType": "按类型筛选",
+    "sportType": "运动类型",
+    "courseType": "课程类型",
+    "facilities": "个设施",
+    "sortedByDistance": "（按距离排序）",
+    "loadingMap": "地图加载中...",
+    "locationSuccess": "✓ 位置已设置！设施已按距离排序。",
+    "locationError": "无法获取您的位置。请输入地址。",
+    "addressNotFound": "地址未找到。请重试。",
+    "errorFindingAddress": "查找地址时出错。",
+    "directions": "路线",
+    "clearDirections": "✕ 清除",
+    "routeOptions": "路线选项",
+    "fastest": "⭐ 最快",
+    "alternative": "🔀 备选",
+    "scenic": "🗺️ 风景",
+    "hideSteps": "▲ 隐藏步骤",
+    "showSteps": "▼ 显示逐步指引",
+    "getDirections": "🗺️ 获取路线",
+    "bookVia": "通过以下方式预约",
+    "viewServices": "查看服务",
+    "noLocationForDirections": "请先设置您的位置以获取路线。",
+    "couldNotGetDirections": "无法获取路线。请重试。",
+    "legend": "图例",
+    "filters": {
+      "all": "全部",
+      "sports": "运动",
+      "bbq": "烧烤",
+      "community": "社区",
+      "courses": "课程",
+      "healthcare": "医疗保健",
+      "allSports": "所有运动",
+      "badminton": "羽毛球",
+      "basketball": "篮球",
+      "swimming": "游泳",
+      "futsal": "室内足球",
+      "soccer": "足球",
+      "allCourses": "所有课程",
+      "arts": "艺术",
+      "dance": "舞蹈",
+      "kids": "儿童"
+    },
+    "facilityDetails": {
+      "1": {
+        "description": "普通门诊服务、疫苗接种、慢性病管理和健康检查。",
+        "openingHours": "周一至周五：上午8时至下午4时30分 | 周六：上午8时至下午12时30分 | 周日及公假：休息",
+        "requirements": "下载HealthBuddy应用程序并使用Singpass登录，以预约、更改或取消预约。网站亦可用于申请、查看、更改或取消预约。",
+        "cost": "咨询及治疗费用因服务而异。"
+      },
+      "2": {
+        "description": "普通门诊服务、疫苗接种、慢性病管理和健康检查。",
+        "openingHours": "周一至周五：上午8时至下午4时30分 | 周六：上午8时至下午12时30分 | 周日及公假：休息",
+        "requirements": "下载HealthBuddy应用程序并使用Singpass登录，以预约、更改或取消预约。",
+        "cost": "咨询及治疗费用因服务而异。"
+      },
+      "3": {
+        "description": "我们的淡滨尼枢纽社区礼堂内的室内羽毛球场。",
+        "openingHours": "每日：上午7时至晚上9时",
+        "requirements": "需要ActiveSG账户和Singpass登录。每天最多2个时段。",
+        "cost": "公民/永久居民：非高峰每小时每场$3.50 | 高峰每小时每场$7.40"
+      },
+      "4": {
+        "description": "社区俱乐部羽毛球场可供预订。",
+        "openingHours": "非高峰：上午10时至下午5时 | 高峰：下午6时至晚上8时",
+        "requirements": "通过OnePA使用Singpass登录预订。",
+        "cost": "非高峰：$5–$6 | 高峰：$6–$7每时段"
+      },
+      "5": {
+        "description": "淡滨尼常吉民众俱乐部的室内羽毛球场。",
+        "openingHours": "非高峰：上午10时30分至下午5时30分 | 高峰：下午6时30分至晚上8时30分",
+        "requirements": "通过OnePA使用Singpass登录预订。",
+        "cost": "非高峰：$6 | 高峰：$8"
+      },
+      "6": {
+        "description": "团队运动馆的篮球场。",
+        "openingHours": "每日：上午7时至晚上10时",
+        "requirements": "需要ActiveSG账户和Singpass登录。",
+        "cost": "公民/永久居民：非高峰每小时$15 | 高峰每小时$30"
+      },
+      "7": {
+        "description": "设有家庭泳池和比赛泳池的特色游泳综合设施。",
+        "openingHours": "每日：上午6时30分至晚上9时30分",
+        "requirements": "需要ActiveSG账户。",
+        "cost": "成人公民/永久居民：平日$1.50 | 周末$2"
+      },
+      "8": {
+        "description": "8道奥林匹克标准泳池及儿童浅水池。",
+        "openingHours": "周一：上午11时至晚上9时30分 | 周二至周五：上午7时至晚上9时30分 | 周六/日/公假：上午8时至晚上9时30分",
+        "requirements": "SAFRA会员免费入场。访客须由SAFRA会员携带入场。",
+        "cost": "平日$2.30 | 周末/公假$3.40"
+      },
+      "9": {
+        "description": "户外五人足球场，供社区预订。",
+        "openingHours": "非高峰：上午10时至下午4时 | 高峰：下午6时起",
+        "requirements": "通过OnePA使用Singpass登录预订。",
+        "cost": "非高峰：$30–$45 | 高峰：$60–$90"
+      },
+      "10": {
+        "description": "全尺寸足球场，供球队预订。",
+        "openingHours": "非高峰：上午9时至下午5时 | 高峰：晚上7时至9时",
+        "requirements": "通过OnePA使用Singpass登录预订。",
+        "cost": "非高峰：$170 | 高峰：$330"
+      },
+      "11": {
+        "description": "我们的淡滨尼枢纽天空花园的热门屋顶烧烤炉。",
+        "openingHours": "每日：上午11时55分至晚上11时55分",
+        "requirements": "通过OnePA预订。需要Singpass登录。",
+        "cost": "每时段$30"
+      },
+      "12": {
+        "description": "407座附近的居民网络烧烤炉。",
+        "openingHours": "下午6时至晚上10时",
+        "requirements": "仅限该区居民预订。",
+        "cost": "每时段$15"
+      },
+      "13": {
+        "description": "淡滨尼北部居民社区烧烤炉。",
+        "openingHours": "请查看OnePA了解可用时段",
+        "requirements": "仅限居民预订。",
+        "cost": "免费"
+      },
+      "14": {
+        "description": "SAFRA淡滨尼露天平台附近的有遮盖烧烤炉。",
+        "openingHours": "上午时段：上午11时至下午3时 | 下午时段：下午5时至晚上9时",
+        "requirements": "仅限SAFRA会员在线预订。访客须由SAFRA会员签入。",
+        "cost": "会员：$30.60 | 访客：$40.80每时段"
+      },
+      "15": {
+        "description": "预订底层架空空间和连接建筑，用于婚礼、丧事、社交及宗教活动。",
+        "openingHours": "周一至周五：上午8时至下午5时",
+        "requirements": "丧事守夜预订须在布置前亲自办理。部分宗教活动需获议员批准。",
+        "cost": "社交活动：$54.50/天 | 丧事守夜：免费 | 水电费另计"
+      },
+      "16": {
+        "description": "预订开放空间、前庭区域和草地，用于社交或宗教活动。",
+        "openingHours": "周一至周五：上午8时至下午5时",
+        "requirements": "须获负责议员批准。使用电力须自备发电机。",
+        "cost": "租金：$21.80/天 + $300押金"
+      },
+      "17": {
+        "description": "预订篮球场、藤球场和羽毛球场，用于社区活动。",
+        "openingHours": "周一至周五：上午8时至下午5时",
+        "requirements": "视活动类型可能须获议员批准。",
+        "cost": "小型场地：$54.50/天 | 大型场地：$109/天 | 需缴押金"
+      },
+      "18": {
+        "description": "申请在底层架空空间或开放区域举办迷你展销会的许可证。",
+        "openingHours": "周一至周五：上午8时至下午5时",
+        "requirements": "须提供选区办事处信函及议员背书。需缴$1000押金。",
+        "cost": "底层架空空间：$54.50/天 | 开放空间：$21.80/天"
+      },
+      "19": {
+        "description": "为淡滨尼居民提供的免费大件废弃物处理服务。",
+        "openingHours": "周一至周六：下午2时至5时（公假除外）",
+        "requirements": "每月限3件。须提前至少3个工作天通知。",
+        "cost": "免费"
+      },
+      "20": {
+        "description": "功能厅、丰富设施、体育设施、健身房和活动空间。",
+        "openingHours": "各设施开放时间不同",
+        "requirements": "大多数预订须有SAFRA会员资格。",
+        "cost": "价格因设施类型而异。"
+      },
+      "21": {
+        "description": "中国书法课程，涵盖毛笔技法和书写风格。",
+        "openingHours": "每周五，晚上7时15分至9时15分",
+        "requirements": "12岁及以上。材料费另付。",
+        "cost": "$158–$168"
+      },
+      "22": {
+        "description": "儿童多项运动探险课程，含障碍活动。",
+        "openingHours": "每周二，下午1时30分至2时15分",
+        "requirements": "适合5至12岁儿童。",
+        "cost": "$21–$24.50"
+      },
+      "23": {
+        "description": "中级和高级芭蕾舞课程。",
+        "openingHours": "每周日，时间各异",
+        "requirements": "新学员须进行评估。",
+        "cost": "$210–$250"
+      }
+    }
   }
 }

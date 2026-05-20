@@ -6,7 +6,11 @@ export default function HelpFaq({ faqs, openFaqIndex, toggleFaq }) {
       <div className="help-section-header">
         <div>
           <span className="help-section-kicker">FAQ</span>
-          <h2>Common Questions</h2>
+          <h2>Frequently asked questions</h2>
+          <p>
+            These answers explain how the platform works, when to use each
+            feature, and how to understand recommendations safely.
+          </p>
         </div>
       </div>
 

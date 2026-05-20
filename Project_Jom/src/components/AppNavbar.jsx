@@ -6,6 +6,7 @@ import {
   LogOut,
   User,
   ChevronDown,
+  Settings,
 } from "lucide-react";
 import { NavLink, useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
@@ -22,11 +23,11 @@ function AppNavbar() {
 
   const initials = profile?.displayName
     ? profile.displayName
-        .split(" ")
-        .map((word) => word[0])
-        .join("")
-        .slice(0, 2)
-        .toUpperCase()
+      .split(" ")
+      .map((word) => word[0])
+      .join("")
+      .slice(0, 2)
+      .toUpperCase()
     : "U";
 
   const currentLanguage = i18n.language?.split("-")[0] || "en";
@@ -64,8 +65,17 @@ function AppNavbar() {
 
         <nav className="navbar-links">
           <NavLink to="/services">{t("nav.services")}</NavLink>
+
           <NavLink to="/chat">{t("nav.chat")}</NavLink>
-          <NavLink to="/history">{t("nav.history")}</NavLink>
+
+          <NavLink to="/booking">{t("nav.booking") || "Booking"}</NavLink>
+
+          <NavLink to="/announcements">
+            {t("nav.announcements") || "Announcements"}
+          </NavLink>
+
+          <NavLink to="/directory">{t("nav.directory")}</NavLink>
+
           <NavLink to="/help">{t("nav.help")}</NavLink>
         </nav>
 
@@ -84,7 +94,9 @@ function AppNavbar() {
             {languageOpen && (
               <div className="language-dropdown">
                 <button onClick={() => changeLanguage("en")}>English</button>
-                <button onClick={() => changeLanguage("ms")}>Bahasa Melayu</button>
+                <button onClick={() => changeLanguage("ms")}>
+                  Bahasa Melayu
+                </button>
                 <button onClick={() => changeLanguage("zh")}>中文</button>
                 <button onClick={() => changeLanguage("ta")}>தமிழ்</button>
               </div>
@@ -121,6 +133,18 @@ function AppNavbar() {
                 >
                   <User size={18} />
                   {t("common.editProfile")}
+                </button>
+
+                <button
+                  className="dropdown-item"
+                  type="button"
+                  onClick={() => {
+                    setDropdownOpen(false);
+                    navigate("/settings");
+                  }}
+                >
+                  <Settings size={18} />
+                  Settings
                 </button>
 
                 <button

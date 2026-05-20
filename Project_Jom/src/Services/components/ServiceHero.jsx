@@ -26,29 +26,28 @@ function ServicesHero({ searchTerm, onSearchChange }) {
 
   return (
     <section className="services-hero">
-      <p className="services-welcome-text">Welcome back, {residentName}</p>
+      <p className="services-welcome-text">
+        Welcome back, {residentName}
+      </p>
 
-      <h1>How can we help you today?</h1>
+      <h1>Find the right support without going in circles</h1>
 
       <p>
-        Discover services, check eligibility, and continue to official
-        applications.
+        Search by situation, check likely eligibility, prepare documents, and continue
+        to the right official next step.
       </p>
 
       <div className="services-search">
-        <Search size={20} />
-
+        <Search size={22} />
         <input
-          type="text"
-          placeholder="Search money, medical, jobs, elderly, school..."
           value={searchTerm}
           onChange={(e) => onSearchChange(e.target.value)}
+          placeholder='Search "medical bill", "urgent cash", "elderly care"...'
         />
       </div>
 
       <p className="services-search-helper">
-        Search shows up to 4 closest matches. For complex situations, use the AI
-        assistant.
+        We show the closest matches. For complex situations, start with the AI Assistant.
       </p>
     </section>
   );

@@ -1,63 +1,17 @@
 import { useEffect, useMemo, useState } from "react";
+import {
+  helpCategories as localCategories,
+  helpDirectory as localDirectory,
+  helpFaqs as localFaqs,
+  helpQuickActions as localQuickActions,
+} from "../data/helpDirectoryData";
 
 const HELP_DIRECTORY_API =
   "https://9pidtz8z27.execute-api.us-east-1.amazonaws.com/help-directory";
 
-const fallbackCategories = ["All"];
-
-const fallbackQuickActions = [
-  {
-    id: "chatbot",
-    title: "Ask AI Assistant",
-    description:
-      "Ask questions in plain English if you are unsure which service or agency to approach.",
-    buttonText: "Open Chatbot",
-    route: "/chat",
-  },
-  {
-    id: "services",
-    title: "Find Services",
-    description:
-      "Use your saved profile to estimate relevant schemes, eligibility, documents, and next steps.",
-    buttonText: "Browse Services",
-    route: "/services",
-  },
-  {
-    id: "scanner",
-    title: "Scan a Document",
-    description:
-      "Upload a letter, screenshot, receipt, or notice to understand what it is and what to do next.",
-    buttonText: "Open Scanner",
-    route: "/document-scanner",
-  },
-];
-
-const fallbackFaqs = [
-  {
-    question: "What is this Directory page for?",
-    answer:
-      "The Directory page is a quick contact list for agencies, official websites, hotlines, and common support channels.",
-  },
-  {
-    question: "When should I use the Chatbot instead?",
-    answer:
-      "Use the Chatbot when you are unsure what to ask, need a simple explanation, or want to describe your situation in your own words.",
-  },
-  {
-    question: "When should I use the Services page?",
-    answer:
-      "Use the Services page when you want a guided journey that checks your saved profile, estimates possible eligibility, shows required documents, and gives next steps.",
-  },
-  {
-    question: "Are the eligibility results final?",
-    answer:
-      "No. Eligibility results are estimates only. Final approval depends on the official agency or service provider.",
-  },
-];
-
 export default function useHelpDirectory() {
-  const [directoryItems, setDirectoryItems] = useState([]);
-  const [apiCategories, setApiCategories] = useState(fallbackCategories);
+  const [directoryItems, setDirectoryItems] = useState(localDirectory);
+  const [apiCategories, setApiCategories] = useState(localCategories);
 
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -85,17 +39,22 @@ export default function useHelpDirectory() {
         throw new Error(data.message || "Failed to fetch directory");
       }
 
-      setDirectoryItems(Array.isArray(data.items) ? data.items : []);
+      setDirectoryItems(
+        Array.isArray(data.items) && data.items.length > 0
+          ? data.items
+          : localDirectory
+      );
+
       setApiCategories(
         Array.isArray(data.categories) && data.categories.length > 0
           ? data.categories
-          : fallbackCategories
+          : localCategories
       );
     } catch (err) {
       console.error("Failed to fetch help directory", err);
       setError(err.message);
-      setDirectoryItems([]);
-      setApiCategories(fallbackCategories);
+      setDirectoryItems(localDirectory);
+      setApiCategories(localCategories);
     } finally {
       setLoading(false);
     }
@@ -130,6 +89,7 @@ export default function useHelpDirectory() {
           item.sourceUrl,
           ...(item.tags || []),
         ]
+          .filter(Boolean)
           .join(" ")
           .toLowerCase();
 
@@ -181,8 +141,8 @@ export default function useHelpDirectory() {
     filteredDirectory,
     emergencyItems,
     helpCategories: apiCategories,
-    helpFaqs: fallbackFaqs,
-    helpQuickActions: fallbackQuickActions,
+    helpFaqs: localFaqs,
+    helpQuickActions: localQuickActions,
 
     loading,
     error,

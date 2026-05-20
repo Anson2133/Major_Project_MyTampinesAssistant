@@ -18,8 +18,36 @@ export default function HelpDirectory({
   openDirectoryId,
   toggleDirectoryItem,
   clearSearch,
+  // 1. ADD THE NEW PROPS HERE
+  showIcons,
+  isColorCoded,
 }) {
   const navigate = useNavigate();
+
+  // 2. HELPER FUNCTIONS FOR ICONS AND COLORS
+  const getCategoryIcon = (category) => {
+    if (!showIcons || !category) return "";
+    const lowerCat = category.toLowerCase();
+    if (lowerCat.includes("financial")) return "💰 ";
+    if (lowerCat.includes("health")) return "🏥 ";
+    if (lowerCat.includes("booking") || lowerCat.includes("facility")) return "📅 ";
+    if (lowerCat.includes("community")) return "🏘️ ";
+    if (lowerCat.includes("employ") || lowerCat.includes("skill")) return "💼 ";
+    if (lowerCat.includes("education") || lowerCat.includes("school")) return "🎓 ";
+    if (lowerCat.includes("elderly") || lowerCat.includes("senior")) return "🧓 ";
+    if (lowerCat.includes("access") || lowerCat.includes("disability")) return "♿ ";
+    return "🔹 ";
+  };
+
+  const getColorClass = (category) => {
+    if (!isColorCoded || !category) return "";
+    const lowerCat = category.toLowerCase();
+    if (lowerCat.includes("financial")) return "color-green";
+    if (lowerCat.includes("health")) return "color-red";
+    if (lowerCat.includes("community") || lowerCat.includes("booking")) return "color-blue";
+    if (lowerCat.includes("employ") || lowerCat.includes("education")) return "color-yellow";
+    return "color-purple";
+  };
 
   return (
     <section className="help-directory-section">
@@ -50,9 +78,8 @@ export default function HelpDirectory({
             <button
               key={category}
               type="button"
-              className={`help-category-pill ${
-                selectedCategory === category ? "active" : ""
-              }`}
+              className={`help-category-pill ${selectedCategory === category ? "active" : ""
+                }`}
               onClick={() => setSelectedCategory(category)}
             >
               {category}
@@ -89,11 +116,14 @@ export default function HelpDirectory({
         <div className="help-directory-list">
           {directory.map((item) => {
             const isOpen = openDirectoryId === item.id;
+            // 3. GET THE COLOR CLASS FOR THIS SPECIFIC ITEM
+            const colorClass = getColorClass(item.category);
 
             return (
               <article
                 key={item.id}
-                className={`help-directory-card ${isOpen ? "open" : ""}`}
+                // 4. INJECT THE COLOR CLASS INTO THE CARD WRAPPER
+                className={`help-directory-card ${isOpen ? "open" : ""} ${colorClass}`}
               >
                 <button
                   type="button"
@@ -110,7 +140,11 @@ export default function HelpDirectory({
                         <span className="help-directory-category">
                           {item.category}
                         </span>
-                        <h3>{item.name}</h3>
+                        {/* 5. INJECT THE ICON RIGHT NEXT TO THE TITLE */}
+                        <h3>
+                          {getCategoryIcon(item.category)}
+                          {item.name}
+                        </h3>
                       </div>
 
                       <ChevronDown

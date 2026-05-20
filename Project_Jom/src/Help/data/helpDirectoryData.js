@@ -300,28 +300,103 @@ export const helpDirectory = [
 
 export const helpFaqs = [
   {
-    question: "What is this Help page for?",
+    question: "What is MyTampines Assistant for?",
     answer:
-      "The Help page is a quick directory for contacts, official websites, and common questions. Use it when you already know what kind of help you need and want a direct contact or link.",
+      "MyTampines Assistant helps residents find government, healthcare, and community support more easily. It brings together chatbot guidance, service journeys, document scanning, policy updates, booking locations, and a directory into one platform.",
   },
   {
-    question: "When should I use the Chatbot instead?",
+    question: "How is this different from searching online myself?",
     answer:
-      "Use the Chatbot when you are unsure what to ask, need a simple explanation, or want to describe your situation in your own words.",
+      "A normal search often gives many links and expects the user to know what to search for. This app lets users describe their situation, checks profile-based context, suggests possible support pathways, prepares document checklists, and points users to clearer next steps.",
+  },
+  {
+    question: "When should I use the Chatbot?",
+    answer:
+      "Use the Chatbot when you are unsure where to start. You can describe your situation naturally, such as needing help with medical bills, employment, elderly care, childcare, pregnancy-related support, or financial support.",
   },
   {
     question: "When should I use the Services page?",
     answer:
-      "Use the Services page when you want a guided journey that checks your saved profile, estimates possible eligibility, shows required documents, and gives next steps.",
+      "Use the Services page when you want a guided journey. It helps you browse support categories, compare relevant services, estimate possible eligibility, view required documents, and understand what to do next.",
   },
   {
     question: "When should I use the Document Scanner?",
     answer:
-      "Use the Document Scanner when you have a letter, screenshot, receipt, notice, or message and want the app to help explain it, detect scam risk, and link it to possible services.",
+      "Use the Document Scanner when you have a letter, bill, screenshot, notice, receipt, or message and want the app to help explain it, identify possible scam risk, and link it to a relevant support pathway.",
+  },
+  {
+    question: "Does the Document Scanner only work for government letters?",
+    answer:
+      "No. It can be used for different document types such as screenshots, notices, bills, receipts, or messages. However, the app should only suggest support services when the document is actually related to a support need.",
+  },
+  {
+    question: "What is Policy Watch?",
+    answer:
+      "Policy Watch shows support-related announcements, reminders, and official-source updates. It helps residents stay aware of changes that may affect healthcare, financial support, elderly care, employment, education, family support, or community services.",
+  },
+  {
+    question: "What does Watch Category mean in Policy Watch?",
+    answer:
+      "Watching a category means the app tracks future updates from that support area, such as Healthcare or Financial Support. If a new matching update appears, the Announcements tab can show a red dot.",
+  },
+  {
+    question: "What does Pin Notice mean?",
+    answer:
+      "Pin Notice saves one specific announcement so you can return to it later. It is like a bookmark. Pinning a notice is different from watching a category for future updates.",
+  },
+  {
+    question: "What is the Booking page for?",
+    answer:
+      "The Booking page helps users see service locations on a map. It is useful when the next step requires visiting a centre, clinic, or support point in person.",
+  },
+  {
+    question: "What is the Directory page for?",
+    answer:
+      "The Directory page is for direct contact information and official links. Use it when you already know the type of issue and want to find the correct agency, website, or reporting channel quickly.",
   },
   {
     question: "Are the eligibility results final?",
     answer:
-      "No. The app gives an estimated match based on your profile and answers. Final approval always depends on the official agency or service provider.",
+      "No. Eligibility results are only estimates based on available profile information and user answers. Final approval always depends on the official agency or service provider.",
+  },
+  {
+    question: "Why does the app ask extra questions sometimes?",
+    answer:
+      "Some services need information that may not be available in the saved profile. Extra questions help refine the match and reduce the chance of showing unsuitable services.",
+  },
+  {
+    question: "Does the app submit applications for me?",
+    answer:
+      "No. The app helps users understand services, prepare documents, and find the correct next step. Applications should still be completed through official agency websites or approved channels.",
+  },
+  {
+    question: "Can the app tell me what policies apply if I only describe my situation?",
+    answer:
+      "Yes, that is one of the intended improvements. For example, a user could say “I am pregnant” or “I lost my job”, and the system can suggest relevant policies, schemes, or support pathways without the user needing to know the exact scheme name.",
+  },
+  {
+    question: "How does the app use my profile?",
+    answer:
+      "The profile helps the app personalise service suggestions and policy updates. For example, age band, housing type, employment status, income band, or family situation may affect which support areas are more relevant.",
+  },
+  {
+    question: "Does the app store sensitive information?",
+    answer:
+      "The app should avoid storing unnecessary confidential information. The goal is to use minimal profile fields needed for matching, such as broad income band or housing type, rather than highly sensitive details.",
+  },
+  {
+    question: "What should I do if I suspect a scam?",
+    answer:
+      "Do not click suspicious links or share personal details. Use official channels such as ScamShield or Police resources. You can also use the Document Scanner to check suspicious messages or screenshots.",
+  },
+  {
+    question: "Why does the app still link to official websites?",
+    answer:
+      "Official websites are still necessary because final applications, eligibility checks, and approvals must come from the relevant agency. The app’s role is to reduce confusion before users reach that stage.",
+  },
+  {
+    question: "Who is this app mainly designed for?",
+    answer:
+      "It is designed for residents who may not know which agency or scheme to approach, especially when they are dealing with fragmented services across government, healthcare, and community support.",
   },
 ];

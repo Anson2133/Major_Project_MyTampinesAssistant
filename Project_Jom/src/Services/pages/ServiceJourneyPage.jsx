@@ -42,6 +42,9 @@ function ServiceJourneyPage() {
   const [questionsLoading, setQuestionsLoading] = useState(false);
   const [questionError, setQuestionError] = useState("");
 
+  const [autoCheckedServiceId, setAutoCheckedServiceId] = useState(null);
+  const [autoCheckingEligibility, setAutoCheckingEligibility] = useState(false);
+
   const cachedProfile = JSON.parse(
     localStorage.getItem("cachedProfile") || "{}"
   );
@@ -87,6 +90,8 @@ function ServiceJourneyPage() {
     setQuestionsLoadedForServiceId(null);
     setQuestionsLoading(false);
     setQuestionError("");
+    setAutoCheckedServiceId(null);
+    setAutoCheckingEligibility(false);
     resetServiceGuide();
   };
 
@@ -107,6 +112,8 @@ function ServiceJourneyPage() {
     setQuestionsLoadedForServiceId(null);
     setQuestionsLoading(false);
     setQuestionError("");
+    setAutoCheckedServiceId(null);
+    setAutoCheckingEligibility(false);
     resetServiceGuide();
 
     setCurrentStep(4);
@@ -128,7 +135,6 @@ function ServiceJourneyPage() {
         setQuestionError("");
         setDynamicExtraQuestions([]);
         setEligibilityAnswers({});
-        setEligibilityResult(null);
 
         const questions = await generateQuestions({
           serviceId: selectedService.serviceId,
@@ -174,29 +180,6 @@ function ServiceJourneyPage() {
     questionsLoadedForServiceId,
   ]);
 
-  useEffect(() => {
-    if (currentStep !== 5) return;
-    if (!selectedService) return;
-    if (serviceGuide) return;
-    if (generatingServiceGuide) return;
-
-    generateServiceGuide({
-      service: selectedService,
-      selectedNeed,
-      eligibilityResult,
-      profile: cachedProfile,
-    });
-  }, [
-    currentStep,
-    selectedService,
-    selectedNeed,
-    eligibilityResult,
-    cachedProfile,
-    serviceGuide,
-    generatingServiceGuide,
-    generateServiceGuide,
-  ]);
-
   const handleEligibilityAnswer = (questionKey, value) => {
     setEligibilityAnswers((prev) => ({
       ...prev,
@@ -232,27 +215,102 @@ function ServiceJourneyPage() {
 
   const showContinueButton =
     hasNoExtraQuestions || Boolean(eligibilityResult) || Boolean(questionError);
+  useEffect(() => {
+    if (!isDirectEntry) return;
+    if (currentStep !== 4) return;
+    if (!selectedService?.serviceId) return;
+    if (!questionsReady && !questionError) return;
+
+    const serviceId = String(selectedService.serviceId);
+
+    if (autoCheckedServiceId === serviceId) return;
+
+    const runInitialEligibilityCheck = async () => {
+      try {
+        setAutoCheckingEligibility(true);
+
+        const result = await checkEligibility({
+          serviceId: selectedService.serviceId,
+          selectedNeedId: selectedNeed?.id,
+          answers: {},
+        });
+
+        console.log("[ServiceJourneyPage] initial eligibility result", result);
+
+        setAutoCheckedServiceId(serviceId);
+
+        if (result) {
+          setEligibilityResult(result);
+          resetServiceGuide();
+        }
+      } catch (error) {
+        console.error("Initial eligibility check failed", error);
+        setAutoCheckedServiceId(serviceId);
+      } finally {
+        setAutoCheckingEligibility(false);
+      }
+    };
+
+    runInitialEligibilityCheck();
+  }, [
+    isDirectEntry,
+    currentStep,
+    selectedService?.serviceId,
+    selectedNeed?.id,
+    questionsReady,
+    questionError,
+    autoCheckedServiceId,
+  ]);
+
+  useEffect(() => {
+    if (currentStep !== 5) return;
+    if (!selectedService) return;
+    if (serviceGuide) return;
+    if (generatingServiceGuide) return;
+
+    generateServiceGuide({
+      service: selectedService,
+      selectedNeed,
+      eligibilityResult,
+      profile: cachedProfile,
+    });
+  }, [
+    currentStep,
+    selectedService,
+    selectedNeed,
+    eligibilityResult,
+    cachedProfile,
+    serviceGuide,
+    generatingServiceGuide,
+    generateServiceGuide,
+  ]);
+
+
 
   const eligibilityStatus = eligibilityResult
     ? eligibilityResult.eligibilityStatus
-    : questionsLoading
-      ? "Checking what information is needed"
-      : hasNoExtraQuestions
-        ? "Ready to continue"
-        : extraQuestions.length > 0 && allQuestionsAnswered
-          ? "Ready to recheck eligibility"
-          : "Needs more information";
+    : autoCheckingEligibility
+      ? "Checking initial eligibility"
+      : questionsLoading
+        ? "Checking what information is needed"
+        : hasNoExtraQuestions
+          ? "Ready to continue"
+          : extraQuestions.length > 0 && allQuestionsAnswered
+            ? "Ready to recheck eligibility"
+            : "Needs more information";
 
   const eligibilitySummaryText = eligibilityResult?.note
     ? eligibilityResult.note
-    : questionsLoading
-      ? "Checking your saved profile and preparing only the questions still needed."
-      : questionError
-        ? "We could not prepare extra questions right now, but you can continue to view the service guide."
-        : hasNoExtraQuestions
-          ? "No additional questions are required based on your saved profile. You may continue to the service guide."
-          : selectedService?.aiReason ||
-          "This service may be suitable based on your profile and selected need.";
+    : autoCheckingEligibility
+      ? "Checking your saved profile to estimate your initial eligibility score."
+      : questionsLoading
+        ? "Checking your saved profile and preparing only the questions still needed."
+        : questionError
+          ? "We could not prepare extra questions right now, but you can continue to view the service guide."
+          : hasNoExtraQuestions
+            ? "No additional questions are required based on your saved profile. You may continue to the service guide."
+            : selectedService?.aiReason ||
+            "This service may be suitable based on your profile and selected need.";
 
   const currentMissingInfo =
     questionsLoading || hasNoExtraQuestions
@@ -464,10 +522,10 @@ function ServiceJourneyPage() {
             when this service needs missing information.
           </p>
 
-          {questionsLoading && (
+          {(questionsLoading || autoCheckingEligibility) && (
             <div className="eligibility-auto-check-box">
-              Checking your saved profile and preparing only the questions still
-              needed...
+              Checking your saved profile, estimating eligibility, and preparing any
+              extra questions needed...
             </div>
           )}
 
@@ -477,8 +535,8 @@ function ServiceJourneyPage() {
 
             {eligibilityResult && (
               <p>
-                <strong>Updated score:</strong>{" "}
-                {eligibilityResult.eligibilityScore}%
+                <strong>Initial eligibility score:</strong>{" "}
+                {eligibilityResult.eligibilityScore ?? eligibilityResult.matchScore ?? 0}%
               </p>
             )}
           </div>
@@ -504,7 +562,7 @@ function ServiceJourneyPage() {
             </div>
           )}
 
-        
+
 
           {questionsLoading ? (
             <div className="eligibility-note-panel">

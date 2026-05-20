@@ -10,6 +10,10 @@ import DocumentScannerPage from "./Document Scanner/pages/DocumentScannerPage";
 import MobileDocumentUploadPage from "./Document Scanner/pages/MobileDocumentUploadPage";
 import HelpPage from "./Help/pages/HelpPage";
 import LifeSituationsPage from "./lifeWizard/pages/LifeSituationsPage";
+import AnnouncementsPage from "./Announcements/pages/AnnouncementsPage";
+import DirectoryPage from "./Help/pages/DirectoryPage";
+import SettingsPage from "./Settings/pages/SettingsPage";
+import BookingPage from "./Booking/pages/BookingPage";
 
 function App() {
   return (
@@ -31,7 +35,10 @@ function App() {
         <Route path="/document-scanner" element={<DocumentScannerPage />} />
         <Route path="/mobile-document-upload/:scanSessionId" element={<MobileDocumentUploadPage />} />
         <Route path="/help" element={<HelpPage />} />
-
+        <Route path="/directory" element={<DirectoryPage />} />
+        <Route path="/announcements" element={<AnnouncementsPage />} />
+        <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/booking" element={<BookingPage />} />
       </Route>
 
     </Routes>

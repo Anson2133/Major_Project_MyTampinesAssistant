@@ -2,3 +2,76 @@
   min-height: 100vh;
   width: 100%;
 }
+#root {
+  min-height: 100vh;
+  width: 100%;
+}
+
+.app-wrapper {
+  min-height: 100vh;
+}
+
+/* Text size settings */
+.text-large {
+  font-size: 112%;
+}
+
+.text-extra-large {
+  font-size: 124%;
+}
+
+/* Simple view: bigger cards and clearer layout */
+.simple-view .help-directory-card,
+.simple-view .help-tutorial-card,
+.simple-view .help-faq-item,
+.simple-view .help-quick-card,
+.simple-view .settings-card,
+.simple-view .service-card,
+.simple-view .recommendation-card {
+  border-width: 2px;
+}
+
+.simple-view .help-directory-main,
+.simple-view .help-tutorial-card,
+.simple-view .help-quick-card,
+.simple-view .settings-card,
+.simple-view .service-card,
+.simple-view .recommendation-card {
+  padding: 30px;
+}
+
+/* High contrast */
+.high-contrast {
+  color: #111827;
+}
+
+.high-contrast .help-page,
+.high-contrast .settings-page {
+  background: #ffffff;
+}
+
+.high-contrast .help-directory-card,
+.high-contrast .help-tutorial-card,
+.high-contrast .help-faq-item,
+.high-contrast .help-quick-card,
+.high-contrast .settings-card,
+.high-contrast .service-card,
+.high-contrast .recommendation-card,
+.high-contrast input,
+.high-contrast textarea,
+.high-contrast button {
+  border-color: #111827;
+}
+
+.high-contrast p {
+  color: #344054;
+}
+
+/* Reduce motion */
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}

@@ -239,5 +239,206 @@
     "alerts": {
       "planSaved": "Pelan disimpan! Anda boleh mengaksesnya daripada profil anda."
     }
+  },
+  "booking": {
+    "walking": "Berjalan",
+    "driving": "Memandu",
+    "transit": "Pengangkutan Awam",
+    "startNavigation": "🟢 Mula Navigasi",
+    "stopNavigation": "🔴 Henti Navigasi",
+    "liveNavigationActive": "🟢 Navigasi langsung aktif",
+    "eyebrow": "Kemudahan Tampines",
+    "title": "Cari & Tempah Berdekatan",
+    "pill": "Semua di satu tempat",
+    "yourLocation": "Lokasi Anda",
+    "useMyLocation": "📍 Gunakan Lokasi Semasa Saya",
+    "startTracking": "🟢 Mula Penjejakan Langsung",
+    "stopTracking": "🔴 Henti Penjejakan Langsung",
+    "liveTrackingActive": "🟢 Penjejakan langsung aktif",
+    "or": "atau",
+    "addressPlaceholder": "Taip alamat anda...",
+    "go": "Pergi",
+    "filterByType": "Tapis mengikut Jenis",
+    "sportType": "Jenis Sukan",
+    "courseType": "Jenis Kursus",
+    "facilities": "Kemudahan",
+    "sortedByDistance": "(disusun mengikut jarak)",
+    "loadingMap": "Memuatkan peta...",
+    "locationSuccess": "✓ Lokasi ditetapkan! Kemudahan disusun mengikut jarak.",
+    "locationError": "Tidak dapat mendapatkan lokasi anda. Sila taip alamat anda.",
+    "addressNotFound": "Alamat tidak dijumpai. Sila cuba lagi.",
+    "errorFindingAddress": "Ralat mencari alamat.",
+    "directions": "Arah",
+    "clearDirections": "✕ Padam",
+    "routeOptions": "Pilihan Laluan",
+    "fastest": "⭐ Terpantas",
+    "alternative": "🔀 Alternatif",
+    "scenic": "🗺️ Pemandangan",
+    "hideSteps": "▲ Sembunyikan Langkah",
+    "showSteps": "▼ Tunjukkan Langkah demi Langkah",
+    "getDirections": "🗺️ Dapatkan Arah",
+    "bookVia": "Tempah melalui",
+    "viewServices": "Lihat Perkhidmatan",
+    "noLocationForDirections": "Sila tetapkan lokasi anda dahulu untuk mendapatkan arah.",
+    "couldNotGetDirections": "Tidak dapat mendapatkan arah. Sila cuba lagi.",
+    "legend": "Petunjuk",
+    "filters": {
+      "all": "Semua",
+      "sports": "Sukan",
+      "bbq": "BBQ",
+      "community": "Komuniti",
+      "courses": "Kursus",
+      "healthcare": "Penjagaan Kesihatan",
+      "allSports": "Semua Sukan",
+      "badminton": "Badminton",
+      "basketball": "Bola Keranjang",
+      "swimming": "Renang",
+      "futsal": "Futsal",
+      "soccer": "Bola Sepak",
+      "allCourses": "Semua Kursus",
+      "arts": "Seni",
+      "dance": "Tarian",
+      "kids": "Kanak-kanak"
+    },
+    "facilityDetails": {
+      "1": {
+        "description": "Perkhidmatan pesakit luar umum, vaksinasi, pengurusan penyakit kronik dan saringan kesihatan.",
+        "openingHours": "Isnin–Jumaat: 8pg–4:30ptg | Sabtu: 8pg–12:30tgh | Ahad & PH: Tutup",
+        "requirements": "Muat turun aplikasi HealthBuddy dan log masuk dengan Singpass untuk membuat, mengubah atau membatalkan temujanji.",
+        "cost": "Yuran perundingan dan rawatan berbeza mengikut perkhidmatan."
+      },
+      "2": {
+        "description": "Perkhidmatan pesakit luar umum, vaksinasi, pengurusan penyakit kronik dan saringan kesihatan.",
+        "openingHours": "Isnin–Jumaat: 8pg–4:30ptg | Sabtu: 8pg–12:30tgh | Ahad & PH: Tutup",
+        "requirements": "Muat turun aplikasi HealthBuddy dan log masuk dengan Singpass untuk membuat, mengubah atau membatalkan temujanji.",
+        "cost": "Yuran perundingan dan rawatan berbeza mengikut perkhidmatan."
+      },
+      "3": {
+        "description": "Gelanggang badminton dalam bangunan di Our Tampines Hub Community Auditorium.",
+        "openingHours": "Setiap hari: 7pg–9mlm",
+        "requirements": "Akaun ActiveSG dan log masuk Singpass diperlukan. Maksimum 2 slot sehari.",
+        "cost": "WN/PR: $3.50 bukan puncak | $7.40 puncak sejam setiap gelanggang"
+      },
+      "4": {
+        "description": "Gelanggang badminton kelab komuniti tersedia untuk tempahan.",
+        "openingHours": "Bukan Puncak: 10pg–5ptg | Puncak: 6ptg–8mlm",
+        "requirements": "Tempah melalui OnePA dan log masuk dengan Singpass.",
+        "cost": "$5–$6 bukan puncak | $6–$7 puncak setiap slot"
+      },
+      "5": {
+        "description": "Gelanggang badminton dalam bangunan di Tampines Changkat CC.",
+        "openingHours": "Bukan Puncak: 10:30pg–5:30ptg | Puncak: 6:30ptg–8:30mlm",
+        "requirements": "Tempah melalui OnePA dan log masuk dengan Singpass.",
+        "cost": "$6 bukan puncak | $8 puncak"
+      },
+      "6": {
+        "description": "Gelanggang bola keranjang di Team Sports Hall.",
+        "openingHours": "Setiap hari: 7pg–10mlm",
+        "requirements": "Akaun ActiveSG dan log masuk Singpass diperlukan.",
+        "cost": "WN/PR: $15 bukan puncak | $30 puncak sejam"
+      },
+      "7": {
+        "description": "Kompleks Renang dengan kolam keluarga dan pertandingan.",
+        "openingHours": "Setiap hari: 6:30pg–9:30mlm",
+        "requirements": "Akaun ActiveSG diperlukan.",
+        "cost": "Dewasa WN/PR: $1.50 hari bekerja | $2 hujung minggu"
+      },
+      "8": {
+        "description": "Kolam renang 8 lorong saiz Olimpik dan kolam cetek.",
+        "openingHours": "Isnin: 11pg–9:30mlm | Selasa–Jumaat: 7pg–9:30mlm | Sabtu/Ahad/PH: 8pg–9:30mlm",
+        "requirements": "Ahli SAFRA masuk percuma. Tetamu perlu didaftarkan oleh ahli SAFRA.",
+        "cost": "$2.30 hari bekerja | $3.40 hujung minggu/hari kelepasan am"
+      },
+      "9": {
+        "description": "Gelanggang futsal luar bangunan untuk tempahan komuniti.",
+        "openingHours": "Bukan Puncak: 10pg–4ptg | Puncak: 6ptg ke atas",
+        "requirements": "Tempah melalui OnePA dengan log masuk Singpass.",
+        "cost": "$30–$45 bukan puncak | $60–$90 puncak"
+      },
+      "10": {
+        "description": "Padang bola sepak penuh untuk tempahan pasukan.",
+        "openingHours": "Bukan Puncak: 9pg–5ptg | Puncak: 7mlm–9mlm",
+        "requirements": "Tempah melalui OnePA dengan log masuk Singpass.",
+        "cost": "$170 bukan puncak | $330 puncak"
+      },
+      "11": {
+        "description": "Lubang BBQ di bumbung yang popular di Our Tampines Hub Sky Garden.",
+        "openingHours": "Setiap hari: 11:55pg–11:55mlm",
+        "requirements": "Tempah melalui OnePA. Log masuk Singpass diperlukan.",
+        "cost": "$30 setiap slot"
+      },
+      "12": {
+        "description": "Lubang BBQ rangkaian penduduk berhampiran Blk 407.",
+        "openingHours": "6ptg–10mlm",
+        "requirements": "Hanya penduduk kawasan tersebut boleh membuat tempahan.",
+        "cost": "$15 setiap slot"
+      },
+      "13": {
+        "description": "Lubang BBQ komuniti untuk penduduk Tampines North.",
+        "openingHours": "Semak OnePA untuk slot yang tersedia",
+        "requirements": "Tempahan untuk penduduk sahaja.",
+        "cost": "Percuma"
+      },
+      "14": {
+        "description": "Lubang BBQ berteduh berhampiran sundek SAFRA Tampines.",
+        "openingHours": "Slot Pagi: 11pg–3ptg | Slot Petang: 5ptg–9mlm",
+        "requirements": "Tempahan dalam talian untuk ahli SAFRA sahaja. Tetamu memerlukan daftar masuk ahli SAFRA.",
+        "cost": "Ahli: $30.60 | Tetamu: $40.80 setiap slot"
+      },
+      "15": {
+        "description": "Tempah ruang bawah blok dan bangunan penghubung untuk perkahwinan, pengkebumian, dan acara sosial atau agama.",
+        "openingHours": "Isnin–Jumaat: 8pg–5ptg",
+        "requirements": "Tempahan wakaf pengebumian mesti dibuat secara peribadi sebelum persediaan. Sesetengah acara agama memerlukan kelulusan MP.",
+        "cost": "Acara sosial: $54.50/hari | Wakaf pengebumian: Percuma | Utiliti dicaj berasingan"
+      },
+      "16": {
+        "description": "Tempah ruang terbuka, kawasan apron dan kawasan berumput untuk fungsi sosial atau agama.",
+        "openingHours": "Isnin–Jumaat: 8pg–5ptg",
+        "requirements": "Tertakluk kepada kelulusan PM yang bertanggungjawab. Penjana diperlukan untuk penggunaan elektrik.",
+        "cost": "Sewaan: $21.80/hari + deposit $300"
+      },
+      "17": {
+        "description": "Tempah gelanggang bola keranjang, sepak takraw dan badminton untuk acara komuniti.",
+        "openingHours": "Isnin–Jumaat: 8pg–5ptg",
+        "requirements": "Kelulusan MP mungkin diperlukan bergantung kepada jenis acara.",
+        "cost": "Gelanggang kecil: $54.50/hari | Gelanggang besar: $109/hari | Deposit diperlukan"
+      },
+      "18": {
+        "description": "Mohon permit acara pesta mini di ruang bawah blok atau kawasan terbuka.",
+        "openingHours": "Isnin–Jumaat: 8pg–5ptg",
+        "requirements": "Surat dari Pejabat Kawasan Pilihan Raya dan sokongan MP diperlukan. Deposit $1000 diperlukan.",
+        "cost": "Ruang bawah blok: $54.50/hari | Kawasan terbuka: $21.80/hari"
+      },
+      "19": {
+        "description": "Perkhidmatan pelupusan barangan besar percuma untuk penduduk Tampines.",
+        "openingHours": "Isnin–Sabtu: 2ptg–5ptg (kecuali PH)",
+        "requirements": "Had kepada 3 item sebulan. Notis minimum 3 hari bekerja diperlukan.",
+        "cost": "Percuma"
+      },
+      "20": {
+        "description": "Bilik fungsi, kemudahan pengayaan, ameniti sukan, gim dan ruang acara.",
+        "openingHours": "Berbeza mengikut kemudahan",
+        "requirements": "Keahlian SAFRA diperlukan untuk kebanyakan tempahan.",
+        "cost": "Harga berbeza mengikut jenis kemudahan."
+      },
+      "21": {
+        "description": "Pelajaran kaligrafi Cina merangkumi teknik berus dan gaya penulisan.",
+        "openingHours": "Jumaat, 7:15mlm–9:15mlm",
+        "requirements": "Umur 12 tahun ke atas. Yuran bahan dibayar berasingan.",
+        "cost": "$158–$168"
+      },
+      "22": {
+        "description": "Program pelbagai sukan kanak-kanak dengan aktiviti halangan.",
+        "openingHours": "Selasa 1:30ptg–2:15ptg",
+        "requirements": "Untuk kanak-kanak berumur 5–12 tahun.",
+        "cost": "$21–$24.50"
+      },
+      "23": {
+        "description": "Kelas balet peringkat pertengahan dan lanjutan.",
+        "openingHours": "Ahad, pelbagai waktu",
+        "requirements": "Penilaian diperlukan untuk pelajar baharu.",
+        "cost": "$210–$250"
+      }
+    }
   }
 }
