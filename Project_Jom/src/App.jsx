@@ -9,6 +9,7 @@ import ServiceJourneyPage from "./Services/pages/ServiceJourneyPage";
 import DocumentScannerPage from "./Document Scanner/pages/DocumentScannerPage";
 import MobileDocumentUploadPage from "./Document Scanner/pages/MobileDocumentUploadPage";
 import HelpPage from "./Help/pages/HelpPage";
+import LifeSituationsPage from "./lifeWizard/pages/LifeSituationsPage";
 import AnnouncementsPage from "./Announcements/pages/AnnouncementsPage";
 import DirectoryPage from "./Help/pages/DirectoryPage";
 import SettingsPage from "./Settings/pages/SettingsPage";
@@ -30,6 +31,7 @@ function App() {
           path="/services/:categoryId"
           element={<ServiceJourneyPage />}
         />
+        <Route path="/life-situations" element={<LifeSituationsPage />} />
         <Route path="/document-scanner" element={<DocumentScannerPage />} />
         <Route path="/mobile-document-upload/:scanSessionId" element={<MobileDocumentUploadPage />} />
         <Route path="/help" element={<HelpPage />} />

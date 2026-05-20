@@ -329,6 +329,15 @@ function ServicesPage() {
             />
           ))}
         </div>
+
+        <div className="wizard-category-nudge">
+          <p>Not sure which category fits your situation?</p>
+
+          <button onClick={() => navigate("/life-situations")}>
+            Tell us your situation instead →
+          </button>
+        </div>
+
       </section>
 
       <section className="services-help-section">

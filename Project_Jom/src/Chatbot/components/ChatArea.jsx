@@ -98,9 +98,7 @@ function formatMessageWithLinks(text) {
 
 function FileCard({ attachment }) {
   if (!attachment) return null;
-
   const isPdf = attachment.type === "application/pdf";
-
   return (
     <div className="sent-file-card">
       <div className={`sent-file-icon ${isPdf ? "pdf-file" : "image-file"}`}>
@@ -114,8 +112,12 @@ function FileCard({ attachment }) {
   );
 }
 
+const TTS_API_URL = "https://9pidtz8z27.execute-api.us-east-1.amazonaws.com/tts";
+
 function SpeakButton({ text }) {
   const [isSpeaking, setIsSpeaking] = useState(false);
+  const [isLoadingAudio, setIsLoadingAudio] = useState(false);
+  const audioRef = useRef(null);
   const { i18n } = useTranslation();
 
   const getCurrentLanguage = () => {
@@ -126,97 +128,104 @@ function SpeakButton({ text }) {
     return "en";
   };
 
-  const langMap = {
-    en: "en-SG",
-    ms: "ms-MY",
-    zh: "zh-CN",
-    ta: "ta-IN",
+  const base64ToBlob = (base64, mimeType) => {
+    const byteChars = atob(base64);
+    const byteArr = new Uint8Array(byteChars.length);
+    for (let i = 0; i < byteChars.length; i++) {
+      byteArr[i] = byteChars.charCodeAt(i);
+    }
+    return new Blob([byteArr], { type: mimeType });
   };
 
-  const pickBestVoice = (languageKey) => {
-    const voices = window.speechSynthesis.getVoices();
-    const targetLang = langMap[languageKey] || "en-SG";
-    const shortLang = targetLang.split("-")[0];
-
-    const preferredVoiceNames = {
-      en: ["Microsoft Natasha", "Microsoft Sonia", "Microsoft Aria", "Google UK English Female", "Google US English", "Samantha", "Daniel"],
-      zh: ["Microsoft Xiaoxiao", "Microsoft Huihui", "Microsoft Yaoyao", "Google 普通话", "Google Mandarin", "Ting-Ting", "Sin-ji"],
-      ms: ["Microsoft Yasmin", "Google Bahasa Melayu", "Google Malay"],
-      ta: ["Microsoft Valluvar", "Google தமிழ்", "Google Tamil"],
-    };
-
-    const preferredList = preferredVoiceNames[languageKey] || preferredVoiceNames.en;
-
-    const preferredVoice = voices.find((voice) =>
-      preferredList.some((name) => voice.name.toLowerCase().includes(name.toLowerCase()))
-    );
-    if (preferredVoice) return preferredVoice;
-
-    const exactLangVoice = voices.find(
-      (voice) => voice.lang.toLowerCase() === targetLang.toLowerCase()
-    );
-    if (exactLangVoice) return exactLangVoice;
-
-    const sameLanguageVoice = voices.find((voice) =>
-      voice.lang.toLowerCase().startsWith(shortLang.toLowerCase())
-    );
-    if (sameLanguageVoice) return sameLanguageVoice;
-
-    return null;
-  };
-
-  const handleSpeak = () => {
-    if (!window.speechSynthesis) return;
-
+  const handleSpeak = async () => {
+    // If already speaking, stop
     if (isSpeaking) {
-      window.speechSynthesis.cancel();
+      audioRef.current?.pause();
       setIsSpeaking(false);
       return;
     }
 
-    window.speechSynthesis.cancel();
+    // If loading, ignore extra clicks
+    if (isLoadingAudio) return;
 
-    const languageKey = getCurrentLanguage();
-    const speechLang = langMap[languageKey] || "en-SG";
+    try {
+      setIsLoadingAudio(true);
 
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = speechLang;
+      const languageKey = getCurrentLanguage();
 
-    const selectedVoice = pickBestVoice(languageKey);
-    if (selectedVoice) {
-      utterance.voice = selectedVoice;
-    } else {
-      console.warn(`No proper voice found for ${speechLang}. Browser will use default voice.`);
+      const response = await fetch(TTS_API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text, language: languageKey }),
+      });
+
+      if (!response.ok) throw new Error("Google TTS failed");
+
+      const data = await response.json();
+      const audioBlob = base64ToBlob(data.audioBase64, "audio/mpeg");
+      const audioUrl = URL.createObjectURL(audioBlob);
+
+      if (audioRef.current) {
+        audioRef.current.pause();
+        URL.revokeObjectURL(audioRef.current.src);
+      }
+
+      const audio = new Audio(audioUrl);
+      audioRef.current = audio;
+
+      audio.onplay = () => {
+        setIsLoadingAudio(false);
+        setIsSpeaking(true);
+      };
+      audio.onended = () => {
+        setIsSpeaking(false);
+        URL.revokeObjectURL(audioUrl);
+      };
+      audio.onerror = () => {
+        setIsSpeaking(false);
+        setIsLoadingAudio(false);
+      };
+
+      await audio.play();
+    } catch (err) {
+      console.error("Google TTS error:", err);
+      setIsSpeaking(false);
+      setIsLoadingAudio(false);
     }
-
-    utterance.rate = 0.9;
-    utterance.pitch = 1;
-    utterance.volume = 1;
-
-    utterance.onstart = () => setIsSpeaking(true);
-    utterance.onend = () => setIsSpeaking(false);
-    utterance.onerror = () => setIsSpeaking(false);
-
-    window.speechSynthesis.speak(utterance);
   };
+
+  const isActive = isSpeaking || isLoadingAudio;
 
   return (
     <button
-      className={`speak-btn ${isSpeaking ? "speaking" : ""}`}
+      className={`speak-btn ${isSpeaking ? "speaking" : ""} ${isLoadingAudio ? "loading" : ""}`}
       type="button"
       onClick={handleSpeak}
-      title={isSpeaking ? "Stop" : "Listen"}
-      aria-label={isSpeaking ? "Stop reading message" : "Read message aloud"}
+      title={isLoadingAudio ? "Loading..." : isSpeaking ? "Stop" : "Listen"}
+      aria-label={isLoadingAudio ? "Loading audio" : isSpeaking ? "Stop reading message" : "Read message aloud"}
     >
-      {isSpeaking ? (
+      {isLoadingAudio ? (
+        // Spinner while fetching from Lambda
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16"
+          style={{ animation: "spin 1s linear infinite" }}>
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+            d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 100 16 8 8 0 01-8-8z" />
+        </svg>
+      ) : isSpeaking ? (
+        // Stop icon while playing
         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 10h6v4H9z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+            d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+            d="M9 10h6v4H9z" />
         </svg>
       ) : (
+        // Speaker icon at rest
         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.536 8.464a5 5 0 010 7.072" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5L6 9H2v6h4l5 4V5z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+            d="M15.536 8.464a5 5 0 010 7.072" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+            d="M11 5L6 9H2v6h4l5 4V5z" />
         </svg>
       )}
     </button>
@@ -233,6 +242,7 @@ export default function ChatArea({
   const messagesEndRef = useRef(null);
   const { t } = useTranslation();
   const navigate = useNavigate();
+  
 
   useEffect(() => {
     if (window.speechSynthesis) {

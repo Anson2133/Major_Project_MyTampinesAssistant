@@ -1927,3 +1927,142 @@
     font-size: 0.78rem;
     font-weight: 600;
 }
+
+.wizard-hero-nudge button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.wizard-category-nudge {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 24px;
+  background: #fef9f0;
+  border: 1px dashed #d4a017;
+  border-radius: 12px;
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.wizard-category-nudge p {
+  margin: 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.wizard-category-nudge button {
+  background: none;
+  border: none;
+  color: #a00;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95rem;
+  text-decoration: underline;
+}
+
+.services-hero-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: min(760px, 100%);
+  margin: 20px 0 12px;
+}
+
+.services-hero-divider span {
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.services-hero-divider p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.services-hero-wizard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: min(760px, 100%);
+  margin-top: 26px;
+}
+
+.services-hero-wizard p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.services-hero-divider-label {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.services-hero-wizard button {
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.services-hero-wizard button:hover {
+  background: rgba(255, 255, 255, 0.28);
+  transform: translateY(-1px);
+}
+
+.wizard-category-nudge {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 8px;
+  padding: 22px 28px;
+  background: #fff8f8;
+  border: 1px solid #fecdca;
+  border-left: 4px solid #c1121f;
+  border-radius: 16px;
+}
+
+.wizard-category-nudge p {
+  margin: 0;
+  color: #101828;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.wizard-category-nudge button {
+  background: transparent;
+  border: 2px solid #c1121f;
+  color: #c1121f;
+  font-weight: 800;
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 11px 20px;
+  border-radius: 999px;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.wizard-category-nudge button:hover {
+  background: #c1121f;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
