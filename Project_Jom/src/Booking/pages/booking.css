@@ -304,6 +304,9 @@
 .booking-list-icon.community  { background: #eef2f8; }
 .booking-list-icon.bbq        { background: #fff4ee; }
 .booking-list-icon.courses    { background: #eef6ff; }
+.booking-list-icon i { font-size: 18px; }
+.booking-location-btn { display: flex; align-items: center; justify-content: center; gap: 8px; }
+.booking-travel-btn i { font-size: 18px; }
 
 .booking-list-body {
   flex: 1;

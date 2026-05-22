@@ -60,11 +60,11 @@ const facilitiesData = [
     description:
       "Indoor badminton courts at Our Tampines Hub Community Auditorium.",
     openingHours:
-      "Daily: 7am–9pm",
+      "Daily: 7am–10pm",
     requirements:
       "ActiveSG account and Singpass login required. Maximum 2 slots per day.",
     cost:
-      "SC/PR: $3.50 non-peak | $7.40 peak per hour per court",
+      "SC/PR: $3.50 non-peak | $7.40 peak per hour per court. Standard Rates: $4.60 non-peak | $9.70 peak per hour per court.",
     bookingLink:
       "https://activesg.gov.sg/facility-bookings/activities/YLONatwvqJfikKOmB5N9U/venues?postal-code=tampines",
     websiteName: "ActiveSG",
@@ -84,7 +84,7 @@ const facilitiesData = [
     description:
       "Community club badminton courts available for booking.",
     openingHours:
-      "Non-Peak: 10am–5pm | Peak: 6pm–8pm",
+      "Non-Peak: 10am–5pm | Peak: 6pm–9pm",
     requirements:
       "Book through OnePA and log in with Singpass.",
     cost:
@@ -108,7 +108,7 @@ const facilitiesData = [
     description:
       "Indoor badminton courts at Tampines Changkat CC.",
     openingHours:
-      "Non-Peak: 10:30am–5:30pm | Peak: 6:30pm–8:30pm",
+      "Non-Peak: 10:30am–5:30pm | Peak: 6:30pm–9:30pm",
     requirements:
       "Book through OnePA and log in with Singpass.",
     cost:
@@ -559,7 +559,102 @@ const facilitiesData = [
     filter: "Courses",
     courseType: "Dance",
     sport: null
-  }
+  },
+
+  {
+    id: 24,
+    name: "Booking of Parks (Tampines Town Council)",
+    type: "Community",
+    category: "common_area",
+    address: "136 Tampines Street 11, Singapore 521136",
+    lat: 1.3489,
+    lng: 103.9434,
+    description: "Book parks within Tampines for social events only.",
+    openingHours: "Mon–Fri: 8am–5pm",
+    requirements: "Application via Tampines Town Council counter. Subject to approval.",
+    cost: "Paid (rates vary)",
+    bookingLink: "https://www.life.gov.sg/services-tools/book-facilities",
+    websiteName: "Tampines Town Council",
+    phone: "6781 2222",
+    filter: "Community",
+    sport: null
+  },
+
+  {
+    id: 25,
+    name: "Open Spaces/Void Decks for Grassroots Activities",
+    type: "Community",
+    category: "common_area",
+    address: "136 Tampines Street 11, Singapore 521136",
+    lat: 1.3489,
+    lng: 103.9434,
+    description: "Book void decks and open spaces for grassroots/community activities. Free for approved grassroots organisations.",
+    openingHours: "Mon–Fri: 8am–5pm",
+    requirements: "Must be a grassroots organisation. Visit Town Council counter to book.",
+    cost: "Free",
+    bookingLink: "https://www.life.gov.sg/services-tools/book-facilities",
+    websiteName: "Tampines Town Council",
+    phone: "6781 2222",
+    filter: "Community",
+    sport: null
+  },
+
+  {
+    id: 26,
+    name: "ActiveSG Gym @ Our Tampines Hub",
+    type: "Sports",
+    category: "sports",
+    address: "Level 7, 1 Tampines Walk, Singapore 528523",
+    lat: 1.3529,
+    lng: 103.9449,
+    description: "ActiveGYM™ on Level 7 of Our Tampines Hub with modern gym equipment.",
+    openingHours: "Daily: 7am–10pm",
+    requirements: "ActiveSG account and Singpass login required.",
+    cost: "SC/PR Adult: $2.50 | SC/PR Student/Senior: $1.50 | Standard Rate: $3.30",
+    bookingLink: "https://activesg.gov.sg/passes/activities/8JfPH6hlXBvlYJAqVzmPg",
+    websiteName: "ActiveSG",
+    phone: null,
+    filter: "Sports",
+    sport: "Gym"
+  },
+
+  {
+    id: 27,
+    name: "SAFRA EnergyOne Gym @ Tampines",
+    type: "Sports",
+    category: "sports",
+    address: "1A Tampines Street 92, Singapore 528882",
+    lat: 1.3601,
+    lng: 103.9578,
+    description: "Full-equipped gym at SAFRA Tampines. Open to SAFRA members and walk-in guests (SC/PR, 16 years and above).",
+    openingHours: "Daily: 6:30am–10:30pm",
+    requirements: "Must be 16 years old and above. SAFRA membership or walk-in guest fee. Bring NRIC/SAFRA card. Download SAFRA Mobile App for e-card.",
+    cost: "Weekday Off-Peak (until 5pm): Members $8.75 | SC/PR $13.10. Weekday Peak (5pm–10:30pm): Members $14.20 | SC/PR $21.80. Weekends/PH (all day): Members $11.50 | SC/PR $17.50. Monthly memberships from ~$45–$60/month.",
+    bookingLink: "https://www.safra.sg/energyone-gym",
+    websiteName: "SAFRA",
+    phone: "6785 8800",
+    filter: "Sports",
+    sport: "Gym"
+  },
+
+  {
+    id: 28,
+    name: "Table Tennis @ Our Tampines Hub",
+    type: "Sports",
+    category: "sports",
+    address: "1 Tampines Walk, Singapore 528523",
+    lat: 1.3529,
+    lng: 103.9449,
+    description: "Table tennis tables available for booking at Our Tampines Hub via ActiveSG.",
+    openingHours: "Daily: 7am–10pm",
+    requirements: "ActiveSG account and Singpass login required.",
+    cost: "SC/PR: $1.50 non-peak | $3.20 peak per hour per table. Standard: $2.00 non-peak | $4.20 peak. Non-peak: 7am–6pm | Peak: 6pm–10pm.",
+    bookingLink: "https://activesg.gov.sg/facility-bookings/activities/lpa7rfS4ShmUUt7XsFJlD/venues?postal-code=tampines",
+    websiteName: "ActiveSG",
+    phone: null,
+    filter: "Sports",
+    sport: "Table Tennis"
+  },
 ];
 
 export default facilitiesData;

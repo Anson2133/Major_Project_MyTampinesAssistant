@@ -12,88 +12,78 @@ function cleanBotText(text) {
 function formatMessageWithLinks(text) {
   if (!text) return null;
 
-  const urlRegex =
-    /(https?:\/\/[^\s]+|www\.[^\s]+|[a-zA-Z0-9-]+\.(sg|com|org|net)[^\s]*)/g;
+  const processedText = text.replace(/\/booking/g, "%%BOOKING%%");
 
-  const processedText = text
-    .replace(/\/booking/g, "%%BOOKING%%")
-    .replace(/https?:\/\/activesg\.gov\.sg[^\s]*/g, "%%ACTIVESG%%")
-    .replace(/activesg\.gov\.sg[^\s]*/g, "%%ACTIVESG%%")
-    .replace(/https?:\/\/www\.tampines\.org\.sg[^\s]*/g, "%%TAMPINES%%")
-    .replace(/www\.tampines\.org\.sg[^\s]*/g, "%%TAMPINES%%")
-    .replace(/tampines\.org\.sg[^\s]*/g, "%%TAMPINES%%")
-    .replace(
-      /(?:https?:\/\/)?onepa\.gov\.sg\/facilities\/availability\?facilityId=([A-Za-z0-9_]+)/g,
-      (_, id) => `%%ONEPA::${id}%%`
-    )
-    .replace(/(?:https?:\/\/)?(?:www\.)?onepa\.gov\.sg[^\s]*/g, "%%ONEPA_GENERIC%%");
+  const placeholderRegex = /(%%BOOKING%%)/g;
 
-  const placeholderRegex = /(%%[^%]+%%)/g;
+  return processedText.split("\n").map((line, lineIndex) => {
+    const totalLines = processedText.split("\n").length;
 
-  return processedText.split("\n").map((line, lineIndex) => (
-    <span key={lineIndex}>
-      {line.split(placeholderRegex).map((part, index) => {
-        if (!part) return null;
+    const parts = line.split(placeholderRegex);
 
-        if (part === "%%BOOKING%%") {
+    const rendered = parts.map((part, index) => {
+      if (!part) return null;
+
+      if (part === "%%BOOKING%%") {
+        return (
+          <Link key={index} to="/booking" className="chat-link">
+            Facilities &amp; Booking page
+          </Link>
+        );
+      }
+
+      const urlRegex = /(https?:\/\/[^\s),]+|www\.[^\s),]+|[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*\.(?:sg|com|org|net|gov)(?:\/[^\s),]*)?)/g;
+      const chunks = part.split(urlRegex);
+
+      return chunks.map((chunk, i) => {
+        if (!chunk) return null;
+
+        if (chunk.match(/^https?:\/\//) || chunk.match(/^www\./) || chunk.match(/^[a-zA-Z0-9-]+\.[a-zA-Z]/)) {
+          const href = chunk.startsWith("http") ? chunk : `https://${chunk}`;
+
+          let displayName = chunk;
+          if (chunk.includes("activesg.gov.sg")) displayName = "Book via ActiveSG";
+          else if (chunk.includes("onepa.gov.sg/facilities/availability")) {
+            // Extract facilityId for display if present
+            const match = chunk.match(/facilityId=([^&\s]+)/);
+            displayName = match ? "Book via OnePA" : "OnePA Facilities";
+          }
+          else if (chunk.includes("onepa.gov.sg/courses")) displayName = "Register via OnePA";
+          else if (chunk.includes("onepa.gov.sg")) displayName = "OnePA";
+          else if (chunk.includes("tampines.org.sg")) displayName = "Tampines Town Council";
+          else if (chunk.includes("safra.sg")) displayName = "Book via SAFRA";
+          else if (chunk.includes("singhealth.com.sg")) displayName = "Book via SingHealth";
+          else if (chunk.includes("life.gov.sg")) displayName = "Book via LifeSG";
+          else if (chunk.includes("skillsfuture.gov.sg")) displayName = "SkillsFuture";
+          else if (chunk.includes("cpf.gov.sg")) displayName = "CPF Board";
+          else if (chunk.includes("hdb.gov.sg")) displayName = "HDB";
+          else if (chunk.includes("moh.gov.sg")) displayName = "Ministry of Health";
+          else if (chunk.includes("msf.gov.sg")) displayName = "MSF";
+
           return (
-            <Link key={index} to="/booking" className="chat-link">
-              Facilities &amp; Booking page
-            </Link>
-          );
-        }
-
-        if (part === "%%ACTIVESG%%") {
-          return (
-            <a key={index} href="https://activesg.gov.sg/facility-bookings/activities" target="_blank" rel="noopener noreferrer" className="chat-link">
-              ActiveSG Facility Bookings
+            <a
+              key={`${index}-${i}`}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="chat-link"
+            >
+              {displayName}
             </a>
           );
         }
 
-        if (part === "%%TAMPINES%%") {
-          return (
-            <a key={index} href="https://www.tampines.org.sg/ResidentServices/BulkyItemRemovalServices" target="_blank" rel="noopener noreferrer" className="chat-link">
-              Tampines Town Council
-            </a>
-          );
-        }
+        return chunk;
+      });
+    });
 
-        if (part.startsWith("%%ONEPA::")) {
-          const id = part.replace("%%ONEPA::", "").replace("%%", "");
-          const url = `https://onepa.gov.sg/facilities/availability?facilityId=${id}`;
-          return (
-            <a key={index} href={url} target="_blank" rel="noopener noreferrer" className="chat-link">
-              Book here
-            </a>
-          );
-        }
-
-        if (part === "%%ONEPA_GENERIC%%") {
-          return (
-            <a key={index} href="https://www.onepa.gov.sg/facilities" target="_blank" rel="noopener noreferrer" className="chat-link">
-              OnePA Facilities
-            </a>
-          );
-        }
-
-        return part.split(urlRegex).map((chunk, i) => {
-          if (!chunk) return null;
-          const isUrl = chunk.match(urlRegex);
-          if (!isUrl) return chunk;
-          const href = chunk.startsWith("http://") || chunk.startsWith("https://")
-            ? chunk
-            : `https://${chunk}`;
-          return (
-            <a key={`${index}-${i}`} href={href} target="_blank" rel="noopener noreferrer" className="chat-link">
-              {chunk}
-            </a>
-          );
-        });
-      })}
-      {lineIndex < processedText.split("\n").length - 1 && <br />}
-    </span>
-  ));
+    return (
+      <span key={lineIndex}>
+        {rendered}
+        {lineIndex < totalLines - 1 && <br />}
+      </span>
+    );
+  });
 }
 
 function FileCard({ attachment }) {
@@ -128,24 +118,36 @@ function SpeakButton({ text }) {
     return "en";
   };
 
-  const base64ToBlob = (base64, mimeType) => {
-    const byteChars = atob(base64);
-    const byteArr = new Uint8Array(byteChars.length);
-    for (let i = 0; i < byteChars.length; i++) {
-      byteArr[i] = byteChars.charCodeAt(i);
+  const splitTextForTTS = (text) => {
+    const sentences =
+      text.match(/[^.!?]+[.!?]+|\S.+$/g) || [text];
+
+    const chunks = [];
+    let current = "";
+
+    for (const sentence of sentences) {
+      if ((current + sentence).length > 700) {
+        chunks.push(current.trim());
+        current = sentence;
+      } else {
+        current += " " + sentence;
+      }
     }
-    return new Blob([byteArr], { type: mimeType });
+
+    if (current.trim()) {
+      chunks.push(current.trim());
+    }
+
+    return chunks;
   };
 
   const handleSpeak = async () => {
-    // If already speaking, stop
     if (isSpeaking) {
       audioRef.current?.pause();
       setIsSpeaking(false);
       return;
     }
 
-    // If loading, ignore extra clicks
     if (isLoadingAudio) return;
 
     try {
@@ -161,8 +163,7 @@ function SpeakButton({ text }) {
 
       if (!response.ok) throw new Error("Google TTS failed");
 
-      const data = await response.json();
-      const audioBlob = base64ToBlob(data.audioBase64, "audio/mpeg");
+      const audioBlob = await response.blob();
       const audioUrl = URL.createObjectURL(audioBlob);
 
       if (audioRef.current) {
@@ -242,7 +243,7 @@ export default function ChatArea({
   const messagesEndRef = useRef(null);
   const { t } = useTranslation();
   const navigate = useNavigate();
-  
+
 
   useEffect(() => {
     if (window.speechSynthesis) {

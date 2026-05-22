@@ -298,6 +298,8 @@
       "swimming": "Swimming",
       "futsal": "Futsal",
       "soccer": "Soccer",
+      "table tennis": "Table Tennis",
+      "gym": "Gym",
       "allCourses": "All Courses",
       "arts": "Arts",
       "dance": "Dance",
@@ -318,19 +320,19 @@
       },
       "3": {
         "description": "Indoor badminton courts at Our Tampines Hub Community Auditorium.",
-        "openingHours": "Daily: 7am–9pm",
+        "openingHours": "Daily: 7am–10pm",
         "requirements": "ActiveSG account and Singpass login required. Maximum 2 slots per day.",
-        "cost": "SC/PR: $3.50 non-peak | $7.40 peak per hour per court"
+        "cost": "SC/PR: $3.50 non-peak | $7.40 peak per hour per court. Standard Rates: $4.60 non-peak | $9.70 peak per hour per court."
       },
       "4": {
         "description": "Community club badminton courts available for booking.",
-        "openingHours": "Non-Peak: 10am–5pm | Peak: 6pm–8pm",
+        "openingHours": "Non-Peak: 10am–5pm | Peak: 6pm–9pm",
         "requirements": "Book through OnePA and log in with Singpass.",
         "cost": "$5–$6 non-peak | $6–$7 peak per slot"
       },
       "5": {
         "description": "Indoor badminton courts at Tampines Changkat CC.",
-        "openingHours": "Non-Peak: 10:30am–5:30pm | Peak: 6:30pm–8:30pm",
+        "openingHours": "Non-Peak: 10:30am–5:30pm | Peak: 6:30pm–9:30pm",
         "requirements": "Book through OnePA and log in with Singpass.",
         "cost": "$6 non-peak | $8 peak"
       },
@@ -441,6 +443,36 @@
         "openingHours": "Sundays, various timings",
         "requirements": "Assessment required for new students.",
         "cost": "$210–$250"
+      },
+      "24": {
+        "description": "Book parks within Tampines for social events only.",
+        "openingHours": "Mon–Fri: 8am–5pm",
+        "requirements": "Application via Tampines Town Council counter. Subject to approval.",
+        "cost": "Paid (rates vary)"
+      },
+      "25": {
+        "description": "Book void decks and open spaces for grassroots/community activities. Free for approved grassroots organisations.",
+        "openingHours": "Mon–Fri: 8am–5pm",
+        "requirements": "Must be a grassroots organisation. Visit Town Council counter to book.",
+        "cost": "Free"
+      },
+      "26": {
+        "description": "ActiveGYM™ on Level 7 of Our Tampines Hub with modern gym equipment.",
+        "openingHours": "Daily: 7am–10pm",
+        "requirements": "ActiveSG account and Singpass login required.",
+        "cost": "SC/PR Adult: $2.50 | SC/PR Student/Senior: $1.50 | Standard Rate: $3.30 per entry"
+      },
+      "27": {
+        "description": "Full-equipped gym at SAFRA Tampines. Open to SAFRA members and walk-in guests (SC/PR, 16 years and above).",
+        "openingHours": "Daily: 6:30am–10:30pm",
+        "requirements": "Must be 16 years old and above. SAFRA membership or walk-in guest fee. Bring NRIC/SAFRA card. Download SAFRA Mobile App for e-card.",
+        "cost": "Weekday off-peak (until 5pm): Members $8.75, SC/PR $13.10. Weekday peak (5pm–10:30pm): Members $14.20, SC/PR $21.80. Weekends/PH all day: Members $11.50, SC/PR $17.50. Monthly membership from $45–$60/month."
+      },
+      "28": {
+        "description": "Table tennis tables available for booking at Our Tampines Hub via ActiveSG.",
+        "openingHours": "Daily: 7am–10pm",
+        "requirements": "ActiveSG account and Singpass login required.",
+        "cost": "SC/PR: $1.50 non-peak / $3.20 peak per hour per table. Standard: $2.00 non-peak / $4.20 peak. Non-peak: 7am–6pm, Peak: 6pm–10pm."
       }
     }
   }
