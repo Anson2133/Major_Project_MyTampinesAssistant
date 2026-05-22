@@ -110,7 +110,10 @@ function SpeakButton({ text }) {
   const audioRef = useRef(null);
   const { i18n } = useTranslation();
 
-  const getCurrentLanguage = () => {
+  const getCurrentLanguage = (textToRead) => {
+    if (/[\u4e00-\u9fff]/.test(textToRead)) return "zh";
+    if (/[\u0B80-\u0BFF]/.test(textToRead)) return "ta";
+
     const lang = i18n.language || "en";
     if (lang.startsWith("zh")) return "zh";
     if (lang.startsWith("ms")) return "ms";
@@ -120,23 +123,21 @@ function SpeakButton({ text }) {
 
   const splitTextForTTS = (text) => {
     const sentences =
-      text.match(/[^.!?]+[.!?]+|\S.+$/g) || [text];
+      text.match(/[^.!?。！？]+[.!?。！？]+|\S.+$/g) || [text];
 
     const chunks = [];
     let current = "";
 
     for (const sentence of sentences) {
-      if ((current + sentence).length > 700) {
-        chunks.push(current.trim());
+      if ((current + sentence).length > 900) {
+        if (current.trim()) chunks.push(current.trim());
         current = sentence;
       } else {
         current += " " + sentence;
       }
     }
 
-    if (current.trim()) {
-      chunks.push(current.trim());
-    }
+    if (current.trim()) chunks.push(current.trim());
 
     return chunks;
   };
@@ -153,7 +154,7 @@ function SpeakButton({ text }) {
     try {
       setIsLoadingAudio(true);
 
-      const languageKey = getCurrentLanguage();
+      const languageKey = getCurrentLanguage(text);
 
       const response = await fetch(TTS_API_URL, {
         method: "POST",
