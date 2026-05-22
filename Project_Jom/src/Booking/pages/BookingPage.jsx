@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef, useEffect } from "react";
-import { GoogleMap, useJsApiLoader, Marker, InfoWindow, DirectionsRenderer } from "@react-google-maps/api";
+import { GoogleMap, useJsApiLoader, Marker, InfoWindow, DirectionsRenderer, Circle } from "@react-google-maps/api";
 import { useTranslation } from "react-i18next";
 import facilitiesData from "../data/facilitiesData";
 import "./booking.css";
@@ -10,8 +10,8 @@ const TAMPINES_CENTER = { lat: 1.3521, lng: 103.9442 };
 const FILTER_KEYS = ["all", "healthcare", "bbq", "community", "courses", "sports"];
 const FILTER_EN = ["All", "Healthcare", "BBQ", "Community", "Courses", "Sports"];
 
-const SPORT_KEYS = ["allSports", "badminton", "basketball", "swimming", "futsal", "soccer"];
-const SPORT_EN = ["All Sports", "Badminton", "Basketball", "Swimming", "Futsal", "Soccer"];
+const SPORT_KEYS = ["allSports", "badminton", "basketball", "swimming", "futsal", "soccer", "table tennis", "gym"];
+const SPORT_EN = ["All Sports", "Badminton", "Basketball", "Swimming", "Futsal", "Soccer", "Table Tennis", "Gym"];
 
 const COURSE_KEYS = ["allCourses", "arts", "dance", "kids"];
 const COURSE_EN = ["All Courses", "Arts", "Dance", "Kids"];
@@ -511,11 +511,31 @@ export default function BookingPage() {
             options={{ streetViewControl: false, mapTypeControl: false, fullscreenControl: false }}
           >
             {userLocation && !liveLocation && !directions && (
-              <Marker
-                position={userLocation}
-                icon={{ url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png" }}
-                title={t("booking.yourLocation")}
-              />
+              <>
+                <Marker
+                  position={userLocation}
+                  icon={{
+                    path: window.google.maps.SymbolPath.CIRCLE,
+                    scale: 10,
+                    fillColor: "#4285F4",
+                    fillOpacity: 1,
+                    strokeColor: "#ffffff",
+                    strokeWeight: 3,
+                  }}
+                  title={t("booking.yourLocation")}
+                />
+                <Circle
+                  center={userLocation}
+                  radius={800}
+                  options={{
+                    fillColor: "#4A90D9",
+                    fillOpacity: 0.12,
+                    strokeColor: "#4A90D9",
+                    strokeOpacity: 0.5,
+                    strokeWeight: 1.5,
+                  }}
+                />
+              </>
             )}
 
             {liveLocation && (

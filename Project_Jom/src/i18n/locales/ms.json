@@ -295,6 +295,8 @@
       "swimming": "Renang",
       "futsal": "Futsal",
       "soccer": "Bola Sepak",
+      "table tennis": "Tenis Meja",
+      "gym": "Gimnasium",
       "allCourses": "Semua Kursus",
       "arts": "Seni",
       "dance": "Tarian",
@@ -315,19 +317,19 @@
       },
       "3": {
         "description": "Gelanggang badminton dalam bangunan di Our Tampines Hub Community Auditorium.",
-        "openingHours": "Setiap hari: 7pg–9mlm",
+        "openingHours": "Setiap hari: 7pg–10mlm",
         "requirements": "Akaun ActiveSG dan log masuk Singpass diperlukan. Maksimum 2 slot sehari.",
-        "cost": "WN/PR: $3.50 bukan puncak | $7.40 puncak sejam setiap gelanggang"
+        "cost": "WN/PR: $3.50 bukan puncak | $7.40 puncak sejam setiap gelanggang. Kadar Standard: $4.60 bukan puncak | $9.70 puncak sejam setiap gelanggang."
       },
       "4": {
         "description": "Gelanggang badminton kelab komuniti tersedia untuk tempahan.",
-        "openingHours": "Bukan Puncak: 10pg–5ptg | Puncak: 6ptg–8mlm",
+        "openingHours": "Bukan Puncak: 10pg–5ptg | Puncak: 6ptg–9mlm",
         "requirements": "Tempah melalui OnePA dan log masuk dengan Singpass.",
         "cost": "$5–$6 bukan puncak | $6–$7 puncak setiap slot"
       },
       "5": {
         "description": "Gelanggang badminton dalam bangunan di Tampines Changkat CC.",
-        "openingHours": "Bukan Puncak: 10:30pg–5:30ptg | Puncak: 6:30ptg–8:30mlm",
+        "openingHours": "Bukan Puncak: 10:30pg–5:30ptg | Puncak: 6:30ptg–9:30mlm",
         "requirements": "Tempah melalui OnePA dan log masuk dengan Singpass.",
         "cost": "$6 bukan puncak | $8 puncak"
       },
@@ -438,6 +440,36 @@
         "openingHours": "Ahad, pelbagai waktu",
         "requirements": "Penilaian diperlukan untuk pelajar baharu.",
         "cost": "$210–$250"
+      },
+      "24": {
+        "description": "Tempah taman dalam Tampines untuk acara sosial sahaja.",
+        "openingHours": "Isnin–Jumaat: 8pg–5ptg",
+        "requirements": "Permohonan melalui kaunter Majlis Bandaran Tampines. Tertakluk kepada kelulusan.",
+        "cost": "Berbayar (kadar berbeza)"
+      },
+      "25": {
+        "description": "Tempah ruang bawah blok dan kawasan terbuka untuk aktiviti akar umbi/komuniti. Percuma untuk organisasi akar umbi yang diluluskan.",
+        "openingHours": "Isnin–Jumaat: 8pg–5ptg",
+        "requirements": "Mesti merupakan organisasi akar umbi. Layari kaunter Majlis Bandaran untuk membuat tempahan.",
+        "cost": "Percuma"
+      },
+      "26": {
+        "description": "ActiveGYM™ di Tingkat 7 Our Tampines Hub dengan peralatan gim moden.",
+        "openingHours": "Setiap hari: 7pg–10mlm",
+        "requirements": "Akaun ActiveSG dan log masuk Singpass diperlukan.",
+        "cost": "WN/PR Dewasa: $2.50 | WN/PR Pelajar/Warga Emas: $1.50 | Kadar Standard: $3.30 setiap kemasukan"
+      },
+      "27": {
+        "description": "Gim lengkap di SAFRA Tampines. Terbuka untuk ahli SAFRA dan tetamu berjalan masuk (WN/PR, 16 tahun ke atas).",
+        "openingHours": "Setiap hari: 6:30pg–10:30mlm",
+        "requirements": "Mesti berumur 16 tahun ke atas. Keahlian SAFRA atau bayaran tetamu. Bawa NRIC/kad SAFRA. Muat turun Aplikasi Mudah Alih SAFRA untuk e-kad.",
+        "cost": "Hari bekerja bukan puncak (hingga 5ptg): Ahli $8.75, WN/PR $13.10. Hari bekerja puncak (5ptg–10:30mlm): Ahli $14.20, WN/PR $21.80. Hujung minggu/PH sepanjang hari: Ahli $11.50, WN/PR $17.50. Keahlian bulanan dari $45–$60/bulan."
+      },
+      "28": {
+        "description": "Meja tenis meja tersedia untuk tempahan di Our Tampines Hub melalui ActiveSG.",
+        "openingHours": "Setiap hari: 7pg–10mlm",
+        "requirements": "Akaun ActiveSG dan log masuk Singpass diperlukan.",
+        "cost": "WN/PR: $1.50 bukan puncak / $3.20 puncak sejam setiap meja. Standard: $2.00 bukan puncak / $4.20 puncak. Bukan puncak: 7pg–6ptg, Puncak: 6ptg–10mlm."
       }
     }
   }
