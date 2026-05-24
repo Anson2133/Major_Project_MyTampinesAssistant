@@ -32,8 +32,10 @@
     "appName": "MyTampines Assistant",
     "chat": "聊天",
     "services": "服务",
-    "history": "历史记录",
     "help": "帮助",
+    "booking": "预约",
+    "announcements": "公告",
+    "directory": "目录",
     "newChat": "新聊天",
     "recentConversations": "最近对话",
     "backToHome": "返回主页"
@@ -164,7 +166,9 @@
       "timeline": "行动时间表",
       "schemes": "您的计划",
       "documents": "所需文件",
-      "places": "淡滨尼地点"
+      "places": "淡滨尼地点",
+      "opportunities": "机会",
+      "trajectory": "12个月展望"
     },
     "buttons": {
       "tryAnother": "← 尝试其他情况",
@@ -220,7 +224,38 @@
       "hiddenGemsTitle": "常被忽略 — 像您这样的居民也可能符合资格...",
       "noSchemes": "未找到适合此情况的计划。",
       "generated": "生成于",
-      "footer": "MyTampines Assistant — 生活情境向导"
+      "footer": "MyTampines Assistant — 生活情境向导",
+      "noOpportunities": "未找到适合此情况的机会。",
+      "oppIntro": "这些是具体的发展路径——不只是计划——可帮助您主动改善目前情况。",
+      "defaultPersonalSummary": "您的当前情况和所选档案资料",
+      "basedOnProfile": "根据您的档案：",
+      "recommendedBecause": "推荐原因：",
+      "reasonMatchesSituation": "符合您的情况",
+      "reasonPracticalStep": "实际可行的下一步",
+      "reasonNearbyOnline": "可在淡滨尼附近或线上使用",
+      "reasonOftenMissed": "经常被忽略",
+      "reasonUsefulSituation": "对您的情况有帮助",
+      "reasonCheckEarly": "值得尽早查看",
+      "clickCardExplore": "点击卡片了解更多 →",
+      "noTrajectory": "完成您的行动计划，以查看12个月展望。",
+      "supportOptionsAvailable": "可用支援选项",
+      "supportOptionsMessage": "根据您的情况，您有可用的支援选项。请先完成以下行动以获得帮助并了解下一步。",
+      "financialEmploymentSupport": "可获得财务与就业支援",
+      "noneListed": "未列出。",
+      "oppProfileLabel": "根据您的资料：",
+      "oppRecommendedBecause": "推荐原因：",
+      "oppMatchesSituation": "符合您的情况",
+      "oppPracticalNextStep": "实际的下一步",
+      "oppAvailableNearby": "可在淡滨尼附近或线上使用",
+      "oppClickToExplore": "点击卡片查看 →",
+      "hiddenGemsSectionTitle": "隐藏机会 — 大多数人会错过",
+      "oppOftenMissed": "经常被忽略",
+      "oppUsefulForSituation": "适合您的情况",
+      "oppWorthCheckingEarly": "值得尽早查看",
+      "openMaps": "打开地图",
+      "visitWebsite": "访问网站",
+      "newSituation": "← 尝试其他情况",
+      "exportPdf": "⬇ 导出 / 打印 PDF"
     },
     "shortSubtitle": "告诉我们您正在经历的情况。我们会找出您可能符合资格的计划，并为您建立行动方案。",
     "inputQuestion": "您正在经历什么情况？",
@@ -238,6 +273,63 @@
     },
     "alerts": {
       "planSaved": "计划已保存！您可以从个人资料中查看。"
+    },
+    "impact": {
+      "monthlySupport": "本月可领取",
+      "yearlyValue": "第一年价值",
+      "pathwayDistance": "职业路径",
+      "coursesAwaySub": "即可重新符合资格",
+      "courseCount": "{{count}} 门课程",
+      "courseCount_plural": "{{count}} 门课程"
+    },
+    "trajectory": {
+      "now": "现在",
+      "in12months": "12个月后",
+      "milestonesLabel": "您的预计里程碑",
+      "totalUnlocked": "第一年解锁的总价值"
+    },
+    "opportunityTypes": {
+      "careerConversion": "职业转换",
+      "upskilling": "技能提升",
+      "communityRole": "社区角色",
+      "hiddenGem": "隐藏机会",
+      "jobFair": "招聘会 / 活动"
+    },
+    "opportunityCtas": {
+      "careerConversion": "查看 CCP 职位 →",
+      "upskilling": "开始课程路径 →",
+      "jobFair": "报名工作坊 →",
+      "communityRole": "探索角色 →",
+      "default": "立即申请 →"
+    },
+    "categories": {
+      "financial": "财务",
+      "healthcare": "医疗保健",
+      "housing": "住房",
+      "employment": "就业",
+      "education": "教育",
+      "caregiving": "照护",
+      "social": "社会支援"
+    },
+    "confidence": {
+      "high": "高",
+      "medium": "中",
+      "low": "低"
+    },
+    "progress": {
+      "currentJourney": "您的当前阶段",
+      "current": "当前：",
+      "nextSuggestedStep": "建议的下一步：",
+      "stages": {
+        "crisis": "危机",
+        "stabilising": "稳定中",
+        "rebuilding": "重建中",
+        "growing": "成长中"
+      }
+    },
+    "places": {
+      "openMaps": "打开地图",
+      "visit": "访问"
     }
   },
   "booking": {

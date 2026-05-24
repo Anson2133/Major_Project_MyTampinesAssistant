@@ -166,8 +166,24 @@
     "tabs": {
       "timeline": "Action Timeline",
       "schemes": "Your Schemes",
+      "opportunities": "Opportunities",
+      "trajectory": "12-Month View",
       "documents": "Documents",
       "places": "Tampines Places"
+    },
+    "impact": {
+      "monthlySupport": "Claimable this month",
+      "yearlyValue": "Year-one value",
+      "pathwayDistance": "Career pathway",
+      "coursesAwaySub": "away from requalifying",
+      "courseCount": "{{count}} course",
+      "courseCount_plural": "{{count}} courses"
+    },
+    "trajectory": {
+      "now": "Right now",
+      "in12months": "In 12 months",
+      "milestonesLabel": "Your projected milestones",
+      "totalUnlocked": "Total value unlocked in year 1"
     },
     "buttons": {
       "tryAnother": "← Try Another Situation",
@@ -223,7 +239,38 @@
       "hiddenGemsTitle": "Often Missed — People Like You Also Qualified For...",
       "noSchemes": "No schemes found for this situation.",
       "generated": "Generated",
-      "footer": "MyTampines Assistant — Life Situations Wizard"
+      "footer": "MyTampines Assistant — Life Situations Wizard",
+      "noOpportunities": "No opportunities found for this situation.",
+      "oppIntro": "These are concrete pathways — not just schemes — to actively improve your situation.",
+      "defaultPersonalSummary": "Your current situation and selected profile details",
+      "basedOnProfile": "Based on your profile:",
+      "recommendedBecause": "Recommended because:",
+      "reasonMatchesSituation": "Matches your situation",
+      "reasonPracticalStep": "Practical next step",
+      "reasonNearbyOnline": "Available near Tampines or online",
+      "reasonOftenMissed": "Often missed",
+      "reasonUsefulSituation": "Useful for your situation",
+      "reasonCheckEarly": "Worth checking early",
+      "clickCardExplore": "Click card to explore →",
+      "noTrajectory": "Complete your action plan to see your 12-month outlook.",
+      "supportOptionsAvailable": "Support Options Available",
+      "supportOptionsMessage": "You have support options available based on your situation. Start with the actions below to claim help and explore next steps.",
+      "financialEmploymentSupport": "Financial & Employment Support Available",
+      "noneListed": "None listed.",
+      "oppProfileLabel": "Based on your profile:",
+      "oppRecommendedBecause": "Recommended because:",
+      "oppMatchesSituation": "Matches your situation",
+      "oppPracticalNextStep": "Practical next step",
+      "oppAvailableNearby": "Available near Tampines or online",
+      "oppClickToExplore": "Click card to explore →",
+      "hiddenGemsSectionTitle": "Hidden gems — most people miss these",
+      "oppOftenMissed": "Often missed",
+      "oppUsefulForSituation": "Useful for your situation",
+      "oppWorthCheckingEarly": "Worth checking early",
+      "openMaps": "Open Maps",
+      "visitWebsite": "Visit Website",
+      "newSituation": "← Try Another Situation",
+      "exportPdf": "⬇ Export / Print PDF"
     },
     "shortSubtitle": "Tell us what you're going through. We'll find the exact schemes you qualify for and build your action plan.",
     "inputQuestion": "What are you going through?",
@@ -241,6 +288,49 @@
     },
     "alerts": {
       "planSaved": "Plan saved! You can access it from your profile."
+    },
+    "opportunityTypes": {
+      "careerConversion": "Career conversion",
+      "upskilling": "Upskilling",
+      "communityRole": "Community role",
+      "hiddenGem": "Hidden gem",
+      "jobFair": "Job fair / event"
+    },
+    "opportunityCtas": {
+      "careerConversion": "View CCP openings →",
+      "upskilling": "Start course pathway →",
+      "jobFair": "Register for workshop →",
+      "communityRole": "Explore role →",
+      "default": "Apply now →"
+    },
+    "categories": {
+      "financial": "financial",
+      "healthcare": "healthcare",
+      "housing": "housing",
+      "employment": "employment",
+      "education": "education",
+      "caregiving": "caregiving",
+      "social": "social"
+    },
+    "confidence": {
+      "high": "high",
+      "medium": "medium",
+      "low": "low"
+    },
+    "progress": {
+      "currentJourney": "Your Current Journey",
+      "current": "Current:",
+      "nextSuggestedStep": "Next suggested step:",
+      "stages": {
+        "crisis": "Crisis",
+        "stabilising": "Stabilising",
+        "rebuilding": "Rebuilding",
+        "growing": "Growing"
+      }
+    },
+    "places": {
+      "openMaps": "Open Maps",
+      "visit": "Visit"
     }
   },
   "booking": {
