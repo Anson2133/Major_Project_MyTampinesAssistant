@@ -32,7 +32,9 @@
     "appName": "MyTampines Assistant",
     "chat": "Sembang",
     "services": "Perkhidmatan",
-    "history": "Sejarah",
+    "booking": "Tempahan",
+    "announcements": "Pengumuman",
+    "directory": "Direktori",
     "help": "Bantuan",
     "newChat": "Sembang Baharu",
     "recentConversations": "Perbualan Terkini",
@@ -164,7 +166,9 @@
       "timeline": "Garis Masa Tindakan",
       "schemes": "Skim Anda",
       "documents": "Dokumen",
-      "places": "Tempat di Tampines"
+      "places": "Tempat di Tampines",
+      "opportunities": "Peluang",
+      "trajectory": "Paparan 12 Bulan"
     },
     "buttons": {
       "tryAnother": "← Cuba Situasi Lain",
@@ -220,7 +224,38 @@
       "hiddenGemsTitle": "Sering Terlepas — Orang Seperti Anda Mungkin Juga Layak Untuk...",
       "noSchemes": "Tiada skim ditemui untuk situasi ini.",
       "generated": "Dijana",
-      "footer": "MyTampines Assistant — Wizard Situasi Kehidupan"
+      "footer": "MyTampines Assistant — Wizard Situasi Kehidupan",
+      "noOpportunities": "Tiada peluang ditemui untuk situasi ini.",
+      "oppIntro": "Ini ialah laluan konkrit — bukan sekadar skim — untuk membantu memperbaiki situasi anda secara aktif.",
+      "defaultPersonalSummary": "Situasi semasa anda dan butiran profil yang dipilih",
+      "basedOnProfile": "Berdasarkan profil anda:",
+      "recommendedBecause": "Disyorkan kerana:",
+      "reasonMatchesSituation": "Sesuai dengan situasi anda",
+      "reasonPracticalStep": "Langkah seterusnya yang praktikal",
+      "reasonNearbyOnline": "Tersedia berhampiran Tampines atau dalam talian",
+      "reasonOftenMissed": "Sering terlepas pandang",
+      "reasonUsefulSituation": "Berguna untuk situasi anda",
+      "reasonCheckEarly": "Berbaloi disemak awal",
+      "clickCardExplore": "Klik kad untuk meneroka →",
+      "noTrajectory": "Lengkapkan pelan tindakan anda untuk melihat gambaran 12 bulan anda.",
+      "supportOptionsAvailable": "Pilihan Sokongan Tersedia",
+      "supportOptionsMessage": "Terdapat pilihan sokongan berdasarkan situasi anda. Mulakan dengan tindakan di bawah untuk mendapatkan bantuan dan meneroka langkah seterusnya.",
+      "financialEmploymentSupport": "Sokongan Kewangan & Pekerjaan Tersedia",
+      "noneListed": "Tiada disenaraikan.",
+      "oppProfileLabel": "Berdasarkan profil anda:",
+      "oppRecommendedBecause": "Disyorkan kerana:",
+      "oppMatchesSituation": "Sesuai dengan situasi anda",
+      "oppPracticalNextStep": "Langkah seterusnya yang praktikal",
+      "oppAvailableNearby": "Tersedia berhampiran Tampines atau dalam talian",
+      "oppClickToExplore": "Klik kad untuk melihat →",
+      "hiddenGemsSectionTitle": "Peluang tersembunyi — ramai orang terlepas pandang",
+      "oppOftenMissed": "Sering terlepas pandang",
+      "oppUsefulForSituation": "Berguna untuk situasi anda",
+      "oppWorthCheckingEarly": "Berbaloi untuk disemak awal",
+      "openMaps": "Buka Peta",
+      "visitWebsite": "Lawati Laman Web",
+      "newSituation": "← Cuba Situasi Lain",
+      "exportPdf": "⬇ Eksport / Cetak PDF"
     },
     "shortSubtitle": "Ceritakan apa yang sedang anda lalui. Kami akan mencari skim yang anda mungkin layak dan membina pelan tindakan anda.",
     "inputQuestion": "Apakah yang sedang anda lalui?",
@@ -238,6 +273,63 @@
     },
     "alerts": {
       "planSaved": "Pelan disimpan! Anda boleh mengaksesnya daripada profil anda."
+    },
+    "impact": {
+      "monthlySupport": "Boleh dituntut bulan ini",
+      "yearlyValue": "Nilai tahun pertama",
+      "pathwayDistance": "Laluan kerjaya",
+      "coursesAwaySub": "lagi untuk layak semula",
+      "courseCount": "{{count}} kursus",
+      "courseCount_plural": "{{count}} kursus"
+    },
+    "trajectory": {
+      "now": "Sekarang",
+      "in12months": "Dalam 12 bulan",
+      "milestonesLabel": "Pencapaian yang dijangka",
+      "totalUnlocked": "Jumlah nilai dibuka dalam tahun pertama"
+    },
+    "opportunityTypes": {
+      "careerConversion": "Pertukaran kerjaya",
+      "upskilling": "Peningkatan kemahiran",
+      "communityRole": "Peranan komuniti",
+      "hiddenGem": "Peluang tersembunyi",
+      "jobFair": "Pameran kerja / acara"
+    },
+    "opportunityCtas": {
+      "careerConversion": "Lihat peluang CCP →",
+      "upskilling": "Mulakan laluan kursus →",
+      "jobFair": "Daftar bengkel →",
+      "communityRole": "Terokai peranan →",
+      "default": "Mohon sekarang →"
+    },
+    "categories": {
+      "financial": "kewangan",
+      "healthcare": "penjagaan kesihatan",
+      "housing": "perumahan",
+      "employment": "pekerjaan",
+      "education": "pendidikan",
+      "caregiving": "penjagaan",
+      "social": "sosial"
+    },
+    "confidence": {
+      "high": "tinggi",
+      "medium": "sederhana",
+      "low": "rendah"
+    },
+    "progress": {
+      "currentJourney": "Perjalanan Semasa Anda",
+      "current": "Semasa:",
+      "nextSuggestedStep": "Langkah seterusnya yang dicadangkan:",
+      "stages": {
+        "crisis": "Krisis",
+        "stabilising": "Menstabilkan",
+        "rebuilding": "Membina Semula",
+        "growing": "Berkembang"
+      }
+    },
+    "places": {
+      "openMaps": "Buka Peta",
+      "visit": "Lawati"
     }
   },
   "booking": {

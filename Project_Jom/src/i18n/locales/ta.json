@@ -32,8 +32,10 @@
     "appName": "MyTampines Assistant",
     "chat": "அரட்டை",
     "services": "சேவைகள்",
-    "history": "வரலாறு",
     "help": "உதவி",
+    "booking": "புகார்",
+    "announcements": "அறிவிப்புகள்",
+    "directory": "அட்டவணை",
     "newChat": "புதிய அரட்டை",
     "recentConversations": "சமீபத்திய உரையாடல்கள்",
     "backToHome": "முகப்புக்கு திரும்பு"
@@ -164,7 +166,9 @@
       "timeline": "செயல் காலவரிசை",
       "schemes": "உங்கள் திட்டங்கள்",
       "documents": "ஆவணங்கள்",
-      "places": "தம்பினேஸ் இடங்கள்"
+      "places": "தம்பினேஸ் இடங்கள்",
+      "opportunities": "வாய்ப்புகள்",
+      "trajectory": "12 மாத பார்வை"
     },
     "buttons": {
       "tryAnother": "← மற்றொரு சூழலை முயற்சி",
@@ -220,7 +224,38 @@
       "hiddenGemsTitle": "அடிக்கடி தவறவிடப்படுவது — உங்களைப் போன்றவர்கள் இதற்கும் தகுதி பெறலாம்...",
       "noSchemes": "இந்த சூழலுக்கான திட்டங்கள் எதுவும் கிடைக்கவில்லை.",
       "generated": "உருவாக்கப்பட்டது",
-      "footer": "MyTampines Assistant — வாழ்க்கை சூழல் வழிகாட்டி"
+      "footer": "MyTampines Assistant — வாழ்க்கை சூழல் வழிகாட்டி",
+      "noOpportunities": "இந்த சூழலுக்கு வாய்ப்புகள் எதுவும் இல்லை.",
+      "oppIntro": "இவை வெறும் திட்டங்கள் அல்ல — உங்கள் சூழலை மேம்படுத்த உதவும் நடைமுறை பாதைகள்.",
+      "defaultPersonalSummary": "உங்கள் தற்போதைய சூழல் மற்றும் தேர்ந்தெடுத்த சுயவிவர விவரங்கள்",
+      "basedOnProfile": "உங்கள் சுயவிவரத்தின் அடிப்படையில்:",
+      "recommendedBecause": "பரிந்துரைக்கப்படும் காரணம்:",
+      "reasonMatchesSituation": "உங்கள் சூழலுக்கு பொருந்துகிறது",
+      "reasonPracticalStep": "நடைமுறை அடுத்த படி",
+      "reasonNearbyOnline": "தம்பினீஸ் அருகில் அல்லது ஆன்லைனில் கிடைக்கும்",
+      "reasonOftenMissed": "அடிக்கடி தவறவிடப்படுகிறது",
+      "reasonUsefulSituation": "உங்கள் சூழலுக்கு பயனுள்ளது",
+      "reasonCheckEarly": "முன்கூட்டியே சரிபார்ப்பது நல்லது",
+      "clickCardExplore": "ஆராய கார்டை கிளிக் செய்யவும் →",
+      "noTrajectory": "உங்கள் 12 மாத முன்னோக்கைப் பார்க்க செயல் திட்டத்தை முடிக்கவும்.",
+      "supportOptionsAvailable": "ஆதரவு விருப்பங்கள் கிடைக்கின்றன",
+      "supportOptionsMessage": "உங்கள் சூழலின் அடிப்படையில் ஆதரவு விருப்பங்கள் உள்ளன. உதவி பெறவும் அடுத்த படிகளைப் பார்க்கவும் கீழே உள்ள நடவடிக்கைகளில் தொடங்குங்கள்.",
+      "financialEmploymentSupport": "நிதி & வேலைவாய்ப்பு ஆதரவு கிடைக்கிறது",
+      "noneListed": "எதுவும் பட்டியலிடப்படவில்லை.",
+      "oppClickToExplore": "மேலும் அறிய கார்டை அழுத்தவும் →",
+      "hiddenGemsSectionTitle": "மறைக்கப்பட்ட வாய்ப்புகள் — பலர் தவறவிடுபவை",
+      "oppOftenMissed": "அடிக்கடி தவறவிடப்படுகிறது",
+      "oppUsefulForSituation": "உங்கள் சூழலுக்கு பயனுள்ளதாக உள்ளது",
+      "oppWorthCheckingEarly": "முன்கூட்டியே பார்க்க வேண்டியது",
+      "oppProfileLabel": "உங்கள் சுயவிவரத்தின் அடிப்படையில்:",
+      "oppRecommendedBecause": "பரிந்துரைக்கப்பட்ட காரணம்:",
+      "oppMatchesSituation": "உங்கள் நிலைக்கு பொருந்துகிறது",
+      "oppPracticalNextStep": "நடைமுறையில் அடுத்த படி",
+      "oppAvailableNearby": "தம்பினீஸ் அருகில் அல்லது ஆன்லைனில் கிடைக்கும்",
+      "openMaps": "வரைபடத்தை திற",
+      "visitWebsite": "இணையதளத்தை பார்வையிடு",
+      "newSituation": "← மற்றொரு சூழலை முயற்சி",
+      "exportPdf": "⬇ PDF ஏற்றுமதி / அச்சிடு"
     },
     "shortSubtitle": "நீங்கள் எதிர்கொள்ளும் சூழலை எங்களிடம் கூறுங்கள். நீங்கள் தகுதி பெறக்கூடிய திட்டங்களை கண்டறிந்து செயல் திட்டத்தை உருவாக்குவோம்.",
     "inputQuestion": "நீங்கள் என்ன சூழலை எதிர்கொள்கிறீர்கள்?",
@@ -238,6 +273,63 @@
     },
     "alerts": {
       "planSaved": "திட்டம் சேமிக்கப்பட்டது! அதை உங்கள் சுயவிவரத்தில் பார்க்கலாம்."
+    },
+    "impact": {
+      "monthlySupport": "இந்த மாதம் கோரக்கூடியது",
+      "yearlyValue": "முதல் ஆண்டின் மதிப்பு",
+      "pathwayDistance": "வேலைவாழ்க்கை பாதை",
+      "coursesAwaySub": "மீண்டும் தகுதி பெற இன்னும்",
+      "courseCount": "{{count}} பாடநெறி",
+      "courseCount_plural": "{{count}} பாடநெறிகள்"
+    },
+    "trajectory": {
+      "now": "இப்போது",
+      "in12months": "12 மாதங்களில்",
+      "milestonesLabel": "உங்கள் எதிர்பார்க்கப்படும் முன்னேற்றங்கள்",
+      "totalUnlocked": "முதல் ஆண்டில் திறக்கப்படும் மொத்த மதிப்பு"
+    },
+    "opportunityTypes": {
+      "careerConversion": "வேலை மாற்றம்",
+      "upskilling": "திறன் மேம்பாடு",
+      "communityRole": "சமூக பங்கு",
+      "hiddenGem": "மறைந்த வாய்ப்பு",
+      "jobFair": "வேலைவாய்ப்பு கண்காட்சி / நிகழ்வு"
+    },
+    "opportunityCtas": {
+      "careerConversion": "CCP வாய்ப்புகளைப் பார்க்கவும் →",
+      "upskilling": "பாடநெறி பாதையைத் தொடங்கவும் →",
+      "jobFair": "பயிற்சிக்குப் பதிவு செய்யவும் →",
+      "communityRole": "பங்கைக் காணவும் →",
+      "default": "இப்போது விண்ணப்பிக்கவும் →"
+    },
+    "categories": {
+      "financial": "நிதி",
+      "healthcare": "சுகாதாரம்",
+      "housing": "வீடமைப்பு",
+      "employment": "வேலைவாய்ப்பு",
+      "education": "கல்வி",
+      "caregiving": "பராமரிப்பு",
+      "social": "சமூக"
+    },
+    "confidence": {
+      "high": "உயர்",
+      "medium": "நடுத்தரம்",
+      "low": "குறைவு"
+    },
+    "progress": {
+      "currentJourney": "உங்கள் தற்போதைய பயணம்",
+      "current": "தற்போது:",
+      "nextSuggestedStep": "அடுத்த பரிந்துரைக்கப்பட்ட படி:",
+      "stages": {
+        "crisis": "நெருக்கடி",
+        "stabilising": "நிலைப்படுத்துதல்",
+        "rebuilding": "மீண்டும் கட்டமைத்தல்",
+        "growing": "வளர்ச்சி"
+      }
+    },
+    "places": {
+      "openMaps": "வரைபடத்தைத் திறக்கவும்",
+      "visit": "பார்க்கவும்"
     }
   },
   "booking": {
