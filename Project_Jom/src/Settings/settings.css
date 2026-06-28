@@ -262,68 +262,6 @@
     color: #c1121f;
 }
 
-/* Global classes applied by AppLayout later */
-
-.text-large {
-    font-size: 112%;
-}
-
-.text-extra-large {
-    font-size: 124%;
-}
-
-.simple-view .help-directory-card,
-.simple-view .help-tutorial-card,
-.simple-view .help-faq-item,
-.simple-view .help-quick-card,
-.simple-view .settings-card {
-    border-width: 2px;
-}
-
-.simple-view .help-directory-main,
-.simple-view .help-tutorial-card,
-.simple-view .help-quick-card,
-.simple-view .settings-card {
-    padding: 30px;
-}
-
-.simple-view .help-directory-card h3,
-.simple-view .help-tutorial-card h3,
-.simple-view .settings-card h2 {
-    font-size: 1.35rem;
-}
-
-.high-contrast {
-    color: #111827;
-}
-
-.high-contrast .help-page,
-.high-contrast .settings-page {
-    background: #ffffff;
-}
-
-.high-contrast .help-directory-card,
-.high-contrast .help-tutorial-card,
-.high-contrast .help-faq-item,
-.high-contrast .help-quick-card,
-.high-contrast .settings-card,
-.high-contrast input,
-.high-contrast button {
-    border-color: #111827;
-}
-
-.high-contrast p {
-    color: #344054;
-}
-
-.reduce-motion *,
-.reduce-motion *::before,
-.reduce-motion *::after {
-    animation: none !important;
-    transition: none !important;
-    scroll-behavior: auto !important;
-}
-
 @media (max-width: 1050px) {
     .settings-hero {
         grid-template-columns: 1fr;
@@ -375,4 +313,74 @@
     .settings-toggle {
         width: 100%;
     }
+}
+
+.settings-sync-status {
+    margin-top: 18px !important;
+    display: inline-flex;
+    width: fit-content;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 0.9rem !important;
+    font-weight: 800;
+}
+
+.settings-reset-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.settings-reset-btn.danger {
+    border-color: #fecaca;
+    color: #b42318;
+}
+
+.settings-reset-btn.danger:hover {
+    background: #fff1f3;
+    border-color: #fda4af;
+    color: #98121b;
+}
+
+.settings-sync-status {
+  margin-top: 18px !important;
+  display: inline-flex;
+  width: fit-content;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: 0.9rem !important;
+  font-weight: 800;
+}
+
+.settings-sync-error {
+  margin-top: 10px !important;
+  display: inline-flex;
+  width: fit-content;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff !important;
+  font-size: 0.88rem !important;
+  font-weight: 800;
+}
+
+.settings-reset-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.settings-reset-btn.danger {
+  border-color: #fecaca;
+  color: #b42318;
+}
+
+.settings-reset-btn.danger:hover {
+  background: #fff1f3;
+  border-color: #fda4af;
+  color: #98121b;
 }

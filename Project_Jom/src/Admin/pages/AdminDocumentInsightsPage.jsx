@@ -17,11 +17,10 @@ export default function AdminDocumentInsightsPage() {
 
     if (loading) {
         return (
-            <main className="admin-dashboard-page">
-                <section className="admin-state-card">
-                    Loading document and scam intelligence...
-                </section>
-            </main>
+            <AdminLoadingState
+                title="Detecting Document & Scam Intelligence"
+                message="We are comparing document activity and scam risk indicators."
+            />
         );
     }
 

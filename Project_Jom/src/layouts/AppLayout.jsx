@@ -5,20 +5,36 @@ import "../App.css";
 
 const DEFAULT_SETTINGS = {
   textSize: "normal",
-  simpleView: false,
-  highContrast: false,
+  guidedMode: false,
   reduceMotion: false,
 };
 
-function readDisplaySettings() {
+function readAppSettings() {
   try {
-    const saved = JSON.parse(
+    const newSettings = JSON.parse(
+      localStorage.getItem("mytampinesAppSettings") || "{}"
+    );
+
+    const oldDisplaySettings = JSON.parse(
       localStorage.getItem("mytampinesDisplaySettings") || "{}"
     );
 
     return {
       ...DEFAULT_SETTINGS,
-      ...saved,
+      textSize:
+        newSettings.textSize ||
+        oldDisplaySettings.textSize ||
+        DEFAULT_SETTINGS.textSize,
+
+      guidedMode:
+        newSettings.guidedMode ??
+        oldDisplaySettings.simpleView ??
+        DEFAULT_SETTINGS.guidedMode,
+
+      reduceMotion:
+        newSettings.reduceMotion ??
+        oldDisplaySettings.reduceMotion ??
+        DEFAULT_SETTINGS.reduceMotion,
     };
   } catch {
     return DEFAULT_SETTINGS;
@@ -26,11 +42,11 @@ function readDisplaySettings() {
 }
 
 function AppLayout() {
-  const [settings, setSettings] = useState(readDisplaySettings);
+  const [settings, setSettings] = useState(readAppSettings);
 
   useEffect(() => {
     const handleSettingsChange = () => {
-      setSettings(readDisplaySettings());
+      setSettings(readAppSettings());
     };
 
     window.addEventListener(
@@ -50,8 +66,7 @@ function AppLayout() {
     "app-wrapper",
     settings.textSize === "large" ? "text-large" : "",
     settings.textSize === "extraLarge" ? "text-extra-large" : "",
-    settings.simpleView ? "simple-view" : "",
-    settings.highContrast ? "high-contrast" : "",
+    settings.guidedMode ? "guided-mode" : "",
     settings.reduceMotion ? "reduce-motion" : "",
   ]
     .filter(Boolean)

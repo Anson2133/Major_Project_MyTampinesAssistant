@@ -2,10 +2,6 @@
   min-height: 100vh;
   width: 100%;
 }
-#root {
-  min-height: 100vh;
-  width: 100%;
-}
 
 .app-wrapper {
   min-height: 100vh;
@@ -20,51 +16,42 @@
   font-size: 124%;
 }
 
-/* Simple view: bigger cards and clearer layout */
-.simple-view .help-directory-card,
-.simple-view .help-tutorial-card,
-.simple-view .help-faq-item,
-.simple-view .help-quick-card,
-.simple-view .settings-card,
-.simple-view .service-card,
-.simple-view .recommendation-card {
+/* Guided Mode: clearer resident-friendly layout */
+.guided-mode .help-directory-card,
+.guided-mode .help-tutorial-card,
+.guided-mode .help-faq-item,
+.guided-mode .help-quick-card,
+.guided-mode .settings-card,
+.guided-mode .service-card,
+.guided-mode .recommendation-card,
+.guided-mode .booking-card,
+.guided-mode .announcement-card {
   border-width: 2px;
 }
 
-.simple-view .help-directory-main,
-.simple-view .help-tutorial-card,
-.simple-view .help-quick-card,
-.simple-view .settings-card,
-.simple-view .service-card,
-.simple-view .recommendation-card {
+.guided-mode .help-directory-main,
+.guided-mode .help-tutorial-card,
+.guided-mode .help-quick-card,
+.guided-mode .settings-card,
+.guided-mode .service-card,
+.guided-mode .recommendation-card,
+.guided-mode .booking-card,
+.guided-mode .announcement-card {
   padding: 30px;
 }
 
-/* High contrast */
-.high-contrast {
-  color: #111827;
+.guided-mode .settings-card h2,
+.guided-mode .help-tutorial-card h3,
+.guided-mode .help-directory-card h3,
+.guided-mode .service-card h3,
+.guided-mode .recommendation-card h3 {
+  font-size: 1.35rem;
 }
 
-.high-contrast .help-page,
-.high-contrast .settings-page {
-  background: #ffffff;
-}
-
-.high-contrast .help-directory-card,
-.high-contrast .help-tutorial-card,
-.high-contrast .help-faq-item,
-.high-contrast .help-quick-card,
-.high-contrast .settings-card,
-.high-contrast .service-card,
-.high-contrast .recommendation-card,
-.high-contrast input,
-.high-contrast textarea,
-.high-contrast button {
-  border-color: #111827;
-}
-
-.high-contrast p {
-  color: #344054;
+.guided-mode button,
+.guided-mode .settings-option-btn,
+.guided-mode .settings-reset-btn {
+  min-height: 48px;
 }
 
 /* Reduce motion */
