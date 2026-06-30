@@ -1,0 +1,2058 @@
+.opp-page {
+  min-height: 100vh;
+  background: #f8fafc;
+  color: #101828;
+  padding: 36px 42px 72px;
+}
+
+.opp-page.simple {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.opp-simple-hero {
+  margin-bottom: 28px;
+  padding: 34px 36px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #b81c1d, #8f1518);
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: center;
+  box-shadow: 0 20px 44px rgba(184, 28, 29, 0.18);
+}
+
+.opp-simple-hero h1 {
+  margin: 6px 0 10px;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.opp-simple-hero p {
+  margin: 0;
+  max-width: 680px;
+  color: rgba(255, 255, 255, 0.86);
+  line-height: 1.6;
+}
+
+.opp-section {
+  margin-bottom: 28px;
+}
+
+.opp-section-kicker {
+  display: inline-flex;
+  color: #b81c1d;
+  font-size: 0.76rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.opp-simple-hero .opp-section-kicker {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.opp-section-header {
+  margin-bottom: 16px;
+}
+
+.opp-section-header h2,
+.opp-form-header h2,
+.opp-message-start-card h2 {
+  margin: 4px 0 6px;
+  color: #101828;
+  font-size: 1.45rem;
+  letter-spacing: -0.03em;
+}
+
+.opp-section-header p,
+.opp-form-header p,
+.opp-message-start-card p {
+  margin: 0;
+  color: #667085;
+  line-height: 1.55;
+}
+
+.opp-tabs {
+  display: inline-flex;
+  gap: 8px;
+  padding: 6px;
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+}
+
+.opp-tabs button {
+  border: none;
+  background: transparent;
+  color: #667085;
+  font-weight: 800;
+  padding: 10px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.opp-tabs button.active {
+  background: #b81c1d;
+  color: #ffffff;
+}
+
+.opp-primary-btn,
+.opp-form-footer button,
+.opp-post-footer button,
+.opp-search-row button,
+.opp-match-box button,
+.opp-message-start-actions button,
+.opp-new-chat-btn,
+.opp-inbox-input-box button {
+  border: none;
+  background: #b81c1d;
+  color: #ffffff;
+  border-radius: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: 0.2s ease;
+}
+
+.opp-primary-btn {
+  height: 46px;
+  padding: 0 18px;
+  flex-shrink: 0;
+}
+
+.opp-primary-btn:hover,
+.opp-form-footer button:hover,
+.opp-post-footer button:hover,
+.opp-search-row button:hover,
+.opp-match-box button:hover,
+.opp-message-start-actions button:hover,
+.opp-new-chat-btn:hover,
+.opp-inbox-input-box button:hover {
+  background: #991b1b;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.opp-search-row.simple,
+.opp-match-box.simple {
+  display: grid;
+  grid-template-columns: minmax(240px, 1fr) 180px 180px auto;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.opp-search-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff;
+  border: 1px solid #d0d5dd;
+  border-radius: 12px;
+  padding: 0 12px;
+  height: 46px;
+}
+
+.opp-search-box input {
+  border: none;
+  outline: none;
+  padding: 0;
+  height: auto;
+}
+
+.opp-search-row input,
+.opp-match-box input,
+.opp-match-box select,
+.opp-form-grid input,
+.opp-form-grid select,
+.opp-form-grid textarea,
+.opp-message-start-card textarea {
+  width: 100%;
+  border: 1px solid #d0d5dd;
+  outline: none;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #101828;
+  font-size: 0.95rem;
+}
+
+.opp-search-row input,
+.opp-match-box input,
+.opp-match-box select,
+.opp-form-grid input,
+.opp-form-grid select {
+  height: 46px;
+  padding: 0 13px;
+}
+
+.opp-form-grid textarea,
+.opp-message-start-card textarea {
+  resize: vertical;
+  padding: 13px;
+  line-height: 1.55;
+}
+
+.opp-search-row input:focus,
+.opp-search-box:focus-within,
+.opp-match-box select:focus,
+.opp-form-grid input:focus,
+.opp-form-grid select:focus,
+.opp-form-grid textarea:focus,
+.opp-message-start-card textarea:focus {
+  border-color: #b81c1d;
+  box-shadow: 0 0 0 3px rgba(184, 28, 29, 0.08);
+}
+
+.opp-match-box.simple {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 18px;
+  align-items: end;
+}
+
+.opp-match-box label,
+.opp-form-grid label {
+  display: grid;
+  gap: 8px;
+  color: #344054;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.opp-post-grid.simple {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.opp-post-card.simple,
+.opp-form-card,
+.opp-message-start-card.simple,
+.opp-state-card,
+.opp-empty-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+}
+
+.opp-post-card.simple {
+  padding: 22px;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+}
+
+.opp-post-card-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.opp-card-type {
+  display: inline-flex;
+  margin-bottom: 8px;
+  color: #b81c1d;
+  font-size: 0.78rem;
+  font-weight: 850;
+}
+
+.opp-post-card h3 {
+  margin: 0;
+  color: #101828;
+  font-size: 1.12rem;
+  line-height: 1.35;
+}
+
+.opp-match-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 0.78rem;
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+.opp-post-description {
+  margin: 14px 0;
+  color: #475467;
+  line-height: 1.6;
+  font-size: 0.94rem;
+}
+
+.opp-post-meta.simple {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.opp-post-meta.simple span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #667085;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.opp-pay-line,
+.opp-skill-line {
+  margin: 0 0 8px;
+  color: #475467;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.opp-match-simple {
+  margin-top: 8px;
+  padding: 12px;
+  border-radius: 14px;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+}
+
+.opp-match-simple strong {
+  display: block;
+  color: #101828;
+  font-size: 0.86rem;
+  margin-bottom: 4px;
+}
+
+.opp-match-simple p {
+  margin: 0;
+  color: #667085;
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.opp-post-footer {
+  margin-top: auto;
+  padding-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.opp-post-footer button,
+.opp-message-start-actions button {
+  height: 42px;
+  padding: 0 14px;
+}
+
+.opp-post-footer button.secondary,
+.opp-message-start-actions button.secondary,
+.opp-icon-text-btn {
+  background: #ffffff;
+  color: #475467;
+  border: 1px solid #d0d5dd;
+}
+
+.opp-post-footer button.secondary:hover,
+.opp-message-start-actions button.secondary:hover,
+.opp-icon-text-btn:hover {
+  background: #f9fafb;
+  color: #b81c1d;
+}
+
+.opp-message-start-card.simple {
+  padding: 22px;
+  display: grid;
+  gap: 14px;
+}
+
+.opp-message-start-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.opp-alert {
+  padding: 14px 16px;
+  border-radius: 14px;
+  font-weight: 800;
+}
+
+.opp-alert.error {
+  color: #b42318;
+  background: #fff1f3;
+  border: 1px solid #fecdca;
+}
+
+.opp-alert.success {
+  color: #067647;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+}
+
+.opp-state-card,
+.opp-empty-card {
+  padding: 28px;
+  text-align: center;
+  color: #667085;
+}
+
+.opp-empty-card.compact {
+  padding: 22px;
+}
+
+.opp-empty-card h3,
+.opp-empty-chat h3 {
+  margin: 8px 0 6px;
+  color: #101828;
+}
+
+.opp-empty-card p,
+.opp-empty-chat p {
+  margin: 0;
+  color: #667085;
+}
+
+.opp-form-card {
+  padding: 24px;
+}
+
+.opp-form-header {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.opp-form-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: #fcebec;
+  color: #b81c1d;
+  flex-shrink: 0;
+}
+
+.opp-ai-draft-box {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding: 14px;
+  border-radius: 16px;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+}
+
+.opp-ai-draft-box label {
+  display: grid;
+  gap: 8px;
+  color: #344054;
+  font-weight: 800;
+}
+
+.opp-ai-draft-box textarea {
+  width: 100%;
+  border: 1px solid #fdba74;
+  outline: none;
+  border-radius: 12px;
+  padding: 12px;
+  resize: vertical;
+}
+
+.opp-ai-button {
+  width: fit-content;
+  border: none;
+  border-radius: 12px;
+  background: #b81c1d;
+  color: #ffffff;
+  height: 40px;
+  padding: 0 14px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.opp-ai-notes {
+  padding: 12px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #fed7aa;
+}
+
+.opp-ai-notes ul {
+  margin: 6px 0 0;
+  padding-left: 18px;
+  color: #475467;
+  line-height: 1.5;
+}
+
+.opp-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.opp-form-grid label.full {
+  grid-column: 1 / -1;
+}
+
+.opp-declaration {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+  padding: 14px;
+  border-radius: 14px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  color: #475467;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  font-weight: 700;
+}
+
+.opp-form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.opp-safety-note {
+  color: #067647;
+  font-size: 0.88rem;
+  font-weight: 800;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.opp-form-footer button {
+  height: 44px;
+  padding: 0 16px;
+}
+
+.spin-icon {
+  animation: opp-spin 1s linear infinite;
+}
+
+@keyframes opp-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Inbox layout, similar to chatbot layout */
+
+.opp-inbox-layout {
+  display: flex;
+  height: 100vh;
+  background: #f8fafc;
+  color: #101828;
+  overflow: hidden;
+}
+
+.opp-inbox-sidebar {
+  width: 310px;
+  background: #ffffff;
+  border-right: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.opp-inbox-sidebar-header {
+  padding: 18px;
+  border-bottom: 1px solid #f3f4f6;
+  display: grid;
+  gap: 10px;
+}
+
+.opp-icon-text-btn,
+.opp-new-chat-btn {
+  height: 42px;
+  border-radius: 12px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.opp-inbox-sidebar-title {
+  padding: 18px 18px 8px;
+}
+
+.opp-inbox-sidebar-title h2 {
+  margin: 4px 0 0;
+  font-size: 1.2rem;
+}
+
+.opp-inbox-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 14px 20px;
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.opp-inbox-item {
+  width: 100%;
+  text-align: left;
+  border: 1px solid transparent;
+  background: transparent;
+  border-radius: 14px;
+  padding: 13px 14px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.opp-inbox-item:hover {
+  background: #f9fafb;
+  border-color: #e5e7eb;
+}
+
+.opp-inbox-item.active {
+  background: #fcebec;
+  border-color: #f3c7ca;
+}
+
+.opp-inbox-item strong {
+  display: block;
+  color: #101828;
+  font-size: 0.94rem;
+  margin-bottom: 4px;
+}
+
+.opp-inbox-item span {
+  display: block;
+  color: #b81c1d;
+  font-size: 0.78rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.opp-inbox-item p {
+  margin: 0;
+  color: #667085;
+  font-size: 0.84rem;
+  line-height: 1.35;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.opp-inbox-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.opp-inbox-header {
+  height: 96px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 20px 36px;
+  display: flex;
+  align-items: center;
+}
+
+.opp-inbox-header h1 {
+  margin: 3px 0 4px;
+  font-size: 1.45rem;
+  letter-spacing: -0.03em;
+}
+
+.opp-inbox-header p {
+  margin: 0;
+  color: #667085;
+  font-weight: 700;
+}
+
+.opp-inbox-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 30px 42px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background:
+    radial-gradient(circle at top left, rgba(184, 28, 29, 0.05), transparent 28%),
+    linear-gradient(180deg, #f8fafc 0%, #f4f6f8 100%);
+}
+
+.opp-chat-row {
+  display: flex;
+  max-width: 760px;
+  align-self: flex-start;
+}
+
+.opp-chat-row.own {
+  align-self: flex-end;
+}
+
+.opp-chat-bubble {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  color: #101828;
+  border-radius: 16px 16px 16px 4px;
+  padding: 13px 16px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+}
+
+.opp-chat-row.own .opp-chat-bubble {
+  background: #1e293b;
+  border-color: #1e293b;
+  color: #ffffff;
+  border-radius: 16px 16px 4px 16px;
+}
+
+.opp-chat-meta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 5px;
+  opacity: 0.8;
+}
+
+.opp-chat-meta strong {
+  font-size: 0.76rem;
+}
+
+.opp-chat-meta span {
+  font-size: 0.72rem;
+}
+
+.opp-chat-bubble p {
+  margin: 0;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.opp-message-status {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.72rem;
+  opacity: 0.75;
+}
+
+.opp-message-status.failed {
+  color: #fca5a5;
+}
+
+.opp-empty-chat.large {
+  margin: auto;
+  text-align: center;
+  color: #667085;
+}
+
+.opp-inbox-input-footer {
+  padding: 18px 28px;
+  background: #f8fafc;
+  border-top: 1px solid #e5e7eb;
+}
+
+.opp-inbox-input-box {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff;
+  border: 1px solid #d0d5dd;
+  border-radius: 14px;
+  padding: 8px 10px;
+}
+
+.opp-inbox-input-box:focus-within {
+  border-color: #b81c1d;
+  box-shadow: 0 0 0 3px rgba(184, 28, 29, 0.08);
+}
+
+.opp-inbox-input-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  height: 40px;
+  background: transparent;
+  font-size: 0.95rem;
+}
+
+.opp-inbox-input-box button {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.opp-inbox-input-footer p {
+  margin: 9px 0 0;
+  text-align: center;
+  color: #98a2b3;
+  font-size: 0.78rem;
+}
+
+.opp-mini-state,
+.opp-empty-mini {
+  color: #667085;
+  text-align: center;
+  padding: 18px 10px;
+}
+
+.opp-empty-mini strong {
+  display: block;
+  color: #101828;
+  margin: 8px 0 4px;
+}
+
+.opp-empty-mini p {
+  margin: 0;
+  line-height: 1.45;
+}
+
+@media (max-width: 980px) {
+  .opp-page {
+    padding: 24px 18px 56px;
+  }
+
+  .opp-simple-hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .opp-search-row.simple,
+  .opp-match-box.simple,
+  .opp-form-grid,
+  .opp-post-grid.simple {
+    grid-template-columns: 1fr;
+  }
+
+  .opp-inbox-layout {
+    flex-direction: column;
+  }
+
+  .opp-inbox-sidebar {
+    width: 100%;
+    height: 310px;
+  }
+
+  .opp-inbox-main {
+    min-height: 0;
+  }
+}
+/* ===============================
+   CLEANER OPPORTUNITY PAGE OVERRIDE
+   Paste at bottom of opportunity-connect.css
+================================ */
+
+.opp-page {
+  min-height: 100vh;
+  background: #f6f7f9;
+  color: #101828;
+  padding: 32px 40px 70px;
+}
+
+.opp-page.simple {
+  max-width: none;
+  width: 100%;
+  margin: 0;
+}
+
+/* Make content align with the app, not tiny centered */
+.opp-simple-hero,
+.opp-section {
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Smaller hero, not huge presentation banner */
+.opp-simple-hero {
+  margin-bottom: 24px;
+  padding: 32px 36px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #c1121f 0%, #9f111b 100%);
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  gap: 28px;
+  align-items: center;
+  box-shadow: 0 16px 36px rgba(193, 18, 31, 0.16);
+}
+
+.opp-simple-hero h1 {
+  margin: 6px 0 10px;
+  max-width: 720px;
+  font-size: 2.25rem;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.opp-simple-hero p {
+  margin: 0;
+  max-width: 660px;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.55;
+  font-size: 1rem;
+}
+
+.opp-simple-hero .opp-section-kicker {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* Tabs smaller and cleaner */
+.opp-tabs {
+  display: inline-flex;
+  gap: 6px;
+  padding: 5px;
+  margin-bottom: 8px;
+  border-radius: 14px;
+  background: #ffffff;
+  border: 1px solid #e4e7ec;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+.opp-tabs button {
+  border: none;
+  background: transparent;
+  color: #667085;
+  font-weight: 800;
+  padding: 9px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.opp-tabs button.active {
+  background: #c1121f;
+  color: #ffffff;
+}
+
+/* Section spacing */
+.opp-section {
+  margin-bottom: 26px;
+}
+
+.opp-section-header {
+  margin-bottom: 14px;
+}
+
+.opp-section-header h2 {
+  margin: 0 0 6px;
+  font-size: 1.45rem;
+  letter-spacing: -0.025em;
+}
+
+.opp-section-header p {
+  margin: 0;
+  color: #667085;
+}
+
+/* Search row should not stretch weirdly */
+.opp-search-row.simple {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) 170px 170px 110px;
+  gap: 10px;
+  max-width: 920px;
+  margin-bottom: 18px;
+}
+
+.opp-search-box,
+.opp-search-row input {
+  height: 44px;
+  border-radius: 12px;
+}
+
+.opp-search-row button {
+  height: 44px;
+  border-radius: 12px;
+}
+
+/* Cards should use space better */
+.opp-post-grid.simple {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  max-width: 1180px;
+}
+
+.opp-post-card.simple {
+  min-height: 260px;
+  padding: 20px;
+  border-radius: 18px;
+  background: #ffffff;
+  border: 1px solid #e4e7ec;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.045);
+}
+
+.opp-post-card.simple:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+}
+
+.opp-post-card h3 {
+  font-size: 1.08rem;
+}
+
+.opp-post-description {
+  font-size: 0.93rem;
+  line-height: 1.55;
+}
+
+/* Reduce visual clutter */
+.opp-card-type {
+  font-size: 0.76rem;
+  margin-bottom: 7px;
+}
+
+.opp-post-meta.simple {
+  gap: 7px;
+}
+
+.opp-post-meta.simple span {
+  font-size: 0.86rem;
+}
+
+.opp-pay-line,
+.opp-skill-line {
+  font-size: 0.88rem;
+}
+
+/* Cleaner buttons */
+.opp-primary-btn,
+.opp-post-footer button,
+.opp-search-row button,
+.opp-match-box button,
+.opp-message-start-actions button {
+  background: #c1121f;
+  color: white;
+  border: none;
+  font-weight: 800;
+}
+
+.opp-primary-btn:hover,
+.opp-post-footer button:hover,
+.opp-search-row button:hover,
+.opp-match-box button:hover,
+.opp-message-start-actions button:hover {
+  background: #9f111b;
+}
+
+.opp-post-footer button.secondary,
+.opp-message-start-actions button.secondary {
+  background: #ffffff;
+  color: #475467;
+  border: 1px solid #d0d5dd;
+}
+
+.opp-post-footer button.secondary:hover,
+.opp-message-start-actions button.secondary:hover {
+  background: #fff1f3;
+  color: #c1121f;
+  border-color: #fecdd3;
+}
+
+/* Message start card should not look huge */
+.opp-message-start-card.simple {
+  max-width: 760px;
+  padding: 22px;
+  border-radius: 18px;
+  background: #ffffff;
+  border: 1px solid #e4e7ec;
+}
+
+/* Match form cleaner */
+.opp-match-box.simple {
+  max-width: 980px;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) 150px;
+  padding: 18px;
+  border-radius: 18px;
+}
+
+/* Keep form normal width */
+.opp-form-card {
+  max-width: 980px;
+}
+
+/* Responsive */
+@media (max-width: 1180px) {
+  .opp-post-grid.simple {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 860px) {
+  .opp-page {
+    padding: 24px 18px 56px;
+  }
+
+  .opp-simple-hero {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 28px 24px;
+  }
+
+  .opp-simple-hero h1 {
+    font-size: 2rem;
+  }
+
+  .opp-search-row.simple,
+  .opp-match-box.simple,
+  .opp-post-grid.simple {
+    grid-template-columns: 1fr;
+  }
+
+  .opp-primary-btn {
+    width: 100%;
+  }
+}
+/* ===============================
+   PROFESSIONAL OPPORTUNITY INBOX UI
+   Paste at bottom of opportunity-connect.css
+================================ */
+
+.opp-inbox-layout {
+  display: flex;
+  height: calc(100vh - 82px);
+  background: #f8fafc;
+  color: #101828;
+  overflow: hidden;
+}
+
+/* LEFT CONVERSATION SIDEBAR */
+
+.opp-inbox-sidebar {
+  width: 360px;
+  background: #ffffff;
+  border-right: 1px solid #e4e7ec;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.opp-inbox-sidebar-header {
+  padding: 20px;
+  border-bottom: 1px solid #f2f4f7;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.opp-inbox-sidebar-header::before {
+  content: "Opportunity Inbox";
+  display: block;
+  color: #101828;
+  font-size: 1.2rem;
+  font-weight: 850;
+  letter-spacing: -0.025em;
+}
+
+.opp-icon-text-btn {
+  width: fit-content;
+  height: 38px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: #f9fafb;
+  color: #475467;
+  border: 1px solid #e4e7ec;
+  font-weight: 750;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+}
+
+.opp-icon-text-btn:hover {
+  background: #fff1f3;
+  color: #c1121f;
+  border-color: #fecdd3;
+}
+
+.opp-new-chat-btn {
+  height: 42px;
+  border-radius: 12px;
+  background: #c1121f;
+  color: #ffffff;
+  border: none;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.opp-new-chat-btn:hover {
+  background: #9f111b;
+}
+
+.opp-inbox-sidebar-title {
+  display: none;
+}
+
+.opp-inbox-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 12px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Conversation item professional style */
+
+.opp-inbox-item {
+  position: relative;
+  width: 100%;
+  min-height: 76px;
+  padding: 13px 14px 13px 58px;
+  border: 1px solid transparent;
+  border-radius: 16px;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: 0.18s ease;
+}
+
+.opp-inbox-item::before {
+  content: "";
+  position: absolute;
+  left: 14px;
+  top: 17px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #c1121f, #991b1b);
+  box-shadow: 0 6px 14px rgba(193, 18, 31, 0.18);
+}
+
+.opp-inbox-item::after {
+  content: "OC";
+  position: absolute;
+  left: 14px;
+  top: 17px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  color: white;
+  font-size: 0.68rem;
+  font-weight: 900;
+  display: grid;
+  place-items: center;
+}
+
+.opp-inbox-item:hover {
+  background: #f9fafb;
+}
+
+.opp-inbox-item.active {
+  background: #fff1f3;
+  border-color: #fecdd3;
+}
+
+.opp-inbox-item.active::before {
+  background: linear-gradient(135deg, #c1121f, #7f1d1d);
+}
+
+.opp-inbox-item strong {
+  display: block;
+  max-width: 230px;
+  margin-bottom: 3px;
+  color: #101828;
+  font-size: 0.94rem;
+  font-weight: 850;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.opp-inbox-item span {
+  display: block;
+  max-width: 230px;
+  margin-bottom: 5px;
+  color: #c1121f;
+  font-size: 0.76rem;
+  font-weight: 800;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.opp-inbox-item p {
+  margin: 0;
+  max-width: 245px;
+  color: #667085;
+  font-size: 0.82rem;
+  line-height: 1.35;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* MAIN CHAT AREA */
+
+.opp-inbox-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: #f8fafc;
+}
+
+.opp-inbox-header {
+  height: 82px;
+  padding: 16px 32px;
+  background: #ffffff;
+  border-bottom: 1px solid #e4e7ec;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.opp-inbox-header > div {
+  min-width: 0;
+}
+
+.opp-inbox-header .opp-section-kicker {
+  display: inline-flex;
+  margin-bottom: 3px;
+  color: #c1121f;
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.opp-inbox-header h1 {
+  margin: 0;
+  max-width: 760px;
+  color: #101828;
+  font-size: 1.25rem;
+  font-weight: 850;
+  letter-spacing: -0.025em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.opp-inbox-header p {
+  margin: 3px 0 0;
+  color: #667085;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+/* CHAT MESSAGE AREA */
+
+.opp-inbox-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 30px 48px 38px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background:
+    radial-gradient(circle at top left, rgba(193, 18, 31, 0.045), transparent 30%),
+    linear-gradient(180deg, #f8fafc 0%, #f4f6f8 100%);
+}
+
+.opp-chat-row {
+  display: flex;
+  width: 100%;
+  max-width: 860px;
+  align-self: flex-start;
+}
+
+.opp-chat-row.own {
+  align-self: flex-end;
+  justify-content: flex-end;
+}
+
+.opp-chat-bubble {
+  max-width: min(680px, 78%);
+  padding: 13px 16px;
+  border-radius: 18px 18px 18px 6px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  color: #101828;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.055);
+}
+
+.opp-chat-row.own .opp-chat-bubble {
+  background: #1e293b;
+  border-color: #1e293b;
+  color: #ffffff;
+  border-radius: 18px 18px 6px 18px;
+}
+
+.opp-chat-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px;
+  opacity: 0.78;
+}
+
+.opp-chat-meta strong {
+  font-size: 0.75rem;
+  font-weight: 850;
+}
+
+.opp-chat-meta span {
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.opp-chat-bubble p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.52;
+}
+
+.opp-message-status {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.72rem;
+  opacity: 0.75;
+}
+
+.opp-message-status.failed {
+  color: #fca5a5;
+}
+
+/* INPUT BAR */
+
+.opp-inbox-input-footer {
+  padding: 18px 28px 20px;
+  background: #ffffff;
+  border-top: 1px solid #e4e7ec;
+}
+
+.opp-inbox-input-box {
+  max-width: 880px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 54px;
+  padding: 7px 8px 7px 16px;
+  background: #ffffff;
+  border: 1px solid #d0d5dd;
+  border-radius: 16px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.opp-inbox-input-box:focus-within {
+  border-color: #c1121f;
+  box-shadow: 0 0 0 4px rgba(193, 18, 31, 0.08);
+}
+
+.opp-inbox-input-box input {
+  flex: 1;
+  height: 40px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #101828;
+  font-size: 0.96rem;
+}
+
+.opp-inbox-input-box input::placeholder {
+  color: #98a2b3;
+}
+
+.opp-inbox-input-box button {
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 12px;
+  background: #c1121f;
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.opp-inbox-input-box button:hover {
+  background: #9f111b;
+}
+
+.opp-inbox-input-box button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.opp-inbox-input-footer p {
+  margin: 9px 0 0;
+  text-align: center;
+  color: #98a2b3;
+  font-size: 0.76rem;
+  font-weight: 600;
+}
+
+/* EMPTY STATES */
+
+.opp-empty-chat.large {
+  margin: auto;
+  text-align: center;
+  color: #667085;
+}
+
+.opp-empty-chat.large svg {
+  color: #c1121f;
+  opacity: 0.75;
+}
+
+.opp-empty-chat.large h3 {
+  margin: 12px 0 6px;
+  color: #101828;
+  font-size: 1.15rem;
+}
+
+.opp-empty-chat.large p {
+  margin: 0;
+  color: #667085;
+}
+
+.opp-empty-mini {
+  padding: 28px 16px;
+  text-align: center;
+  color: #667085;
+}
+
+.opp-empty-mini svg {
+  color: #c1121f;
+  opacity: 0.75;
+}
+
+.opp-empty-mini strong {
+  display: block;
+  margin: 10px 0 5px;
+  color: #101828;
+}
+
+.opp-empty-mini p {
+  margin: 0;
+  color: #667085;
+  line-height: 1.45;
+}
+
+.opp-mini-state {
+  padding: 24px;
+  text-align: center;
+  color: #667085;
+  font-weight: 800;
+}
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+  .opp-inbox-layout {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .opp-inbox-sidebar {
+    width: 100%;
+    max-height: 300px;
+    border-right: none;
+    border-bottom: 1px solid #e4e7ec;
+  }
+
+  .opp-inbox-messages {
+    padding: 24px 18px;
+  }
+
+  .opp-chat-bubble {
+    max-width: 88%;
+  }
+
+  .opp-inbox-header {
+    padding: 16px 20px;
+  }
+}
+/* ===============================
+   OPPORTUNITY PAGE CLEAN FIX
+   Paste at bottom of opportunity-connect.css
+================================ */
+
+.opp-page {
+  background: #f6f7f9;
+  padding: 32px 44px 72px;
+}
+
+.opp-page.simple {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+/* Keep sections aligned */
+.opp-simple-hero,
+.opp-section {
+  max-width: 1120px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Make hero less huge */
+.opp-simple-hero {
+  padding: 30px 34px;
+  margin-bottom: 26px;
+  border-radius: 22px;
+}
+
+.opp-simple-hero h1 {
+  font-size: 2.15rem;
+  max-width: 620px;
+}
+
+.opp-simple-hero p {
+  max-width: 620px;
+  font-size: 0.98rem;
+}
+
+/* Tabs look cleaner */
+.opp-tabs {
+  margin-bottom: 22px;
+}
+
+/* Fix search row */
+.opp-search-row.simple {
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) 170px 170px 130px;
+  gap: 12px;
+  align-items: center;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+.opp-search-box {
+  height: 46px;
+  padding: 0 14px;
+  border: 1px solid #d0d5dd;
+  border-radius: 13px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* IMPORTANT: remove double input border inside search box */
+.opp-search-box input {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  height: auto !important;
+  padding: 0 !important;
+  background: transparent;
+}
+
+.opp-search-row.simple > input {
+  height: 46px;
+  border-radius: 13px;
+  border: 1px solid #d0d5dd;
+  background: #ffffff;
+  padding: 0 14px;
+}
+
+.opp-search-row.simple button {
+  height: 46px;
+  min-width: 120px;
+  border-radius: 13px;
+  white-space: nowrap;
+}
+
+/* Match box cleaner */
+.opp-match-box.simple {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(190px, 1fr)) 160px;
+  gap: 12px;
+  align-items: end;
+  max-width: 100%;
+  padding: 18px;
+}
+
+.opp-match-box.simple select {
+  height: 46px;
+  border-radius: 13px;
+}
+
+.opp-match-box.simple button {
+  height: 38px;
+  min-width: 150px;
+  border-radius: 999px;
+  white-space: nowrap;
+  align-self: end;
+  margin-bottom: 1px;
+}
+
+/* Make empty match state smaller */
+.opp-empty-card.compact,
+.opp-empty-card {
+  padding: 24px;
+  border-radius: 18px;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.045);
+}
+
+/* Better browse card grid */
+.opp-post-grid.simple {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(320px, 1fr));
+  gap: 18px;
+  max-width: 100%;
+}
+
+/* Card less tall and more professional */
+.opp-post-card.simple {
+  min-height: 0;
+  padding: 22px;
+  border-radius: 20px;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.05);
+}
+
+.opp-post-card.simple:hover {
+  transform: translateY(-2px);
+}
+
+.opp-post-card-header {
+  margin-bottom: 8px;
+}
+
+.opp-card-type {
+  margin-bottom: 8px;
+}
+
+.opp-post-description {
+  margin: 12px 0 16px;
+}
+
+.opp-post-meta.simple {
+  margin-bottom: 12px;
+}
+
+.opp-post-footer {
+  padding-top: 18px;
+}
+
+/* Buttons cleaner */
+.opp-post-footer button {
+  height: 42px;
+  padding: 0 16px;
+  border-radius: 13px;
+}
+
+/* Message draft box should not pull layout weirdly */
+.opp-message-start-card.simple {
+  max-width: 760px;
+  margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 1050px) {
+  .opp-search-row.simple,
+  .opp-match-box.simple {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .opp-search-row.simple button,
+  .opp-match-box.simple button {
+    width: 100%;
+  }
+
+  .opp-post-grid.simple {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .opp-page {
+    padding: 24px 18px 56px;
+  }
+
+  .opp-search-row.simple,
+  .opp-match-box.simple {
+    grid-template-columns: 1fr;
+  }
+
+  .opp-simple-hero {
+    padding: 26px 22px;
+  }
+}
+/* ===============================
+   FIX GREY BOX / PAGE WIDTH ISSUE
+   Paste at very bottom
+================================ */
+
+.opp-page {
+  width: 100%;
+  max-width: none !important;
+  min-height: calc(100vh - 82px);
+  background: #f6f7f9;
+  padding: 32px 0 72px !important;
+  margin: 0 !important;
+}
+
+.opp-page.simple {
+  width: 100%;
+  max-width: none !important;
+  margin: 0 !important;
+}
+
+/* Keep content centered inside the full grey page */
+.opp-simple-hero,
+.opp-section {
+  width: min(1120px, calc(100% - 64px));
+  max-width: 1120px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Make hero align nicely */
+.opp-simple-hero {
+  margin-top: 12px;
+  margin-bottom: 26px;
+}
+
+/* Fix card grid so it does not look too empty */
+.opp-post-grid.simple {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(320px, 1fr));
+  gap: 18px;
+}
+
+/* Fix search width */
+.opp-search-row.simple {
+  width: 100%;
+  max-width: none !important;
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) 170px 170px 130px;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Remove weird double border in search input */
+.opp-search-box input {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  height: auto !important;
+  padding: 0 !important;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .opp-simple-hero,
+  .opp-section {
+    width: calc(100% - 36px);
+  }
+
+  .opp-search-row.simple,
+  .opp-post-grid.simple {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Separate opportunity details panel */
+
+.opp-detail-card.simple {
+  background: #ffffff;
+  border: 1px solid #e4e7ec;
+  border-radius: 20px;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
+  padding: 24px;
+}
+
+.opp-detail-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.opp-detail-header h2 {
+  margin: 4px 0 5px;
+  color: #101828;
+  font-size: 1.45rem;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+}
+
+.opp-detail-header p,
+.opp-detail-description {
+  margin: 0;
+  color: #667085;
+  line-height: 1.55;
+}
+
+.opp-detail-description {
+  max-width: 880px;
+  margin-bottom: 18px;
+}
+
+.opp-icon-btn {
+  width: 38px;
+  height: 38px;
+  border: 1px solid #d0d5dd;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #475467;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.opp-icon-btn:hover {
+  background: #fff1f3;
+  color: #c1121f;
+  border-color: #fecdd3;
+}
+
+.opp-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.opp-detail-grid > div {
+  min-width: 0;
+  border: 1px solid #e4e7ec;
+  border-radius: 16px;
+  background: #f9fafb;
+  padding: 14px;
+  display: grid;
+  gap: 6px;
+}
+
+.opp-detail-grid svg {
+  color: #c1121f;
+}
+
+.opp-detail-grid span,
+.opp-detail-columns dt {
+  color: #667085;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.opp-detail-grid strong {
+  min-width: 0;
+  color: #101828;
+  font-size: 0.92rem;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.opp-detail-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(260px, 0.8fr);
+  gap: 22px;
+  padding-top: 18px;
+  border-top: 1px solid #eef2f6;
+}
+
+.opp-detail-columns h3 {
+  margin: 0 0 12px;
+  color: #101828;
+  font-size: 1rem;
+}
+
+.opp-detail-columns dl {
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.opp-detail-columns dd {
+  margin: 4px 0 0;
+  color: #475467;
+  line-height: 1.5;
+}
+
+.opp-detail-contact {
+  display: grid;
+  gap: 10px;
+}
+
+.opp-detail-contact span {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  color: #475467;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.opp-detail-contact svg {
+  color: #c1121f;
+  flex-shrink: 0;
+}
+
+.opp-detail-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.opp-detail-actions button {
+  height: 42px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 13px;
+  background: #c1121f;
+  color: #ffffff;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.opp-detail-actions button:hover {
+  background: #9f111b;
+}
+
+.opp-detail-actions button.secondary {
+  background: #ffffff;
+  color: #475467;
+  border: 1px solid #d0d5dd;
+}
+
+.opp-detail-actions button.secondary:hover {
+  background: #fff1f3;
+  color: #c1121f;
+  border-color: #fecdd3;
+}
+
+@media (max-width: 900px) {
+  .opp-detail-grid,
+  .opp-detail-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .opp-detail-actions {
+    flex-direction: column-reverse;
+  }
+
+  .opp-detail-actions button {
+    width: 100%;
+  }
+}

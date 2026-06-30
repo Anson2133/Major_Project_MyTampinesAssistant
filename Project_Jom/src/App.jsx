@@ -14,6 +14,8 @@ import AnnouncementsPage from "./Announcements/pages/AnnouncementsPage";
 import DirectoryPage from "./Help/pages/DirectoryPage";
 import SettingsPage from "./Settings/pages/SettingsPage";
 import BookingPage from "./Booking/pages/BookingPage";
+import OpportunityPage from "./Opportunity/pages/OpportunityConnectPage";
+import OpportunityInboxPage from "./Opportunity/pages/OpportunityInboxPage";
 
 function App() {
   return (
@@ -39,6 +41,8 @@ function App() {
         <Route path="/announcements" element={<AnnouncementsPage />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/booking" element={<BookingPage />} />
+        <Route path="/opportunity-connect" element={<OpportunityPage />} />
+        <Route path="/opportunity-connect/inbox" element={<OpportunityInboxPage />} />
       </Route>
 
     </Routes>
