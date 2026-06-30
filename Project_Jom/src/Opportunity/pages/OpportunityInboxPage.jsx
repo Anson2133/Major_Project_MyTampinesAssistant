@@ -37,7 +37,6 @@ export default function OpportunityInboxPage() {
     conversationsLoading,
     messagesLoading,
     sending,
-    socketStatus,
     selectConversation,
     sendMessage,
   } = useOpportunityConnect();
@@ -50,8 +49,6 @@ export default function OpportunityInboxPage() {
   const inboxTitle = selectedConversation
     ? selectedConversation.postTitle || selectedConversation.title
     : "Opportunity inbox";
-
-  const statusText = socketStatus === "polling" ? "Auto-refresh" : "Inbox";
 
   const sortedConversations = useMemo(() => {
     return [...conversations].sort((a, b) => {
@@ -111,14 +108,21 @@ export default function OpportunityInboxPage() {
     <div className="opp-inbox-layout">
       <aside className="opp-inbox-sidebar">
         <div className="opp-inbox-sidebar-header">
-          <button
-            type="button"
-            className="opp-icon-text-btn"
-            onClick={() => navigate("/opportunity-connect")}
-          >
-            <ArrowLeft size={18} />
-            Back
-          </button>
+          <div className="opp-inbox-sidebar-heading">
+            <div>
+              <span>Opportunity</span>
+              <h2>Inbox</h2>
+            </div>
+
+            <button
+              type="button"
+              className="opp-icon-text-btn"
+              onClick={() => navigate("/opportunity-connect")}
+              aria-label="Back to opportunities"
+            >
+              <ArrowLeft size={18} />
+            </button>
+          </div>
 
           <button
             type="button"
@@ -128,11 +132,6 @@ export default function OpportunityInboxPage() {
             <Plus size={18} />
             New message
           </button>
-        </div>
-
-        <div className="opp-inbox-sidebar-title">
-          <span className="opp-section-kicker">Messages</span>
-          <h2>Conversations</h2>
         </div>
 
         <div className="opp-inbox-list">
@@ -181,7 +180,7 @@ export default function OpportunityInboxPage() {
       <main className="opp-inbox-main">
         <header className="opp-inbox-header">
           <div>
-            <span className="opp-section-kicker">{statusText}</span>
+            <span className="opp-section-kicker">Messages</span>
             <h1>{inboxTitle}</h1>
             <p>
               {selectedConversation
@@ -272,8 +271,6 @@ export default function OpportunityInboxPage() {
               )}
             </button>
           </form>
-
-          <p>Messages refresh automatically every few seconds.</p>
         </footer>
       </main>
     </div>
