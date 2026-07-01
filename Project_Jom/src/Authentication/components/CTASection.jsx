@@ -11,7 +11,7 @@ export default function CTASection() {
         Join thousands of Tampines residents — free, fast, and always available.
       </p>
       <div className="cta-section__actions">
-        <a href="/login" className="btn btn-primary">
+        <a href="/auth?mode=register" className="btn btn-primary">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2"/>
             <path d="M12 8v4l3 3"/>

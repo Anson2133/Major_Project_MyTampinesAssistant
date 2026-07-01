@@ -7,6 +7,7 @@ import {
   MessageSquare,
   Plus,
   Send,
+  Sparkles,
 } from "lucide-react";
 
 import "../opportunity-connect.css";
@@ -25,30 +26,119 @@ function formatTime(value) {
   }
 }
 
+function getRoleLabel(role) {
+  if (role === "provider") return "Provider view";
+  if (role === "admin") return "Admin view";
+  return "Resident view";
+}
+
+function getReplyChips(role) {
+  if (role === "provider") {
+    return [
+      {
+        label: "Acknowledge interest",
+        instruction:
+          "Reply as the provider. Thank the resident for their interest and keep the reply warm and professional.",
+      },
+      {
+        label: "Ask screening question",
+        instruction:
+          "Reply as the provider. Ask one useful screening question about availability, experience, or comfort with the role.",
+      },
+      {
+        label: "Suggest timing",
+        instruction:
+          "Reply as the provider. Suggest a suitable next timing or ask the resident to confirm availability.",
+      },
+      {
+        label: "Close politely",
+        instruction:
+          "Reply as the provider. Politely explain that the opportunity may no longer be available and thank the resident.",
+      },
+    ];
+  }
+
+  if (role === "admin") {
+    return [
+      {
+        label: "Clarify issue",
+        instruction:
+          "Reply as platform admin. Ask for the key details needed to understand the issue safely.",
+      },
+      {
+        label: "Safety reminder",
+        instruction:
+          "Reply as platform admin. Give a short safety reminder without blaming either party.",
+      },
+      {
+        label: "Next safe step",
+        instruction:
+          "Reply as platform admin. Suggest the next safe step and avoid making promises.",
+      },
+    ];
+  }
+
+  return [
+    {
+      label: "Ask availability",
+      instruction:
+        "Reply as the resident. Ask whether the opportunity is still available and keep it polite.",
+    },
+    {
+      label: "Ask timing/location",
+      instruction:
+        "Reply as the resident. Ask about the exact timing and location, especially where to report.",
+    },
+    {
+      label: "Ask pay/requirements",
+      instruction:
+        "Reply as the resident. Ask about pay or allowance, requirements, and whether experience is needed.",
+    },
+    {
+      label: "Follow up politely",
+      instruction:
+        "Reply as the resident. Politely follow up because there has not been enough confirmation yet.",
+    },
+  ];
+}
+
 export default function OpportunityInboxPage() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
   const {
     userId,
+    userRole,
     conversations,
     selectedConversation,
     messages,
     conversationsLoading,
     messagesLoading,
     sending,
+    aiLoading,
     selectConversation,
     sendMessage,
+    draftReplySuggestion,
   } = useOpportunityConnect();
 
   const [draft, setDraft] = useState("");
+  const [customOpen, setCustomOpen] = useState(false);
+  const [customInstruction, setCustomInstruction] = useState("");
+  const [aiNextSteps, setAiNextSteps] = useState([]);
+  const [aiQuestions, setAiQuestions] = useState([]);
+
   const messagesEndRef = useRef(null);
 
   const selectedConversationId = searchParams.get("conversationId");
 
+  const activeConversationId =
+    selectedConversation?.conversationId || selectedConversationId;
+
   const inboxTitle = selectedConversation
     ? selectedConversation.postTitle || selectedConversation.title
     : "Opportunity inbox";
+
+  const replyChips = useMemo(() => getReplyChips(userRole), [userRole]);
 
   const sortedConversations = useMemo(() => {
     return [...conversations].sort((a, b) => {
@@ -91,7 +181,45 @@ export default function OpportunityInboxPage() {
 
   useEffect(() => {
     setDraft("");
+    setAiNextSteps([]);
+    setAiQuestions([]);
+    setCustomOpen(false);
+    setCustomInstruction("");
   }, [selectedConversation?.conversationId]);
+
+  const handleSelectConversation = async (conversation) => {
+    await selectConversation(conversation);
+
+    navigate(
+      `/opportunity-connect/inbox?conversationId=${encodeURIComponent(
+        conversation.conversationId
+      )}`,
+      { replace: true }
+    );
+  };
+
+  const handleSuggestReply = async (instruction) => {
+    if (!selectedConversation?.conversationId) return;
+
+    const result = await draftReplySuggestion(
+      selectedConversation,
+      messages,
+      instruction
+    );
+
+    if (!result) return;
+
+    if (result.suggestedReply) {
+      setDraft(result.suggestedReply);
+    }
+
+    setAiNextSteps(Array.isArray(result.nextSteps) ? result.nextSteps : []);
+    setAiQuestions(
+      Array.isArray(result.unansweredQuestions)
+        ? result.unansweredQuestions
+        : []
+    );
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -149,15 +277,14 @@ export default function OpportunityInboxPage() {
           ) : (
             sortedConversations.map((conversation) => {
               const isActive =
-                selectedConversation?.conversationId ===
-                conversation.conversationId;
+                activeConversationId === conversation.conversationId;
 
               return (
                 <button
                   type="button"
                   key={conversation.conversationId}
                   className={`opp-inbox-item ${isActive ? "active" : ""}`}
-                  onClick={() => selectConversation(conversation)}
+                  onClick={() => handleSelectConversation(conversation)}
                 >
                   <strong>
                     {conversation.postTitle ||
@@ -187,6 +314,14 @@ export default function OpportunityInboxPage() {
                 ? selectedConversation.businessName || "Opportunity poster"
                 : "Select a conversation to start messaging."}
             </p>
+
+            {selectedConversation?.verificationStatus === "verified" && (
+              <div className="opp-badge-row">
+                <span className="opp-status-badge verified-business">
+                  Verified Business
+                </span>
+              </div>
+            )}
           </div>
         </header>
 
@@ -248,6 +383,80 @@ export default function OpportunityInboxPage() {
         </section>
 
         <footer className="opp-inbox-input-footer">
+          {selectedConversation && (
+            <div className="opp-ai-chip-panel">
+              <div className="opp-ai-chip-header">
+                <div>
+                  <span>AI reply assistant</span>
+                  <strong>
+                    {userRole === "provider"
+                      ? "Choose a provider reply"
+                      : userRole === "admin"
+                        ? "Choose an admin reply"
+                        : "Choose a resident reply"}
+                  </strong>
+                </div>
+
+                <Sparkles size={18} />
+              </div>
+
+              <div className="opp-ai-chip-row">
+                {replyChips.map((chip) => (
+                  <button
+                    type="button"
+                    key={chip.label}
+                    disabled={aiLoading}
+                    onClick={() => handleSuggestReply(chip.instruction)}
+                  >
+                    {aiLoading ? "Writing..." : chip.label}
+                  </button>
+                ))}
+
+                <button
+                  type="button"
+                  className="secondary"
+                  onClick={() => setCustomOpen((prev) => !prev)}
+                >
+                  Custom
+                </button>
+              </div>
+
+              {customOpen && (
+                <div className="opp-ai-custom-box">
+                  <textarea
+                    value={customInstruction}
+                    onChange={(e) => setCustomInstruction(e.target.value)}
+                    rows={2}
+                    placeholder="Example: Ask if Saturday morning is available and whether I need to bring anything."
+                  />
+
+                  <button
+                    type="button"
+                    className="opp-ai-button"
+                    disabled={aiLoading || !customInstruction.trim()}
+                    onClick={() => handleSuggestReply(customInstruction)}
+                  >
+                    {aiLoading ? "Writing..." : "Use custom instruction"}
+                  </button>
+                </div>
+              )}
+
+              {(aiNextSteps.length > 0 || aiQuestions.length > 0) && (
+                <div className="opp-ai-mini-insights">
+                  {aiNextSteps.length > 0 && (
+                    <span>Next: {aiNextSteps.slice(0, 2).join(" · ")}</span>
+                  )}
+
+                  {aiQuestions.length > 0 && (
+                    <span>
+                      Missing: {aiQuestions.slice(0, 2).join(" · ")}
+                    </span>
+                  )}
+                </div>
+              )}
+            </div>
+          )}
+
           <form className="opp-inbox-input-box" onSubmit={handleSubmit}>
             <input
               value={draft}
@@ -271,6 +480,10 @@ export default function OpportunityInboxPage() {
               )}
             </button>
           </form>
+
+          <p>
+            AI suggestions are drafts only. Please check details before sending.
+          </p>
         </footer>
       </main>
     </div>

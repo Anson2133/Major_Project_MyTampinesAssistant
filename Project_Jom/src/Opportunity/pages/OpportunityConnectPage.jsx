@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router";
 import {
   Building2,
@@ -9,6 +9,7 @@ import {
   MessageSquare,
   Phone,
   Search,
+  Sparkles,
   UserRound,
   X,
 } from "lucide-react";
@@ -38,6 +39,9 @@ export default function OpportunityConnectPage() {
     fetchMatches,
     startConversation,
     draftOpportunityPost,
+    draftInitialMessage,
+    verifyBusiness,
+    getBusinessVerification,
   } = useOpportunityConnect();
 
   const [activeTab, setActiveTab] = useState("browse");
@@ -50,6 +54,23 @@ export default function OpportunityConnectPage() {
   const [detailPost, setDetailPost] = useState(null);
   const [messagePost, setMessagePost] = useState(null);
   const [messageDraft, setMessageDraft] = useState("");
+  const [messageInstruction, setMessageInstruction] = useState(
+    "Ask if the opportunity is still available. Mention my interest politely and ask about timing, location, pay, and next steps."
+  );
+
+  const POSTS_PER_PAGE = 6;
+  const [postsPage, setPostsPage] = useState(1);
+
+  const totalPostPages = Math.max(1, Math.ceil(posts.length / POSTS_PER_PAGE));
+
+  const paginatedPosts = useMemo(() => {
+    const start = (postsPage - 1) * POSTS_PER_PAGE;
+    return posts.slice(start, start + POSTS_PER_PAGE);
+  }, [posts, postsPage]);
+
+  useEffect(() => {
+    setPostsPage(1);
+  }, [posts.length]);
 
   const updateFilter = (field, value) => {
     setFilters((prev) => ({
@@ -67,6 +88,9 @@ export default function OpportunityConnectPage() {
     setDetailPost(null);
     setMessagePost(null);
     setMessageDraft("");
+    setMessageInstruction(
+      "Ask if the opportunity is still available. Mention my interest politely and ask about timing, location, pay, and next steps."
+    );
   };
 
   const handleTabChange = (tab) => {
@@ -74,12 +98,37 @@ export default function OpportunityConnectPage() {
     clearOpenPanels();
   };
 
-  const handleOpenMessageBox = (post) => {
+  const handleOpenMessageBox = async (post) => {
     setMessagePost(post);
     setDetailPost(null);
-    setMessageDraft(
-      `Hi, I saw your opportunity "${post.title}" and would like to find out more.`
+
+    const fallbackMessage = `Hi, I saw your opportunity "${post.title}" and would like to find out more.`;
+    setMessageDraft(fallbackMessage);
+
+    const instruction =
+      "Ask if the opportunity is still available. Mention my interest politely and ask about timing, location, pay, and next steps.";
+
+    setMessageInstruction(instruction);
+
+    const aiMessage = await draftInitialMessage(post, instruction);
+
+    if (aiMessage) {
+      setMessageDraft(aiMessage);
+    }
+  };
+
+  const handleSuggestMessage = async () => {
+    if (!messagePost) return;
+
+    const aiMessage = await draftInitialMessage(
+      messagePost,
+      messageInstruction ||
+        "Write a polite first message asking about this opportunity."
     );
+
+    if (aiMessage) {
+      setMessageDraft(aiMessage);
+    }
   };
 
   const handleOpenDetails = (post) => {
@@ -213,16 +262,48 @@ export default function OpportunityConnectPage() {
               <p>Try changing your search filters.</p>
             </div>
           ) : (
-            <div className="opp-post-grid simple">
-              {posts.map((post) => (
-                <OpportunityPostCard
-                  key={post.postId}
-                  post={post}
-                  onMessage={handleOpenMessageBox}
-                  onSelect={handleOpenDetails}
-                />
-              ))}
-            </div>
+            <>
+              <div className="opp-post-grid simple">
+                {paginatedPosts.map((post) => (
+                  <OpportunityPostCard
+                    key={post.postId}
+                    post={post}
+                    onMessage={handleOpenMessageBox}
+                    onSelect={handleOpenDetails}
+                  />
+                ))}
+              </div>
+
+              {posts.length > POSTS_PER_PAGE && (
+                <div className="opp-pagination">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setPostsPage((page) => Math.max(1, page - 1))
+                    }
+                    disabled={postsPage === 1}
+                  >
+                    Previous
+                  </button>
+
+                  <span>
+                    Page {postsPage} of {totalPostPages}
+                  </span>
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setPostsPage((page) =>
+                        Math.min(totalPostPages, page + 1)
+                      )
+                    }
+                    disabled={postsPage === totalPostPages}
+                  >
+                    Next
+                  </button>
+                </div>
+              )}
+            </>
           )}
         </section>
       )}
@@ -243,6 +324,8 @@ export default function OpportunityConnectPage() {
             onSubmit={createPost}
             posting={posting}
             onDraftPost={draftOpportunityPost}
+            onVerifyBusiness={verifyBusiness}
+            onGetBusinessVerification={getBusinessVerification}
             aiLoading={aiLoading}
           />
         </section>
@@ -302,8 +385,11 @@ export default function OpportunityConnectPage() {
                 <dl>
                   <div>
                     <dt>Pay or support</dt>
-                    <dd>{detailPost.payRange || "Ask the poster for details"}</dd>
+                    <dd>
+                      {detailPost.payRange || "Ask the poster for details"}
+                    </dd>
                   </div>
+
                   <div>
                     <dt>Skills</dt>
                     <dd>
@@ -313,6 +399,7 @@ export default function OpportunityConnectPage() {
                         : "No specific skills listed"}
                     </dd>
                   </div>
+
                   {detailPost.matchReasons?.length > 0 && (
                     <div>
                       <dt>Why this may fit</dt>
@@ -350,7 +437,10 @@ export default function OpportunityConnectPage() {
                 Close
               </button>
 
-              <button type="button" onClick={() => handleOpenMessageBox(detailPost)}>
+              <button
+                type="button"
+                onClick={() => handleOpenMessageBox(detailPost)}
+              >
                 <MessageSquare size={17} />
                 Message poster
               </button>
@@ -363,20 +453,55 @@ export default function OpportunityConnectPage() {
         <section className="opp-section">
           <div className="opp-message-start-card simple">
             <div>
-              <span className="opp-section-kicker">Message poster</span>
+              <span className="opp-section-kicker">AI message assistant</span>
               <h2>{messagePost.title}</h2>
               <p>
-                Send a short message. After starting the conversation, you will
-                continue in the inbox.
+                Tell the AI what you want to ask. It will draft a message using
+                your profile and this opportunity, but you can edit before
+                sending.
               </p>
             </div>
 
-            <textarea
-              value={messageDraft}
-              onChange={(e) => setMessageDraft(e.target.value)}
-              rows={4}
-              placeholder="Type your message..."
-            />
+            <div className="opp-ai-message-guide">
+              <label>
+                What should the message ask about?
+                <textarea
+                  value={messageInstruction}
+                  onChange={(e) => setMessageInstruction(e.target.value)}
+                  rows={3}
+                  placeholder="Example: Ask if the role is still available, whether weekends are possible, and what documents or experience are needed."
+                />
+              </label>
+
+              <button
+                type="button"
+                className="opp-ai-button"
+                disabled={aiLoading || !messagePost}
+                onClick={handleSuggestMessage}
+              >
+                {aiLoading ? (
+                  <>
+                    <Loader2 size={16} className="spin-icon" />
+                    Writing...
+                  </>
+                ) : (
+                  <>
+                    <Sparkles size={16} />
+                    Suggest message
+                  </>
+                )}
+              </button>
+            </div>
+
+            <label className="opp-message-draft-label">
+              Message to send
+              <textarea
+                value={messageDraft}
+                onChange={(e) => setMessageDraft(e.target.value)}
+                rows={4}
+                placeholder="Type your message..."
+              />
+            </label>
 
             <div className="opp-message-start-actions">
               <button

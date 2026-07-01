@@ -1,15 +1,18 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
 import { useAuth } from "../hooks/useAuth";
 import { User, Home, Globe, ArrowRight, Loader2 } from "lucide-react";
 
 function ProfileCard({ profile }) {
   const { login } = useAuth();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
   const handleSelect = async () => {
     try {
       setLoading(true);
       await login(profile.demoResidentId);
+      navigate("/services");
     } catch (error) {
       alert(error.message);
       setLoading(false);

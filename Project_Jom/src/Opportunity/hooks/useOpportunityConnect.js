@@ -8,6 +8,10 @@ function getUserId() {
   return localStorage.getItem("userId") || "demo-user-001";
 }
 
+function getUserRole() {
+  return localStorage.getItem("userRole") || "resident";
+}
+
 function getCachedProfile() {
   try {
     return JSON.parse(localStorage.getItem("cachedProfile") || "{}");
@@ -55,6 +59,7 @@ export default function useOpportunityConnect() {
   const [success, setSuccess] = useState("");
 
   const userId = useMemo(() => getUserId(), []);
+  const userRole = useMemo(() => getUserRole(), []);
   const profile = useMemo(() => getCachedProfile(), []);
   const displayName = useMemo(() => getDisplayName(), []);
 
@@ -85,8 +90,7 @@ export default function useOpportunityConnect() {
       const query = params.toString();
 
       const res = await fetch(
-        `${OPPORTUNITY_API}/opportunity-connect/posts${
-          query ? `?${query}` : ""
+        `${OPPORTUNITY_API}/opportunity-connect/posts${query ? `?${query}` : ""
         }`
       );
 
@@ -124,6 +128,10 @@ export default function useOpportunityConnect() {
         payRange: form.payRange,
         opportunityType: form.opportunityType,
         declarationAccepted: form.declarationAccepted,
+
+        businessVerification: form.businessVerification || null,
+        verificationStatus: form.verificationStatus || "pending",
+        verificationBadges: form.verificationBadges || [],
       };
 
       const res = await fetch(`${OPPORTUNITY_API}/opportunity-connect/posts`, {
@@ -299,7 +307,7 @@ export default function useOpportunityConnect() {
   const sendMessage = async (
     conversationId,
     message,
-    senderRole = "resident"
+    senderRole = userRole
   ) => {
     if (!conversationId || !message?.trim()) return;
 
@@ -353,10 +361,10 @@ export default function useOpportunityConnect() {
         prev.map((msg) =>
           msg.clientMessageId === clientMessageId
             ? {
-                ...msg,
-                pending: false,
-                failed: true,
-              }
+              ...msg,
+              pending: false,
+              failed: true,
+            }
             : msg
         )
       );
@@ -370,7 +378,7 @@ export default function useOpportunityConnect() {
 
   // WebSocket typing is disabled because execute-api:ManageConnections is blocked.
   // Keep this function so existing components do not break.
-  const sendTyping = () => {};
+  const sendTyping = () => { };
 
   const draftOpportunityPost = async (rawBrief, currentForm = {}) => {
     try {
@@ -401,6 +409,8 @@ export default function useOpportunityConnect() {
       setAiLoading(false);
     }
   };
+
+
 
   const draftInitialMessage = async (
     post,
@@ -437,6 +447,96 @@ export default function useOpportunityConnect() {
     }
   };
 
+  const draftReplySuggestion = async (
+    conversation,
+    conversationMessages = [],
+    instructions = ""
+  ) => {
+    try {
+      setAiLoading(true);
+      clearNotices();
+
+      const res = await fetch(
+        `${OPPORTUNITY_API}/opportunity-connect/ai/reply-draft`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            conversation,
+            messages: conversationMessages,
+            profile,
+            displayName,
+            currentUser: {
+              userId,
+              displayName,
+              role: userRole,
+            },
+            instructions,
+          }),
+        }
+      );
+
+      return await parseResponse(res);
+    } catch (err) {
+      console.error(err);
+      setError(err.message || "Could not suggest a reply.");
+      return null;
+    } finally {
+      setAiLoading(false);
+    }
+  };
+  const getBusinessVerification = async () => {
+    try {
+      clearNotices();
+
+      const url = new URL(
+        `${OPPORTUNITY_API}/opportunity-connect/business-verification`
+      );
+
+      url.searchParams.set("userId", userId);
+
+      const res = await fetch(url.toString());
+      return await parseResponse(res);
+    } catch (err) {
+      console.error(err);
+      setError(err.message || "Could not load business verification.");
+      return null;
+    }
+  };
+
+  const verifyBusiness = async ({ businessName, uen, businessAddress }) => {
+    try {
+      setAiLoading(true);
+      clearNotices();
+
+      const res = await fetch(
+        `${OPPORTUNITY_API}/opportunity-connect/business-verify`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userId,
+            businessName,
+            uen,
+            businessAddress,
+          }),
+        }
+      );
+
+      return await parseResponse(res);
+    } catch (err) {
+      console.error(err);
+      setError(err.message || "Could not verify business.");
+      return null;
+    } finally {
+      setAiLoading(false);
+    }
+  };
+
   const explainOpportunityMatch = async (post, matchInput = {}) => {
     try {
       setAiLoading(true);
@@ -467,6 +567,8 @@ export default function useOpportunityConnect() {
     }
   };
 
+
+
   // Initial page load
   useEffect(() => {
     fetchPosts();
@@ -494,6 +596,7 @@ export default function useOpportunityConnect() {
 
   return {
     userId,
+    userRole,
     profile,
     displayName,
 
@@ -535,6 +638,9 @@ export default function useOpportunityConnect() {
 
     draftOpportunityPost,
     draftInitialMessage,
+    draftReplySuggestion,
     explainOpportunityMatch,
+    verifyBusiness,
+    getBusinessVerification,
   };
 }

@@ -121,6 +121,96 @@ body {
   box-shadow: 0 8px 24px rgba(17, 24, 39, 0.04);
 }
 
+.auth-card--compact {
+  max-width: 520px;
+}
+
+.auth-toggle {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.auth-toggle__button {
+  flex: 1;
+  border: 1px solid #d1d5db;
+  border-radius: 999px;
+  background: #f9fafb;
+  color: #374151;
+  padding: 10px 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.auth-toggle__button.is-active {
+  background: #ef3340;
+  color: white;
+  border-color: #ef3340;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.auth-field label {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.auth-field input,
+.auth-field select {
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 0.95rem;
+  color: #111827;
+}
+
+.auth-field input:focus,
+.auth-field select:focus {
+  outline: 2px solid rgba(239, 51, 64, 0.2);
+  border-color: #ef3340;
+}
+
+.auth-submit {
+  border: none;
+  border-radius: 14px;
+  background: #ef3340;
+  color: white;
+  padding: 13px 16px;
+  font-size: 0.96rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.auth-submit:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.auth-message {
+  margin-top: 14px;
+  color: #b91c1c;
+  font-size: 0.95rem;
+}
+
+.auth-help {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: #6b7280;
+  text-align: center;
+}
+
 .auth-card-header {
   text-align: center;
   margin-bottom: 32px;
@@ -231,6 +321,157 @@ body {
 
 .auth-terms a:hover {
   text-decoration: underline;
+}
+
+/* =========================
+   Auth Panel
+   ========================= */
+
+.auth-panel {
+  width: 100%;
+  max-width: 540px;
+  background: #ffffff;
+  border: 1px solid rgba(229, 231, 235, 0.9);
+  border-radius: 28px;
+  padding: 32px;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+  margin: 0 auto;
+}
+
+.auth-panel__toggle {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 28px;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  padding: 4px;
+}
+
+.auth-panel__tab {
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: #475569;
+  padding: 12px 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.auth-panel__tab.is-active {
+  background: #ef3340;
+  color: white;
+}
+
+.auth-form--panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.auth-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.auth-grid--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.auth-field label {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.auth-field input,
+.auth-field select {
+  border: 1px solid #d1d5db;
+  border-radius: 14px;
+  padding: 14px 16px;
+  font-size: 0.95rem;
+  color: #111827;
+  background: #f8fafc;
+}
+
+.auth-field input:focus,
+.auth-field select:focus {
+  outline: 2px solid rgba(239, 51, 64, 0.18);
+  border-color: #ef3340;
+  background: #fff;
+}
+
+.auth-profile-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.auth-options {
+  display: grid;
+  gap: 10px;
+  padding: 10px 0 0;
+}
+
+.profile-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 12px 14px;
+  cursor: pointer;
+  background: #f8fafc;
+}
+
+.profile-checkbox input {
+  width: 16px;
+  height: 16px;
+  accent-color: #ef3340;
+}
+
+.auth-submit {
+  width: 100%;
+  border: none;
+  border-radius: 14px;
+  background: #ef3340;
+  color: white;
+  padding: 15px 18px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.auth-submit:hover:not(:disabled) {
+  background: #d32f2f;
+  transform: translateY(-1px);
+}
+
+.auth-submit:disabled {
+  opacity: 0.75;
+  cursor: wait;
+}
+
+.auth-panel__hint {
+  margin-top: 14px;
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.92rem;
+}
+
+@media (max-width: 760px) {
+  .auth-grid--three {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* =========================

@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from "react-router";
 import LoginPage from "./Authentication/pages/LoginPage";
+import AuthPage from "./Authentication/pages/AuthPage";
 import SelectProfilePage from "./Authentication/pages/SelectProfile";
 import ProfilePage from "./Profile/pages/ProfilePage";
 import AppLayout from "./layouts/AppLayout";
@@ -23,6 +24,7 @@ function App() {
       <Route path="/" element={<Navigate to="/login" replace />} />
 
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/auth" element={<AuthPage />} />
       <Route path="/select-profile" element={<SelectProfilePage />} />
 
       <Route element={<AppLayout />}>

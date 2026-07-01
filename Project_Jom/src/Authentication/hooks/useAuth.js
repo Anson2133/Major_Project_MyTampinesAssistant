@@ -1,29 +1,15 @@
 export function useAuth() {
-  const API_URL =
-    "https://9pidtz8z27.execute-api.us-east-1.amazonaws.com/auth/demo-login";
+  const API_BASE_URL =
+    import.meta.env.VITE_AUTH_API_URL ||
+    "https://9pidtz8z27.execute-api.us-east-1.amazonaws.com/auth";
 
-  const login = async (demoResidentId) => {
-    const res = await fetch(API_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ demoResidentId }),
-    });
-
-    const data = await res.json();
-
-    if (!res.ok) {
-      throw new Error(data.message || "Login failed");
-    }
-
+  const persistSession = (data) => {
     localStorage.setItem("sessionToken", data.sessionToken);
-    localStorage.setItem("userId", data.user?.userId);
+    localStorage.setItem("userId", data.user?.userId || data.user?.id || "");
+    localStorage.setItem("isLoggedIn", "true");
 
-    // Save user for navbar/chat/profile fallback
     localStorage.setItem("user", JSON.stringify(data.user || {}));
 
-    // Save profile immediately so Services/Chat/Navbar can use it
     localStorage.setItem(
       "cachedProfile",
       JSON.stringify({
@@ -37,10 +23,44 @@ export function useAuth() {
       })
     );
 
-    // Optional: keep old key too, if other parts of app still use "profile"
     localStorage.setItem("profile", JSON.stringify(data.profile || {}));
+  };
 
-    window.location.href = "/services";
+  const requestAuth = async (path, body) => {
+    const res = await fetch(`${API_BASE_URL}${path}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+
+    const data = await res.json().catch(() => ({}));
+
+    if (!res.ok) {
+      throw new Error(data.message || "Authentication failed");
+    }
+
+    return data;
+  };
+
+  const login = async (credentials) => {
+    if (credentials && typeof credentials === "object" && (credentials.email || credentials.password)) {
+      const data = await requestAuth("/login", credentials);
+      persistSession(data);
+      return data;
+    }
+
+    const demoResidentId = typeof credentials === "string" ? credentials : credentials?.demoResidentId;
+    const data = await requestAuth("/demo-login", { demoResidentId });
+    persistSession(data);
+    return data;
+  };
+
+  const register = async (credentials) => {
+    const data = await requestAuth("/register", credentials);
+    persistSession(data);
+    return data;
   };
 
   const logout = () => {
@@ -55,5 +75,5 @@ export function useAuth() {
     window.location.href = "/";
   };
 
-  return { login, logout };
+  return { login, register, logout };
 }

@@ -1,6 +1,6 @@
 const demoProfiles = [
   {
-    demoResidentId: "seniorMalay",
+    demoResidentId: "seniorResident",
     initials: "SR",
     name: "Mdm Siti Rahimah",
     role: "Senior Resident",
