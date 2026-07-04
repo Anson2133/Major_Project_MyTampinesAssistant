@@ -21,7 +21,18 @@ const facilitiesData = [
     websiteName: "SingHealth Polyclinics",
     phone: "6783 6680",
     filter: "Healthcare",
-    sport: null
+    sport: null,
+    imageUrl: "https://wherecrowded.sg/at/storage/images_p/68323-tn.jpg",
+    // NEW: Machine-readable logic data (24-hour format)
+    schedule: {
+      1: { open: "08:00", close: "16:30" }, // Mon
+      2: { open: "08:00", close: "16:30" }, // Tue
+      3: { open: "08:00", close: "16:30" }, // Wed
+      4: { open: "08:00", close: "16:30" }, // Thu
+      5: { open: "08:00", close: "16:30" }, // Fri
+      6: { open: "08:00", close: "12:30" }, // Sat
+      0: null // Sun (Closed)
+    }
   },
 
   {
@@ -44,7 +55,8 @@ const facilitiesData = [
     websiteName: "SingHealth Polyclinics",
     phone: "6322 7681",
     filter: "Healthcare",
-    sport: null
+    sport: null,
+    imageUrl: "https://polyclinic.singhealth.com.sg/adobe/dynamicmedia/deliver/dm-aid--9f887b86-b991-4169-8e43-1e514ed35772/microsoftteams-image-%281%29.png?preferwebp=true"
   },
 
   // SPORTS
@@ -70,7 +82,18 @@ const facilitiesData = [
     websiteName: "ActiveSG",
     phone: null,
     filter: "Sports",
-    sport: "Badminton"
+    sport: "Badminton",
+    imageUrl: "https://www.activesgcircle.gov.sg/hs-fs/hubfs/Circle%202-0_2021-%20Circle%20Website%20Refresh/Image/20230119_OTH%20Team%20Sport%20Hall_9058-new.webp?width=1104&height=398&name=20230119_OTH%20Team%20Sport%20Hall_9058-new.webp",
+    // NEW: Machine-readable logic data
+    schedule: {
+      1: { open: "07:00", close: "22:00" },
+      2: { open: "07:00", close: "22:00" },
+      3: { open: "07:00", close: "22:00" },
+      4: { open: "07:00", close: "22:00" },
+      5: { open: "07:00", close: "22:00" },
+      6: { open: "07:00", close: "22:00" },
+      0: { open: "07:00", close: "22:00" }
+    }
   },
 
   {
@@ -94,7 +117,8 @@ const facilitiesData = [
     websiteName: "OnePA",
     phone: "6786 3227",
     filter: "Sports",
-    sport: "Badminton"
+    sport: "Badminton",
+    imageUrl: "https://www.streetdirectory.com/stock_images/travel/simg_show/15972783520812/93422_1024/tampines_east_community_club_cc/"
   },
 
   {
@@ -118,7 +142,8 @@ const facilitiesData = [
     websiteName: "OnePA",
     phone: "6781 1806",
     filter: "Sports",
-    sport: "Badminton"
+    sport: "Badminton",
+    imageUrl: "https://media.timeout.com/images/106244538/1920/1080/image.webp"
   },
 
   {
@@ -142,7 +167,8 @@ const facilitiesData = [
     websiteName: "ActiveSG",
     phone: null,
     filter: "Sports",
-    sport: "Basketball"
+    sport: "Basketball",
+    imageUrl: "https://www.activesgcircle.gov.sg/hubfs/Circle%202-0_2021-%20Circle%20Website%20Refresh/Image/20221227_Tampines_5443.webp"
   },
 
   {
@@ -166,7 +192,8 @@ const facilitiesData = [
     websiteName: "ActiveSG",
     phone: null,
     filter: "Sports",
-    sport: "Swimming"
+    sport: "Swimming",
+    imageUrl: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80"
   },
 
   {
@@ -190,7 +217,8 @@ const facilitiesData = [
     websiteName: "SAFRA",
     phone: "6785 8800",
     filter: "Sports",
-    sport: "Swimming"
+    sport: "Swimming",
+    imageUrl: "https://prd-afd-sitefinity-h0ardtc3d4awdubh.a01.azurefd.net/media-library/images/default-source/default-album/swimming-pool.jpg?sfvrsn=db4d062a_0 "
   },
 
   {
@@ -214,7 +242,8 @@ const facilitiesData = [
     websiteName: "OnePA",
     phone: "6786 3227",
     filter: "Sports",
-    sport: "Futsal"
+    sport: "Futsal",
+    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSAfrm63aCVeNrIDhHGCd5k2v56OJ3Ix3OlB_rL4xsco6U2CzpELO72Tav&s=10"
   },
 
   {
@@ -238,7 +267,8 @@ const facilitiesData = [
     websiteName: "OnePA",
     phone: null,
     filter: "Sports",
-    sport: "Soccer"
+    sport: "Soccer",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Our_Tampines_Hub_Town_Square.jpg/960px-Our_Tampines_Hub_Town_Square.jpg.webp"
   },
 
   // BBQ
@@ -264,7 +294,8 @@ const facilitiesData = [
     websiteName: "OnePA",
     phone: null,
     filter: "BBQ",
-    sport: null
+    sport: null,
+    imageUrl: "https://workingwithgrace.wordpress.com/wp-content/uploads/2017/11/our-tampines-hub-barbecue-pits.jpg?w=584&h=389"
   },
 
   {
@@ -288,7 +319,8 @@ const facilitiesData = [
     websiteName: "OnePA",
     phone: null,
     filter: "BBQ",
-    sport: null
+    sport: null,
+    imageUrl: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80"
   },
 
   {
@@ -312,7 +344,8 @@ const facilitiesData = [
     websiteName: "OnePA",
     phone: null,
     filter: "BBQ",
-    sport: null
+    sport: null,
+    imageUrl: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80"
   },
 
   {
@@ -336,7 +369,8 @@ const facilitiesData = [
     websiteName: "SAFRA",
     phone: "6785 8800",
     filter: "BBQ",
-    sport: null
+    sport: null,
+    imageUrl: "https://prd-afd-sitefinity-h0ardtc3d4awdubh.a01.azurefd.net/media-library/images/default-source/facilities/barbeque-pits/bbq-pit-overview.jpg?sfvrsn=50634e54_2"
   },
 
   //Community Facilities
@@ -362,7 +396,8 @@ const facilitiesData = [
     websiteName: "Tampines Town Council",
     phone: "6781 2222",
     filter: "Community",
-    sport: null
+    sport: null,
+    imageUrl: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80"
   },
 
   {
@@ -386,7 +421,8 @@ const facilitiesData = [
     websiteName: "Tampines Town Council",
     phone: "6781 2222",
     filter: "Community",
-    sport: null
+    sport: null,
+    imageUrl: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80"
   },
 
   {
@@ -410,7 +446,8 @@ const facilitiesData = [
     websiteName: "Tampines Town Council",
     phone: "6781 2222",
     filter: "Community",
-    sport: null
+    sport: null,
+    imageUrl: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80"
   },
 
   {
@@ -434,7 +471,8 @@ const facilitiesData = [
     websiteName: "Tampines Town Council",
     phone: "6781 2222",
     filter: "Community",
-    sport: null
+    sport: null,
+    imageUrl: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80"
   },
 
   {
@@ -458,7 +496,8 @@ const facilitiesData = [
     websiteName: "Tampines Town Council",
     phone: "6781 2222",
     filter: "Community",
-    sport: null
+    sport: null,
+    imageUrl: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80"
   },
 
   {
@@ -482,7 +521,8 @@ const facilitiesData = [
     websiteName: "SAFRA",
     phone: "6785 8800",
     filter: "Community",
-    sport: null
+    sport: null,
+    imageUrl: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80"
   },
 
   // COURSES
@@ -509,7 +549,8 @@ const facilitiesData = [
     phone: "6788 1912",
     filter: "Courses",
     courseType: "Arts",
-    sport: null
+    sport: null,
+    imageUrl: "https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&w=600&q=80"
   },
 
   {
@@ -534,7 +575,8 @@ const facilitiesData = [
     phone: "6781 1806",
     filter: "Courses",
     courseType: "Kids",
-    sport: null
+    sport: null,
+    imageUrl: "https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&w=600&q=80"
   },
 
   {
@@ -558,7 +600,8 @@ const facilitiesData = [
     websiteName: "OnePA",
     filter: "Courses",
     courseType: "Dance",
-    sport: null
+    sport: null,
+    imageUrl: "https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&w=600&q=80"
   },
 
   {
@@ -577,7 +620,8 @@ const facilitiesData = [
     websiteName: "Tampines Town Council",
     phone: "6781 2222",
     filter: "Community",
-    sport: null
+    sport: null,
+    imageUrl: "https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&w=600&q=80"
   },
 
   {
@@ -596,7 +640,8 @@ const facilitiesData = [
     websiteName: "Tampines Town Council",
     phone: "6781 2222",
     filter: "Community",
-    sport: null
+    sport: null,
+    imageUrl: "https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&w=600&q=80"
   },
 
   {
@@ -615,7 +660,8 @@ const facilitiesData = [
     websiteName: "ActiveSG",
     phone: null,
     filter: "Sports",
-    sport: "Gym"
+    sport: "Gym",
+    imageUrl: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80"
   },
 
   {
@@ -634,7 +680,8 @@ const facilitiesData = [
     websiteName: "SAFRA",
     phone: "6785 8800",
     filter: "Sports",
-    sport: "Gym"
+    sport: "Gym",
+    imageUrl: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80"
   },
 
   {
@@ -653,7 +700,8 @@ const facilitiesData = [
     websiteName: "ActiveSG",
     phone: null,
     filter: "Sports",
-    sport: "Table Tennis"
+    sport: "Table Tennis",
+    imageUrl: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80"
   },
 ];
 

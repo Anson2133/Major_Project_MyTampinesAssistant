@@ -605,111 +605,171 @@
 .booking-step.completed-step .booking-step-num { background: #9ca3af; }
 .booking-step.completed-step .booking-step-content p { color: #9ca3af; text-decoration: line-through; }
 
-.booking-infowindow {
-  max-width: 280px;
+/* --- UPGRADED MAP POPUP UI --- */
+
+.booking-popup-card {
+  max-width: 300px;
   font-family: system-ui, -apple-system, sans-serif;
-  padding: 2px 0 4px;
+  padding: 0; /* Changed to 0 so the image touches the edges */
+  border-radius: 12px; /* Rounds the corners */
+  overflow: hidden; /* Keeps the image inside the rounded corners */
 }
 
-.booking-infowindow-badge {
-  font-size: 0.6rem;
-  font-weight: 700;
-  padding: 3px 10px;
-  border-radius: 999px;
-  display: inline-flex;
-  align-items: center;
-  margin-bottom: 9px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  white-space: nowrap;
+/* --- PASTE THESE 3 NEW CLASSES RIGHT BELOW IT --- */
+
+.booking-popup-image-wrapper {
+  position: relative; /* <--- ADD THIS */
+  width: 100%;
+  height: 140px; 
+  background: #f1f5f9;
+  border-bottom: 1px solid #e5e7eb;
 }
 
-.booking-infowindow-badge.sports     { background: #FCEBEC; color: #B81C1D; }
-.booking-infowindow-badge.healthcare { background: #ecfdf5; color: #16a34a; }
-.booking-infowindow-badge.community  { background: #eef2f8; color: #1e3a6e; }
-.booking-infowindow-badge.bbq        { background: #fff4ee; color: #ea580c; }
-.booking-infowindow-badge.courses    { background: #eef6ff; color: #2563eb; }
+/* --- ADD THIS NEW CLASS --- */
+.floating-badge {
+  position: absolute;
+  bottom: 10px;
+  left: 14px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+  backdrop-filter: blur(4px); /* Gives it a slight frosted glass effect if you use semi-transparent badge backgrounds */
+  z-index: 2;
+}
 
-.booking-infowindow h3 {
-  margin: 0 0 4px;
-  font-size: 1rem;
+.booking-popup-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  display: block;
+}
+
+.booking-popup-content {
+  padding: 14px; 
+}
+
+.booking-popup-header h3 {
+  margin: 6px 0 4px;
+  font-size: 1.05rem;
   font-weight: 800;
-  color: #101828;
-  letter-spacing: -0.02em;
-  line-height: 1.25;
+  color: #111827;
+  line-height: 1.2;
 }
 
-.booking-infowindow-address {
-  margin: 0 0 11px;
-  font-size: 0.76rem;
+.booking-popup-address {
+  margin: 0;
+  font-size: 0.75rem;
   color: #6b7280;
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  line-height: 1.3;
+}
+
+.booking-popup-address svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: #9ca3af;
+}
+
+.booking-popup-divider {
+  height: 1px;
+  background: #e5e7eb;
+  margin: 12px 0;
+}
+
+.booking-popup-desc {
+  margin: 0 0 12px;
+  font-size: 0.8rem;
+  color: #374151;
   line-height: 1.4;
 }
 
-.booking-infowindow-divider {
-  height: 1px;
-  background: #f0f0f0;
-  margin: 0 0 10px;
-}
-
-.booking-infowindow-desc,
-.booking-infowindow-hours,
-.booking-infowindow-req,
-.booking-infowindow-cost {
-  margin: 0 0 5px;
-  font-size: 0.76rem;
-  color: #374151;
-  line-height: 1.45;
-}
-
-.booking-infowindow-actions {
+/* The Grid Layout */
+.booking-popup-grid {
   display: flex;
   flex-direction: column;
-  gap: 7px;
-  margin-top: 13px;
+  gap: 10px;
+  background: #f8fafc;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #f1f5f9;
 }
 
-.booking-infowindow-directions-btn {
+.booking-popup-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.popup-icon {
+  flex-shrink: 0;
+  color: #B81C1D; /* Brand color to draw the eye */
+  margin-top: 2px;
+}
+
+.popup-text-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.popup-text-block strong {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+}
+
+.popup-text-block span {
+  font-size: 0.78rem;
+  color: #1e293b;
+  line-height: 1.3;
+}
+
+/* The Action Buttons */
+.booking-popup-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.booking-popup-primary-btn,
+.booking-popup-secondary-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  padding: 9px 16px;
-  background: #1e293b;
-  color: white;
-  border: none;
-  border-radius: 9px;
-  font-size: 0.8rem;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 0.85rem;
   font-weight: 700;
   cursor: pointer;
-  transition: background 0.2s, transform 0.15s;
+  transition: all 0.2s ease;
+  text-decoration: none;
   width: 100%;
 }
 
-.booking-infowindow-directions-btn:hover {
-  background: #0f172a;
-  transform: translateY(-1px);
-}
-
-.booking-infowindow-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 9px 16px;
+.booking-popup-primary-btn {
   background: #B81C1D;
   color: white;
-  border-radius: 9px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-decoration: none;
-  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-  text-align: center;
+  border: none;
 }
 
-.booking-infowindow-btn:hover {
-  background: #A1191A;
+.booking-popup-primary-btn:hover {
+  background: #9f1718;
   transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(184,28,29,0.25);
+  box-shadow: 0 4px 12px rgba(184, 28, 29, 0.2);
+}
+
+.booking-popup-secondary-btn {
+  background: white;
+  color: #1e293b;
+  border: 1px solid #cbd5e1;
+}
+
+.booking-popup-secondary-btn:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
 }
 
 .booking-loading {
@@ -729,6 +789,42 @@
   border-top: 3px solid #B81C1D;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
+}
+
+.booking-popup-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 6px 0 4px;
+}
+
+.booking-popup-title-row h3 {
+  margin: 0; /* Override the old margin since the row handles it */
+}
+
+.live-status-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  margin-top: 2px;
+}
+
+.live-status-badge.open {
+  background: #ecfdf5;
+  color: #059669;
+  border: 1px solid #a7f3d0;
+}
+
+.live-status-badge.closed {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
 }
 
 /* KEYFRAMES */
