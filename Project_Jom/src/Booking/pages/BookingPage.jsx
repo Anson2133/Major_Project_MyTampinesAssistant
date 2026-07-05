@@ -1,8 +1,38 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow, DirectionsRenderer, Circle } from "@react-google-maps/api";
 import { useTranslation } from "react-i18next";
+// NEW: Import the icons for the popup UI
+import { MapPin, Clock, Banknote, ClipboardList, Phone, Navigation, ExternalLink } from "lucide-react"; 
 import facilitiesData from "../data/facilitiesData";
 import "./booking.css";
+
+// --- TIME LOGIC UTILITY ---
+function checkIsOpenNow(schedule) {
+  if (!schedule) return null; // If we haven't added schedule data yet, return null
+
+  const now = new Date();
+  const currentDay = now.getDay(); // 0 is Sunday, 6 is Saturday
+  const currentHour = now.getHours();
+  const currentMinute = now.getMinutes();
+  
+  // Convert current time to a decimal for easy math (e.g., 14:30 -> 14.5)
+  const currentTime = currentHour + (currentMinute / 60); 
+
+  const todaySchedule = schedule[currentDay];
+  
+  if (!todaySchedule) return false; // If today is null, they are closed
+
+  // Convert "08:00" string into 8.0 decimal
+  const parseTime = (timeStr) => {
+    const [hrs, mins] = timeStr.split(':').map(Number);
+    return hrs + (mins / 60);
+  };
+
+  const openTime = parseTime(todaySchedule.open);
+  const closeTime = parseTime(todaySchedule.close);
+
+  return currentTime >= openTime && currentTime < closeTime;
+}
 
 const MAPS_API_KEY = "AIzaSyCoQrUXoCZwiVC4Y32s0KTMlqtvSjtHXHE";
 const TAMPINES_CENTER = { lat: 1.3521, lng: 103.9442 };
@@ -570,42 +600,121 @@ export default function BookingPage() {
                 position={{ lat: selectedFacility.lat, lng: selectedFacility.lng }}
                 onCloseClick={() => setSelectedFacility(null)}
               >
-                <div className="booking-infowindow">
-                  {/* Soft-tinted badge */}
-                  <span className={`booking-infowindow-badge ${catClass(selectedFacility.filter)}`}>
-                    {t(`booking.filters.${selectedFacility.filter.toLowerCase()}`)}
-                  </span>
-
-                  <h3>{selectedFacility.name}</h3>
-
-                  <p className="booking-infowindow-address">📍 {selectedFacility.address}</p>
-
-                  <div className="booking-infowindow-divider"></div>
-
-                  <p className="booking-infowindow-desc">{tFacility(selectedFacility.id, "description", selectedFacility.description)}</p>
-                  <p className="booking-infowindow-hours">🕐 {tFacility(selectedFacility.id, "openingHours", selectedFacility.openingHours)}</p>
-                  <p className="booking-infowindow-req">📋 {tFacility(selectedFacility.id, "requirements", selectedFacility.requirements)}</p>
-                  {selectedFacility.cost && (
-                    <p className="booking-infowindow-cost">💲 {tFacility(selectedFacility.id, "cost", selectedFacility.cost)}</p>
+                <div className="booking-popup-card">
+                  
+                  {/* NEW: IMAGE HEADER */}
+                  {selectedFacility.imageUrl && (
+                    <div className="booking-popup-image-wrapper">
+                      <img 
+                        src={selectedFacility.imageUrl} 
+                        alt={selectedFacility.name} 
+                        className="booking-popup-image"
+                        loading="lazy" 
+                      />
+                    </div>
                   )}
 
-                  <div className="booking-infowindow-actions">
-                    <button
-                      className="booking-infowindow-directions-btn"
-                      onClick={() => handleGetDirections(selectedFacility)}
-                    >
-                      {t("booking.getDirections")}
-                    </button>
-                    <a
-                      href={selectedFacility.bookingLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="booking-infowindow-btn"
-                    >
-                      {selectedFacility.category === "polyclinic"
-                        ? t("booking.viewServices")
-                        : `${t("booking.bookVia")} ${selectedFacility.websiteName}`} →
-                    </a>
+                  {/* NEW: WRAP CONTENT SO WE CAN CONTROL PADDING */}
+                  <div className="booking-popup-content">
+                    
+                    {/* HEADER */}
+                    <div className="booking-popup-header">
+                      
+                      {/* The title and the live badge sit in a row together now */}
+                      <div className="booking-popup-title-row">
+                        <h3>{selectedFacility.name}</h3>
+                        
+                        {/* THE LIVE STATUS BADGE */}
+                        {(() => {
+                          const isOpen = checkIsOpenNow(selectedFacility.schedule);
+                          if (isOpen === null) return null; // Hide if no data
+                          
+                          return (
+                            <span className={`live-status-badge ${isOpen ? "open" : "closed"}`}>
+                              {isOpen ? "🟢 Open" : "🔴 Closed"}
+                            </span>
+                          );
+                        })()}
+                      </div>
+
+                      <p className="booking-popup-address">
+                        <MapPin size={14} /> {selectedFacility.address}
+                      </p>
+                    </div>
+
+                    <div className="booking-popup-divider"></div>
+
+                    {/* BODY & GRID */}
+                    <div className="booking-popup-body">
+                      <p className="booking-popup-desc">
+                        {tFacility(selectedFacility.id, "description", selectedFacility.description)}
+                      </p>
+
+                      <div className="booking-popup-grid">
+                        {selectedFacility.openingHours && (
+                          <div className="booking-popup-row">
+                            <Clock size={16} className="popup-icon" />
+                            <div className="popup-text-block">
+                              <strong>Hours</strong>
+                              <span>{tFacility(selectedFacility.id, "openingHours", selectedFacility.openingHours)}</span>
+                            </div>
+                          </div>
+                        )}
+
+                        {selectedFacility.cost && (
+                          <div className="booking-popup-row">
+                            <Banknote size={16} className="popup-icon" />
+                            <div className="popup-text-block">
+                              <strong>Cost</strong>
+                              <span>{tFacility(selectedFacility.id, "cost", selectedFacility.cost)}</span>
+                            </div>
+                          </div>
+                        )}
+
+                        {selectedFacility.requirements && (
+                          <div className="booking-popup-row">
+                            <ClipboardList size={16} className="popup-icon" />
+                            <div className="popup-text-block">
+                              <strong>Note</strong>
+                              <span>{tFacility(selectedFacility.id, "requirements", selectedFacility.requirements)}</span>
+                            </div>
+                          </div>
+                        )}
+
+                        {selectedFacility.phone && (
+                          <div className="booking-popup-row">
+                            <Phone size={16} className="popup-icon" />
+                            <div className="popup-text-block">
+                              <strong>Contact</strong>
+                              <span>{selectedFacility.phone}</span>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* ACTIONS */}
+                    <div className="booking-popup-actions">
+                      <button
+                        className="booking-popup-secondary-btn"
+                        onClick={() => handleGetDirections(selectedFacility)}
+                      >
+                        <Navigation size={16} /> {t("booking.getDirections")}
+                      </button>
+                      
+                      <a
+                        href={selectedFacility.bookingLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="booking-popup-primary-btn"
+                      >
+                        {selectedFacility.category === "polyclinic"
+                          ? t("booking.viewServices")
+                          : `${t("booking.bookVia")} ${selectedFacility.websiteName}`}
+                        <ExternalLink size={16} />
+                      </a>
+                    </div>
+
                   </div>
                 </div>
               </InfoWindow>
