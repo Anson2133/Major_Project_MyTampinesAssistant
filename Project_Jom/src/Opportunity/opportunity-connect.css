@@ -3171,6 +3171,7 @@ button:disabled {
     justify-content: center;
   }
 }
+
 .opp-pagination {
   display: flex;
   justify-content: center;
@@ -3205,4 +3206,350 @@ button:disabled {
   color: #667085;
   font-size: 0.9rem;
   font-weight: 800;
+}
+
+.opp-situation-layout {
+  display: grid;
+  gap: 18px;
+}
+
+.opp-situation-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 22px;
+  border-radius: 24px;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+}
+
+.opp-situation-hero h2 {
+  margin: 6px 0 8px;
+  color: #101828;
+  font-size: 1.45rem;
+}
+
+.opp-situation-hero p {
+  margin: 0;
+  max-width: 760px;
+  color: #667085;
+  line-height: 1.55;
+}
+
+.opp-situation-hero-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 18px;
+  background: #ffffff;
+  color: #c1121f;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+}
+
+.opp-situation-card {
+  padding: 20px;
+  border-radius: 22px;
+  background: #ffffff;
+  border: 1px solid #e4e7ec;
+  box-shadow: 0 14px 40px rgba(16, 24, 40, 0.06);
+  display: grid;
+  gap: 16px;
+}
+
+.opp-situation-step {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.opp-situation-step>span {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: #c1121f;
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  flex: 0 0 auto;
+}
+
+.opp-situation-step h3 {
+  margin: 0 0 4px;
+  color: #101828;
+  font-size: 1.05rem;
+}
+
+.opp-situation-step p {
+  margin: 0;
+  color: #667085;
+  line-height: 1.45;
+  font-size: 0.92rem;
+}
+
+.opp-situation-card textarea {
+  width: 100%;
+  border: 1px solid #d0d5dd;
+  outline: none;
+  border-radius: 14px;
+  background: #ffffff;
+  color: #101828;
+  padding: 13px;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.opp-situation-card textarea:focus {
+  border-color: #c1121f;
+  box-shadow: 0 0 0 3px rgba(193, 18, 31, 0.08);
+}
+
+.opp-situation-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.opp-situation-actions button,
+.opp-situation-rec-actions button {
+  min-height: 40px;
+  padding: 0 14px;
+  border: none;
+  border-radius: 12px;
+  background: #c1121f;
+  color: #ffffff;
+  font-weight: 850;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.opp-situation-actions button.secondary,
+.opp-situation-rec-actions button.secondary {
+  background: #ffffff;
+  color: #344054;
+  border: 1px solid #d0d5dd;
+}
+
+.opp-situation-actions button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.opp-situation-summary-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #166534;
+}
+
+.opp-situation-summary-card strong {
+  display: block;
+  margin-bottom: 3px;
+}
+
+.opp-situation-summary-card p {
+  margin: 0;
+  line-height: 1.45;
+}
+
+.opp-question-list {
+  display: grid;
+  gap: 12px;
+}
+
+.opp-question-card {
+  padding: 14px;
+  border: 1px solid #e4e7ec;
+  border-radius: 16px;
+  background: #f8fafc;
+  display: grid;
+  gap: 10px;
+}
+
+.opp-question-card>div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #101828;
+}
+
+.opp-question-card svg {
+  color: #c1121f;
+}
+
+.opp-question-card select,
+.opp-question-card input {
+  width: 100%;
+  height: 42px;
+  border: 1px solid #d0d5dd;
+  border-radius: 12px;
+  outline: none;
+  padding: 0 12px;
+  color: #101828;
+  background: #ffffff;
+}
+
+.opp-situation-recommendations {
+  display: grid;
+  gap: 14px;
+}
+
+.opp-situation-recommendation-card {
+  display: grid;
+  grid-template-columns: 54px 1fr;
+  gap: 14px;
+  padding: 16px;
+  border-radius: 18px;
+  background: #f8fafc;
+  border: 1px solid #e4e7ec;
+}
+
+.opp-situation-rank {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: #c1121f;
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+}
+
+.opp-situation-rec-content {
+  display: grid;
+  gap: 10px;
+}
+
+.opp-situation-rec-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.opp-situation-rec-header h4 {
+  margin: 0 0 4px;
+  color: #101828;
+  font-size: 1rem;
+}
+
+.opp-situation-rec-header p {
+  margin: 0;
+  color: #667085;
+  font-size: 0.9rem;
+}
+
+.opp-situation-rec-header span {
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: #dcfce7;
+  color: #166534;
+  font-weight: 900;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.opp-situation-rec-reason {
+  margin: 0;
+  color: #344054;
+  line-height: 1.5;
+}
+
+.opp-situation-recommendation-card ul {
+  margin: 0;
+  padding-left: 18px;
+  color: #475467;
+  line-height: 1.5;
+}
+
+.opp-situation-rec-meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.opp-situation-rec-meta span {
+  padding: 6px 9px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid #e4e7ec;
+  color: #475467;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.opp-situation-rec-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.opp-situation-example-card {
+  padding: 16px;
+  border-radius: 18px;
+  background: #f8fafc;
+  border: 1px dashed #d0d5dd;
+  display: grid;
+  gap: 12px;
+}
+
+.opp-situation-example-card strong {
+  color: #101828;
+}
+
+.opp-situation-example-card div {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.opp-situation-example-card button {
+  border: 1px solid #d0d5dd;
+  background: #ffffff;
+  color: #344054;
+  padding: 9px 12px;
+  border-radius: 999px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.opp-situation-example-card button:hover {
+  border-color: #c1121f;
+  color: #c1121f;
+}
+
+.opp-situation-tip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #667085;
+  font-weight: 750;
+}
+
+@media (max-width: 760px) {
+  .opp-situation-hero {
+    flex-direction: column;
+  }
+
+  .opp-situation-recommendation-card {
+    grid-template-columns: 1fr;
+  }
+
+  .opp-situation-rec-header {
+    flex-direction: column;
+  }
+
+  .opp-situation-actions button,
+  .opp-situation-rec-actions button {
+    width: 100%;
+    justify-content: center;
+  }
 }

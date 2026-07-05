@@ -20,6 +20,7 @@ import useOpportunityConnect from "../hooks/useOpportunityConnect";
 import OpportunityPostForm from "../components/OpportunityPostForm";
 import OpportunityPostCard from "../components/OpportunityPostCard";
 import OpportunityMatchPanel from "../components/OpportunityMatchPanel";
+import OpportunitySituationGuide from "../components/OpportunitySituationGuide";
 
 export default function OpportunityConnectPage() {
   const navigate = useNavigate();
@@ -32,6 +33,7 @@ export default function OpportunityConnectPage() {
     posting,
     sending,
     aiLoading,
+    situationLoading,
     error,
     success,
     fetchPosts,
@@ -42,6 +44,8 @@ export default function OpportunityConnectPage() {
     draftInitialMessage,
     verifyBusiness,
     getBusinessVerification,
+    generateSituationQuestions,
+    generateSituationRecommendations,
   } = useOpportunityConnect();
 
   const [activeTab, setActiveTab] = useState("browse");
@@ -123,7 +127,7 @@ export default function OpportunityConnectPage() {
     const aiMessage = await draftInitialMessage(
       messagePost,
       messageInstruction ||
-        "Write a polite first message asking about this opportunity."
+      "Write a polite first message asking about this opportunity."
     );
 
     if (aiMessage) {
@@ -165,8 +169,8 @@ export default function OpportunityConnectPage() {
           <span className="opp-section-kicker">Opportunity Connect</span>
           <h1>Local opportunities for Tampines residents</h1>
           <p>
-            Residents can browse opportunities, find suitable matches, and
-            message posters from a separate inbox.
+            Residents can describe their situation, receive guided opportunity
+            suggestions, and message verified business posters.
           </p>
         </div>
 
@@ -203,6 +207,14 @@ export default function OpportunityConnectPage() {
             onClick={() => handleTabChange("match")}
           >
             Match
+          </button>
+
+          <button
+            type="button"
+            className={activeTab === "situation" ? "active" : ""}
+            onClick={() => handleTabChange("situation")}
+          >
+            Situation Guide
           </button>
 
           <button
@@ -318,6 +330,19 @@ export default function OpportunityConnectPage() {
         />
       )}
 
+      {activeTab === "situation" && (
+        <section className="opp-section">
+          <OpportunitySituationGuide
+            posts={posts}
+            loading={situationLoading}
+            onGenerateQuestions={generateSituationQuestions}
+            onGenerateRecommendations={generateSituationRecommendations}
+            onMessage={handleOpenMessageBox}
+            onSelect={handleOpenDetails}
+          />
+        </section>
+      )}
+
       {activeTab === "post" && (
         <section className="opp-section">
           <OpportunityPostForm
@@ -394,7 +419,7 @@ export default function OpportunityConnectPage() {
                     <dt>Skills</dt>
                     <dd>
                       {Array.isArray(detailPost.skills) &&
-                      detailPost.skills.length > 0
+                        detailPost.skills.length > 0
                         ? detailPost.skills.join(", ")
                         : "No specific skills listed"}
                     </dd>

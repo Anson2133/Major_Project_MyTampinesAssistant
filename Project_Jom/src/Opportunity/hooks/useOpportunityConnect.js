@@ -54,6 +54,7 @@ export default function useOpportunityConnect() {
   const [posting, setPosting] = useState(false);
   const [sending, setSending] = useState(false);
   const [aiLoading, setAiLoading] = useState(false);
+  const [situationLoading, setSituationLoading] = useState(false);
 
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -487,6 +488,75 @@ export default function useOpportunityConnect() {
       setAiLoading(false);
     }
   };
+
+  const generateSituationQuestions = async (situation) => {
+    try {
+      setSituationLoading(true);
+      clearNotices();
+
+      const res = await fetch(
+        `${OPPORTUNITY_API}/opportunity-connect/ai/situation-questions`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userId,
+            profile,
+            situation,
+          }),
+        }
+      );
+
+      return await parseResponse(res);
+    } catch (err) {
+      console.error(err);
+      setError(err.message || "Could not analyse the situation.");
+      return null;
+    } finally {
+      setSituationLoading(false);
+    }
+  };
+
+  const generateSituationRecommendations = async ({
+    situation,
+    situationSummary,
+    answers,
+    posts,
+  }) => {
+    try {
+      setSituationLoading(true);
+      clearNotices();
+
+      const res = await fetch(
+        `${OPPORTUNITY_API}/opportunity-connect/ai/situation-recommendations`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userId,
+            profile,
+            situation,
+            situationSummary,
+            answers,
+            posts,
+          }),
+        }
+      );
+
+      return await parseResponse(res);
+    } catch (err) {
+      console.error(err);
+      setError(err.message || "Could not recommend opportunities.");
+      return null;
+    } finally {
+      setSituationLoading(false);
+    }
+  };
+
   const getBusinessVerification = async () => {
     try {
       clearNotices();
@@ -614,6 +684,7 @@ export default function useOpportunityConnect() {
     posting,
     sending,
     aiLoading,
+    situationLoading,
 
     socketStatus,
     typingText,
@@ -642,5 +713,7 @@ export default function useOpportunityConnect() {
     explainOpportunityMatch,
     verifyBusiness,
     getBusinessVerification,
+    generateSituationQuestions,
+    generateSituationRecommendations,
   };
 }
