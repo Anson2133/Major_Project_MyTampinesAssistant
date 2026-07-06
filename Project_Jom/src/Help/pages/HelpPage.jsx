@@ -11,11 +11,13 @@ import {
   Megaphone,
   Search,
   ShieldCheck,
-  UserRound,
-} from "lucide-react";
+  UserRound
+} from "lucide-react"; // Removed Volume imports
 
 import HelpFaq from "../components/HelpFaq";
 import useHelpDirectory from "../hooks/useHelpDirectory";
+import useAudioGuide from "../../Audio/hooks/useAudioGuide";
+import FloatingAudioButton from "../../Audio/components/FloatingAudioButton"; // NEW IMPORT
 
 import "../help.css";
 
@@ -24,8 +26,7 @@ const tutorialSteps = [
     id: "profile",
     icon: UserRound,
     title: "1. Review your profile",
-    description:
-      "Your saved profile helps the app understand broad context such as life stage, housing type, employment status, and support needs.",
+    description: "Your saved profile helps the app understand broad context such as life stage, housing type, employment status, and support needs.",
     route: "/profile",
     buttonText: "View Profile",
     guide: [
@@ -39,8 +40,7 @@ const tutorialSteps = [
     id: "chat",
     icon: Bot,
     title: "2. Ask the AI Assistant if you are unsure where to start",
-    description:
-      "Use the chatbot when you know your situation but do not know the exact scheme, agency, or service name.",
+    description: "Use the chatbot when you know your situation but do not know the exact scheme, agency, or service name.",
     route: "/chat",
     buttonText: "Open Chatbot",
     guide: [
@@ -54,8 +54,7 @@ const tutorialSteps = [
     id: "services",
     icon: ClipboardList,
     title: "3. Use Services for a guided support journey",
-    description:
-      "Use the Services page when you want a structured flow that helps you browse categories, check possible eligibility, and prepare next steps.",
+    description: "Use the Services page when you want a structured flow that helps you browse categories, check possible eligibility, and prepare next steps.",
     route: "/services",
     buttonText: "Browse Services",
     guide: [
@@ -69,8 +68,7 @@ const tutorialSteps = [
     id: "scanner",
     icon: FileSearch,
     title: "4. Scan a document when you do not know what it means",
-    description:
-      "Upload a letter, screenshot, bill, receipt, or notice. The scanner helps explain the document, check possible scam risk, and connect it to a support pathway where appropriate.",
+    description: "Upload a letter, screenshot, bill, receipt, or notice. The scanner helps explain the document, check possible scam risk, and connect it to a support pathway where appropriate.",
     route: "/document-scanner",
     buttonText: "Open Scanner",
     guide: [
@@ -85,8 +83,7 @@ const tutorialSteps = [
     id: "policy-watch",
     icon: Megaphone,
     title: "5. Check Policy Watch for new support updates",
-    description:
-      "Policy Watch shows support-related announcements, reminders, and official-source updates that may affect residents.",
+    description: "Policy Watch shows support-related announcements, reminders, and official-source updates that may affect residents.",
     route: "/announcements",
     buttonText: "Open Policy Watch",
     guide: [
@@ -101,8 +98,7 @@ const tutorialSteps = [
     id: "booking",
     icon: MapPinned,
     title: "6. Use Booking when location matters",
-    description:
-      "Use the Booking page when you need to see nearby service points, clinics, centres, or physical locations for in-person support.",
+    description: "Use the Booking page when you need to see nearby service points, clinics, centres, or physical locations for in-person support.",
     route: "/booking",
     buttonText: "Open Booking",
     guide: [
@@ -117,16 +113,14 @@ const tutorialSteps = [
 const helpCards = [
   {
     title: "Find direct contacts",
-    description:
-      "Use the Directory when you already know the issue and want official links, hotlines, agency pages, or reporting channels.",
+    description: "Use the Directory when you already know the issue and want official links, hotlines, agency pages, or reporting channels.",
     route: "/directory",
     buttonText: "Open Directory",
     icon: Search,
   },
   {
     title: "Understand recommendations safely",
-    description:
-      "The app helps estimate relevant support, but final eligibility and approval always depend on the official agency or service provider.",
+    description: "The app helps estimate relevant support, but final eligibility and approval always depend on the official agency or service provider.",
     route: "/services",
     buttonText: "Check Services",
     icon: ShieldCheck,
@@ -139,18 +133,22 @@ export default function HelpPage() {
 
   const { helpFaqs, openFaqIndex, toggleFaq } = useHelpDirectory();
 
+  // Bring in the full suite of audio tools, including the Read Mode toggle
+  const { activeAudioId, handleSpeak, isReadMode, toggleReadMode } = useAudioGuide();
+
   const toggleGuide = (stepId) => {
     setOpenGuideId((current) => (current === stepId ? null : stepId));
   };
 
   return (
     <main className="help-page">
+      {/* Inject the global Floating Action Button */}
+      <FloatingAudioButton isReadMode={isReadMode} toggleReadMode={toggleReadMode} />
+
       <section className="help-hero">
         <div>
           <span className="help-eyebrow">Help Centre</span>
-
           <h1>How to use MyTampines Assistant</h1>
-
           <p>
             Learn how to use the chatbot, services journey, document scanner,
             Policy Watch, booking map, and directory. This page also answers
@@ -160,7 +158,6 @@ export default function HelpPage() {
 
         <div className="help-hero-card">
           <ShieldCheck size={28} />
-
           <div>
             <strong>Recommended flow</strong>
             <p>
@@ -174,7 +171,6 @@ export default function HelpPage() {
       <section className="help-quick-actions">
         {helpCards.map((card) => {
           const Icon = card.icon;
-
           return (
             <button
               key={card.title}
@@ -185,7 +181,6 @@ export default function HelpPage() {
               <div className="help-quick-icon">
                 <Icon size={24} />
               </div>
-
               <div>
                 <h2>{card.title}</h2>
                 <p>{card.description}</p>
@@ -200,9 +195,7 @@ export default function HelpPage() {
         <div className="help-section-header">
           <div>
             <span className="help-section-kicker">Tutorial</span>
-
             <h2>Step-by-step guide</h2>
-
             <p>
               Follow this guide if you are unsure which feature to use first.
               Each part of the app supports a different stage of the resident
@@ -215,9 +208,30 @@ export default function HelpPage() {
           {tutorialSteps.map((step) => {
             const Icon = step.icon;
             const isOpen = openGuideId === step.id;
+            const isPlaying = activeAudioId === `tutorial-${step.id}`;
 
             return (
-              <article className="help-tutorial-card" key={step.id}>
+              <article
+                className="help-tutorial-card"
+                key={step.id}
+                // Intercept the click based on global state
+                onClick={(e) => {
+                  if (isReadMode) {
+                    e.preventDefault();
+                    const guideText = step.guide.join(". ");
+                    handleSpeak(
+                      `${step.title}. ${step.description}. ${isOpen ? `Guide steps: ${guideText}` : ""}`,
+                      `tutorial-${step.id}`
+                    );
+                  }
+                }}
+                style={{
+                  backgroundColor: isPlaying ? "#f0f9ff" : "",
+                  border: isReadMode ? "2px dashed #3b82f6" : "",
+                  cursor: isReadMode ? "pointer" : "auto",
+                  transition: "all 0.2s ease"
+                }}
+              >
                 <div className="help-directory-icon">
                   <Icon size={22} />
                 </div>
@@ -225,7 +239,7 @@ export default function HelpPage() {
                 <div className="help-tutorial-content">
                   <div className="help-tutorial-top-row">
                     <div>
-                      <h3>{step.title}</h3>
+                      <h3 style={{ margin: 0, marginBottom: "8px" }}>{step.title}</h3>
                       <p>{step.description}</p>
                     </div>
 
@@ -233,6 +247,8 @@ export default function HelpPage() {
                       type="button"
                       className="help-guide-toggle"
                       onClick={() => toggleGuide(step.id)}
+                      // Disable inner buttons during read mode to prevent accidental toggles
+                      style={{ pointerEvents: isReadMode ? "none" : "auto" }}
                     >
                       {isOpen ? "Hide guide" : "View guide"}
                       {isOpen ? (
@@ -246,7 +262,6 @@ export default function HelpPage() {
                   {isOpen && (
                     <div className="help-simple-guide">
                       <strong>How it works</strong>
-
                       <ul>
                         {step.guide.map((item) => (
                           <li key={item}>
@@ -262,6 +277,7 @@ export default function HelpPage() {
                     type="button"
                     className="help-secondary-btn"
                     onClick={() => navigate(step.route)}
+                    style={{ pointerEvents: isReadMode ? "none" : "auto" }}
                   >
                     {step.buttonText}
                   </button>
@@ -272,10 +288,14 @@ export default function HelpPage() {
         </div>
       </section>
 
+      {/* Pass isReadMode down so the FAQ intercepts clicks properly */}
       <HelpFaq
         faqs={helpFaqs}
         openFaqIndex={openFaqIndex}
         toggleFaq={toggleFaq}
+        activeAudioId={activeAudioId}
+        onSpeak={handleSpeak}
+        isReadMode={isReadMode}
       />
     </main>
   );

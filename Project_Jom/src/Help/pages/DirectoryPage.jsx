@@ -1,6 +1,8 @@
 import HelpEmergencySection from "../components/HelpEmergencySection";
 import HelpDirectory from "../components/HelpDirectory";
 import useHelpDirectory from "../hooks/useHelpDirectory";
+import useAudioGuide from "../../Audio/hooks/useAudioGuide";
+import FloatingAudioButton from "../../Audio/components/FloatingAudioButton"; // NEW IMPORT
 
 import "../help.css";
 
@@ -21,8 +23,17 @@ export default function DirectoryPage() {
     clearSearch,
   } = useHelpDirectory();
 
+  // Bring in the full suite of audio tools, including the Read Mode toggle
+  const { activeAudioId, handleSpeak, isReadMode, toggleReadMode } = useAudioGuide();
+
   return (
     <main className="help-page">
+      {/* 
+        Inject the Floating Action Button. 
+        Because it has position: fixed, it can go anywhere, but top level is best.
+      */}
+      <FloatingAudioButton isReadMode={isReadMode} toggleReadMode={toggleReadMode} />
+
       <section className="help-hero">
         <div>
           <span className="help-eyebrow">Directory</span>
@@ -57,7 +68,13 @@ export default function DirectoryPage() {
         </div>
       )}
 
-      <HelpEmergencySection items={emergencyItems} />
+      {/* Pass the isReadMode down so the cards know when to intercept clicks */}
+      <HelpEmergencySection
+        items={emergencyItems}
+        activeAudioId={activeAudioId}
+        onSpeak={handleSpeak}
+        isReadMode={isReadMode}
+      />
 
       <HelpDirectory
         categories={helpCategories}
@@ -69,6 +86,11 @@ export default function DirectoryPage() {
         openDirectoryId={openDirectoryId}
         toggleDirectoryItem={toggleDirectoryItem}
         clearSearch={clearSearch}
+        showIcons={true}
+        isColorCoded={true}
+        activeAudioId={activeAudioId}
+        onSpeak={handleSpeak}
+        isReadMode={isReadMode}
       />
     </main>
   );
