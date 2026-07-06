@@ -1,0 +1,248 @@
+#mta-agent-panel {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 360px;
+    max-height: 86vh;
+    overflow: hidden;
+    z-index: 2147483647;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    box-shadow: 0 22px 70px rgba(15, 23, 42, 0.32);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #101828;
+}
+
+.mta-agent-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 16px;
+    background: linear-gradient(135deg, #B81C1D, #7f1112);
+    color: #ffffff;
+}
+
+.mta-agent-header p {
+    margin: 0 0 3px;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.88;
+}
+
+.mta-agent-header h3 {
+    margin: 0;
+    font-size: 17px;
+    letter-spacing: -0.03em;
+}
+
+#mta-agent-close {
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    background: rgba(255, 255, 255, 0.14);
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1;
+}
+
+.mta-agent-body {
+    padding: 14px;
+    max-height: calc(86vh - 70px);
+    overflow-y: auto;
+}
+
+.mta-agent-card {
+    border: 1px solid #f1d1d3;
+    background: #fff7f7;
+    border-radius: 14px;
+    padding: 12px;
+    margin-bottom: 12px;
+}
+
+.mta-agent-label {
+    display: block;
+    margin-bottom: 4px;
+    color: #B81C1D;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.mta-agent-card strong {
+    display: block;
+    color: #101828;
+    font-size: 14px;
+    line-height: 1.35;
+}
+
+.mta-agent-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.mta-agent-grid div {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 10px;
+    background: #f8fafc;
+}
+
+.mta-agent-grid span {
+    display: block;
+    color: #98a2b3;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.mta-agent-grid strong {
+    color: #344054;
+    font-size: 12px;
+}
+
+.mta-agent-safety {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    color: #92400e;
+    border-radius: 12px;
+    padding: 10px;
+    font-size: 12px;
+    font-weight: 750;
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+.mta-agent-status {
+    border-radius: 12px;
+    padding: 10px;
+    background: #f1f5f9;
+    color: #334155;
+    font-size: 12px;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.mta-agent-status.warning {
+    background: #fffbeb;
+    color: #92400e;
+    border: 1px solid #fde68a;
+}
+
+.mta-agent-status.success {
+    background: #ecfdf5;
+    color: #047857;
+    border: 1px solid #a7f3d0;
+}
+
+.mta-agent-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.mta-agent-actions button {
+    border-radius: 11px;
+    min-height: 38px;
+    cursor: pointer;
+    font-weight: 900;
+    font-size: 12px;
+    border: 1px solid #d0d5dd;
+    background: #ffffff;
+    color: #344054;
+}
+
+.mta-agent-actions button:first-child {
+    background: #B81C1D;
+    border-color: #B81C1D;
+    color: #ffffff;
+}
+
+.mta-agent-actions button:hover {
+    transform: translateY(-1px);
+}
+
+.mta-agent-log {
+    display: grid;
+    gap: 6px;
+    max-height: 150px;
+    overflow-y: auto;
+    border-top: 1px solid #e5e7eb;
+    padding-top: 10px;
+}
+
+.mta-agent-log div {
+    font-size: 11px;
+    color: #667085;
+    background: #f8fafc;
+    border-radius: 9px;
+    padding: 7px 8px;
+}
+.mta-agent-backup {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 10px;
+  margin-bottom: 12px;
+}
+
+.mta-agent-backup span {
+  display: block;
+  color: #98a2b3;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.mta-agent-backup strong {
+  display: block;
+  color: #101828;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.mta-agent-backup p {
+  margin: 0;
+  color: #667085;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+#mta-agent-backup-notice {
+  margin: 0 14px 14px;
+  background: #fffbeb;
+  color: #92400e;
+  border: 1px solid #fde68a;
+  border-radius: 12px;
+  padding: 12px;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+#mta-agent-backup-notice strong {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+#mta-agent-backup-notice p {
+  margin: 0 0 6px;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+#mta-agent-backup-notice span {
+  font-size: 11px;
+  font-weight: 800;
+}

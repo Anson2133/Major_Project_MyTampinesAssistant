@@ -2,8 +2,9 @@ import { useState, useCallback, useRef, useEffect } from "react";
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow, DirectionsRenderer, Circle } from "@react-google-maps/api";
 import { useTranslation } from "react-i18next";
 // NEW: Import the icons for the popup UI
-import { MapPin, Clock, Banknote, ClipboardList, Phone, Navigation, ExternalLink } from "lucide-react"; 
+import { MapPin, Clock, Banknote, ClipboardList, Phone, Navigation, ExternalLink } from "lucide-react";
 import facilitiesData from "../data/facilitiesData";
+import AgenticBookingAssistant from "../components/AgenticBookingAssistant";
 import "./booking.css";
 
 // --- TIME LOGIC UTILITY ---
@@ -14,12 +15,12 @@ function checkIsOpenNow(schedule) {
   const currentDay = now.getDay(); // 0 is Sunday, 6 is Saturday
   const currentHour = now.getHours();
   const currentMinute = now.getMinutes();
-  
+
   // Convert current time to a decimal for easy math (e.g., 14:30 -> 14.5)
-  const currentTime = currentHour + (currentMinute / 60); 
+  const currentTime = currentHour + (currentMinute / 60);
 
   const todaySchedule = schedule[currentDay];
-  
+
   if (!todaySchedule) return false; // If today is null, they are closed
 
   // Convert "08:00" string into 8.0 decimal
@@ -601,34 +602,34 @@ export default function BookingPage() {
                 onCloseClick={() => setSelectedFacility(null)}
               >
                 <div className="booking-popup-card">
-                  
+
                   {/* NEW: IMAGE HEADER */}
                   {selectedFacility.imageUrl && (
                     <div className="booking-popup-image-wrapper">
-                      <img 
-                        src={selectedFacility.imageUrl} 
-                        alt={selectedFacility.name} 
+                      <img
+                        src={selectedFacility.imageUrl}
+                        alt={selectedFacility.name}
                         className="booking-popup-image"
-                        loading="lazy" 
+                        loading="lazy"
                       />
                     </div>
                   )}
 
                   {/* NEW: WRAP CONTENT SO WE CAN CONTROL PADDING */}
                   <div className="booking-popup-content">
-                    
+
                     {/* HEADER */}
                     <div className="booking-popup-header">
-                      
+
                       {/* The title and the live badge sit in a row together now */}
                       <div className="booking-popup-title-row">
                         <h3>{selectedFacility.name}</h3>
-                        
+
                         {/* THE LIVE STATUS BADGE */}
                         {(() => {
                           const isOpen = checkIsOpenNow(selectedFacility.schedule);
                           if (isOpen === null) return null; // Hide if no data
-                          
+
                           return (
                             <span className={`live-status-badge ${isOpen ? "open" : "closed"}`}>
                               {isOpen ? "🟢 Open" : "🔴 Closed"}
@@ -701,7 +702,9 @@ export default function BookingPage() {
                       >
                         <Navigation size={16} /> {t("booking.getDirections")}
                       </button>
-                      
+
+                      <AgenticBookingAssistant facility={selectedFacility} />
+
                       <a
                         href={selectedFacility.bookingLink}
                         target="_blank"

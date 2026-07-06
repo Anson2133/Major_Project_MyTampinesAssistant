@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "MyTampines Agentic Service Navigator",
+  "version": "1.0.0",
+  "description": "Agentic browser action layer for safe assisted service booking.",
+  "permissions": ["storage", "tabs", "scripting"],
+  "host_permissions": [
+    "http://localhost/*",
+    "http://127.0.0.1/*",
+    "https://*.amplifyapp.com/*",
+    "https://activesg.gov.sg/*",
+    "https://*.activesg.gov.sg/*",
+    "https://www.onepa.gov.sg/*",
+    "https://*.onepa.gov.sg/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://localhost/*",
+        "http://127.0.0.1/*",
+        "https://*.amplifyapp.com/*",
+        "https://activesg.gov.sg/*",
+        "https://*.activesg.gov.sg/*",
+        "https://www.onepa.gov.sg/*",
+        "https://*.onepa.gov.sg/*"
+      ],
+      "js": ["content.js"],
+      "css": ["agent.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}
