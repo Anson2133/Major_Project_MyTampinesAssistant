@@ -5,7 +5,7 @@ import {
   HelpCircle,
   Phone,
   Search
-} from "lucide-react"; // Removed Volume2 and VolumeX imports
+} from "lucide-react";
 import { useNavigate } from "react-router";
 
 export default function HelpDirectory({
@@ -22,7 +22,7 @@ export default function HelpDirectory({
   isColorCoded,
   activeAudioId,
   onSpeak,
-  isReadMode // NEW PROP: We pass the mode down
+  isReadMode
 }) {
   const navigate = useNavigate();
 
@@ -138,9 +138,10 @@ export default function HelpDirectory({
                       // THE TECHNICAL FLEX: Intercepting the click based on global state
                       if (isReadMode) {
                         const readablePhone = formatPhoneForSpeech(item.phone);
+                        // FIX: Swapped the arguments to match onSpeak(id, text)
                         onSpeak(
-                          `${item.name}. ${item.description}. Phone number: ${readablePhone}.`,
-                          `dir-${currentId}`
+                          `dir-${currentId}`,
+                          `${item.name}. ${item.description}. Phone number: ${readablePhone}.`
                         );
                       } else {
                         toggleDirectoryItem(currentId);
@@ -179,7 +180,6 @@ export default function HelpDirectory({
                       </div>
                     </div>
                   </button>
-                  {/* INLINE AUDIO BUTTON COMPLETELY REMOVED! */}
                 </div>
 
                 {isOpen && (

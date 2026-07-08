@@ -1,29 +1,29 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow, DirectionsRenderer, Circle } from "@react-google-maps/api";
 import { useTranslation } from "react-i18next";
-// NEW: Import the icons for the popup UI
-import { MapPin, Clock, Banknote, ClipboardList, Phone, Navigation, ExternalLink } from "lucide-react";
+// NEW: Added Bell to Lucide imports
+import { MapPin, Clock, Banknote, ClipboardList, Phone, Navigation, ExternalLink, Bell } from "lucide-react";
+import toast, { Toaster } from "react-hot-toast"; // NEW: Toast notifications
 import facilitiesData from "../data/facilitiesData";
 import AgenticBookingAssistant from "../components/AgenticBookingAssistant";
+import CulturalVoiceAssistant from "../../Audio/components/CulturalVoiceAssistant";
 import "./booking.css";
 
 // --- TIME LOGIC UTILITY ---
 function checkIsOpenNow(schedule) {
-  if (!schedule) return null; // If we haven't added schedule data yet, return null
+  if (!schedule) return null;
 
   const now = new Date();
-  const currentDay = now.getDay(); // 0 is Sunday, 6 is Saturday
+  const currentDay = now.getDay();
   const currentHour = now.getHours();
   const currentMinute = now.getMinutes();
 
-  // Convert current time to a decimal for easy math (e.g., 14:30 -> 14.5)
   const currentTime = currentHour + (currentMinute / 60);
 
   const todaySchedule = schedule[currentDay];
 
-  if (!todaySchedule) return false; // If today is null, they are closed
+  if (!todaySchedule) return false;
 
-  // Convert "08:00" string into 8.0 decimal
   const parseTime = (timeStr) => {
     const [hrs, mins] = timeStr.split(':').map(Number);
     return hrs + (mins / 60);
@@ -135,9 +135,56 @@ export default function BookingPage() {
   const [showSteps, setShowSteps] = useState(false);
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
 
+  // NEW: State for the AWS SNS Email Capture
+  const [sniperState, setSniperState] = useState("idle"); // "idle" | "input" | "active"
+  const [sniperEmail, setSniperEmail] = useState("");
+
   const mapRef = useRef(null);
   const watchIdRef = useRef(null);
 
+  const handleSniperSubscribe = async () => {
+    if (!sniperEmail.includes("@")) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
+
+    const toastId = toast.loading("Connecting to AWS SNS...");
+
+    try {
+      // 1. Send the Subscription Request
+      const response = await fetch("https://ivbr22rj41.execute-api.ap-southeast-2.amazonaws.com/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: sniperEmail, facility: selectedFacility.name })
+      });
+
+      if (!response.ok) throw new Error("API failed");
+
+      toast.success("Subscribed! Check your email to confirm.", { id: toastId, duration: 4000 });
+
+      // 2. Change UI to "Awaiting Confirmation"
+      setSniperState("awaiting");
+
+      // 3. THE DEMO MAGIC: Wait 8 seconds, then Activate and Publish!
+      setTimeout(async () => {
+        setSniperState("active");
+        toast("Slot Sniper Activated! Monitoring slots...", { icon: '🎯' });
+
+        try {
+          // 4. Trigger the "Slot Opened" Email
+          // TODO: We will paste the URL for your second Lambda here in Step 3!
+          await fetch("https://ivbr22rj41.execute-api.ap-southeast-2.amazonaws.com/publish", { method: "POST" });
+        } catch (publishError) {
+          console.error("Failed to publish slot opening:", publishError);
+        }
+
+      }, 25000); // 25 seconds
+
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to connect to notification service.", { id: toastId });
+    }
+  };
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: MAPS_API_KEY,
     libraries: LIBRARIES,
@@ -316,6 +363,7 @@ export default function BookingPage() {
 
   return (
     <div className="booking-layout">
+      <Toaster /> {/* NEW: Mount the Toast provider */}
       <div className="booking-content">
 
         <div className="booking-sidebar">
@@ -505,6 +553,8 @@ export default function BookingPage() {
                   className={`booking-list-item ${selectedFacility?.id === facility.id ? "active" : ""}`}
                   onClick={() => {
                     setSelectedFacility(facility);
+                    setSniperState("idle");
+                    setSniperEmail(""); // Reset sniper
                     clearDirections();
                     if (mapRef.current) { mapRef.current.panTo({ lat: facility.lat, lng: facility.lng }); mapRef.current.setZoom(16); }
                   }}
@@ -581,7 +631,11 @@ export default function BookingPage() {
               <Marker
                 key={facility.id}
                 position={{ lat: facility.lat, lng: facility.lng }}
-                onClick={() => setSelectedFacility(facility)}
+                onClick={() => {
+                  setSelectedFacility(facility);
+                  setSniperState("idle");
+                  setSniperEmail(""); // Reset sniper
+                }}
                 title={facility.name}
                 icon={{ url: getCategoryMarkerUrl(facility.filter) }}
                 animation={window.google.maps.Animation.DROP}
@@ -599,11 +653,14 @@ export default function BookingPage() {
             {selectedFacility && !directions && (
               <InfoWindow
                 position={{ lat: selectedFacility.lat, lng: selectedFacility.lng }}
-                onCloseClick={() => setSelectedFacility(null)}
+                onCloseClick={() => {
+                  setSelectedFacility(null);
+                  setSniperState("idle");
+                  setSniperEmail("");
+                }}
               >
                 <div className="booking-popup-card">
 
-                  {/* NEW: IMAGE HEADER */}
                   {selectedFacility.imageUrl && (
                     <div className="booking-popup-image-wrapper">
                       <img
@@ -615,21 +672,14 @@ export default function BookingPage() {
                     </div>
                   )}
 
-                  {/* NEW: WRAP CONTENT SO WE CAN CONTROL PADDING */}
                   <div className="booking-popup-content">
 
-                    {/* HEADER */}
                     <div className="booking-popup-header">
-
-                      {/* The title and the live badge sit in a row together now */}
                       <div className="booking-popup-title-row">
                         <h3>{selectedFacility.name}</h3>
-
-                        {/* THE LIVE STATUS BADGE */}
                         {(() => {
                           const isOpen = checkIsOpenNow(selectedFacility.schedule);
-                          if (isOpen === null) return null; // Hide if no data
-
+                          if (isOpen === null) return null;
                           return (
                             <span className={`live-status-badge ${isOpen ? "open" : "closed"}`}>
                               {isOpen ? "🟢 Open" : "🔴 Closed"}
@@ -645,7 +695,6 @@ export default function BookingPage() {
 
                     <div className="booking-popup-divider"></div>
 
-                    {/* BODY & GRID */}
                     <div className="booking-popup-body">
                       <p className="booking-popup-desc">
                         {tFacility(selectedFacility.id, "description", selectedFacility.description)}
@@ -704,6 +753,95 @@ export default function BookingPage() {
                       </button>
 
                       <AgenticBookingAssistant facility={selectedFacility} />
+
+                      {/* DYNAMIC SLOT SNIPER UI */}
+                      <div className="slot-sniper-container" style={{ marginTop: '10px' }}>
+                        {sniperState === "idle" && (
+                          <button
+                            onClick={() => setSniperState("input")}
+                            style={{
+                              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
+                              width: '100%', padding: '10px',
+                              backgroundColor: '#f0f9ff', color: '#0284c7',
+                              border: '1px solid #7dd3fc', borderRadius: '8px',
+                              cursor: 'pointer', fontWeight: '600', transition: '0.2s'
+                            }}
+                          >
+                            <Bell size={16} /> Notify me when a slot opens
+                          </button>
+                        )}
+
+                        {sniperState === "input" && (
+                          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '10px', backgroundColor: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '8px' }}>
+                            <p style={{ fontSize: '12px', margin: 0, color: '#475569' }}>Enter your email to receive AWS SNS alerts:</p>
+                            <div style={{ display: 'flex', gap: '8px' }}>
+                              <input 
+                                type="email" 
+                                placeholder="resident@example.com" 
+                                value={sniperEmail}
+                                onChange={(e) => setSniperEmail(e.target.value)}
+                                style={{ flex: 1, padding: '8px', borderRadius: '6px', border: '1px solid #cbd5e1' }}
+                              />
+                              <button 
+                                onClick={handleSniperSubscribe}
+                                style={{ padding: '8px 12px', backgroundColor: '#0284c7', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold' }}
+                              >
+                                Confirm
+                              </button>
+                            </div>
+                            <button 
+                              onClick={() => setSniperState("idle")}
+                              style={{ fontSize: '12px', background: 'none', border: 'none', color: '#64748b', cursor: 'pointer', textDecoration: 'underline' }}
+                            >
+                              Cancel
+                            </button>
+                          </div>
+                        )}
+
+                        {/* NEW: The Awaiting State (Orange) */}
+                        {sniperState === "awaiting" && (
+                          <button
+                            disabled
+                            style={{
+                              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
+                              width: '100%', padding: '10px',
+                              backgroundColor: '#fffbeb', color: '#d97706',
+                              border: '1px solid #fcd34d', borderRadius: '8px', 
+                              cursor: 'wait', fontWeight: '600', transition: '0.2s'
+                            }}
+                          >
+                            <Bell size={16} /> Awaiting Confirmation...
+                          </button>
+                        )}
+
+                        {/* UPDATED: The Active State (Green!) */}
+                        {sniperState === "active" && (
+                          <button
+                            onClick={() => { setSniperState("idle"); setSniperEmail(""); }}
+                            style={{
+                              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
+                              width: '100%', padding: '10px',
+                              backgroundColor: '#dcfce7', color: '#16a34a',
+                              border: '1px solid #86efac', borderRadius: '8px', 
+                              cursor: 'pointer', fontWeight: '600', transition: '0.2s'
+                            }}
+                          >
+                            <Bell size={16} /> Slot Sniper Activated (Click to Cancel)
+                          </button>
+                        )}
+                      </div>
+
+                      {/* CULTURAL VOICE ASSISTANT */}
+                      <CulturalVoiceAssistant
+                        originalText={`
+                          You have selected ${selectedFacility.name}. 
+                          ${selectedFacility.description ? tFacility(selectedFacility.id, "description", selectedFacility.description) : ""} 
+                          ${selectedFacility.openingHours ? `Operating hours are ${tFacility(selectedFacility.id, "openingHours", selectedFacility.openingHours)}.` : ""} 
+                          ${selectedFacility.cost ? `The cost is ${tFacility(selectedFacility.id, "cost", selectedFacility.cost)}.` : ""} 
+                          ${selectedFacility.requirements ? `Important note: ${tFacility(selectedFacility.id, "requirements", selectedFacility.requirements)}.` : ""}
+                        `.trim().replace(/\s+/g, ' ')}
+                        targetLang={currentLang}
+                      />
 
                       <a
                         href={selectedFacility.bookingLink}

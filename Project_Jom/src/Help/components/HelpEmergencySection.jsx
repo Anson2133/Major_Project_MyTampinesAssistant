@@ -1,7 +1,6 @@
-import { AlertTriangle, ExternalLink, Phone } from "lucide-react"; // Removed Volume icons
+import { AlertTriangle, ExternalLink, Phone } from "lucide-react";
 
 export default function HelpEmergencySection({ items, activeAudioId, onSpeak, isReadMode }) {
-  // Helper to read letters normally, but space out digits for natural reading
   const formatPhoneForSpeech = (phoneText) => {
     if (!phoneText) return "";
     if (/[a-zA-Z]/.test(phoneText.toString())) {
@@ -28,18 +27,18 @@ export default function HelpEmergencySection({ items, activeAudioId, onSpeak, is
             <article
               key={currentId}
               className="help-alert-card"
-              // THE TECHNICAL FLEX: Intercepting the click based on global state
               onClick={(e) => {
                 if (isReadMode) {
-                  e.preventDefault(); // Prevents accidental navigation if they click the website link while in read mode
+                  e.preventDefault();
                   const readablePhone = formatPhoneForSpeech(item.phone);
+
+                  // Passes pure English to the audio engine
                   onSpeak(
-                    `${item.name}. ${item.description}. The phone number is ${readablePhone}.`,
-                    `emergency-${currentId}`
+                    `emergency-${currentId}`,
+                    `${item.name}. ${item.description}. The phone number is ${readablePhone}.`
                   );
                 }
               }}
-              // Give visual feedback so the user knows the card is ready to be clicked
               style={{
                 border: isPlaying ? "2px solid #ef4444" : (isReadMode ? "2px dashed #ef4444" : ""),
                 backgroundColor: isPlaying ? "#fee2e2" : "",
@@ -53,7 +52,6 @@ export default function HelpEmergencySection({ items, activeAudioId, onSpeak, is
 
               <div>
                 <h3>{item.name}</h3>
-
                 <p>{item.description}</p>
 
                 <div className="help-contact-row">
@@ -67,7 +65,6 @@ export default function HelpEmergencySection({ items, activeAudioId, onSpeak, is
                     target="_blank"
                     rel="noopener noreferrer"
                     className="help-inline-link"
-                    // Ensure links don't trigger anything weird during read mode
                     style={{ pointerEvents: isReadMode ? "none" : "auto" }}
                   >
                     Open official website <ExternalLink size={14} />
