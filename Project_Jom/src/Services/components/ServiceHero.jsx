@@ -26,6 +26,14 @@ function ServicesHero({ searchTerm, onSearchChange }) {
   const residentName = getResidentName();
   const navigate = useNavigate();
 
+  // Determine language (Update this if you use Context or i18next instead of localStorage)
+  const currentLanguage = localStorage.getItem("language") || localStorage.getItem("lang") || "en";
+  
+  // Smart Placeholder based on language
+  const placeholderText = currentLanguage.includes("zh")
+    ? '搜索 "医疗账单", "紧急现金", "养老"...'
+    : 'Search "medical bill", "urgent cash", "elderly care"...';
+
   return (
     <section className="services-hero">
       <p className="services-welcome-text">
@@ -44,7 +52,7 @@ function ServicesHero({ searchTerm, onSearchChange }) {
         <input
           value={searchTerm}
           onChange={(e) => onSearchChange(e.target.value)}
-          placeholder='Search "medical bill", "urgent cash", "elderly care"...'
+          placeholder={placeholderText}
         />
       </div>
 

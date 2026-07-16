@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 
 import ServicesHero from "../components/ServiceHero";
@@ -128,6 +128,8 @@ function ServicesPage() {
   const navigate = useNavigate();
 
   const [searchTerm, setSearchTerm] = useState("");
+  const [translatedQuery, setTranslatedQuery] = useState("");
+  const [isTranslating, setIsTranslating] = useState(false);
 
   const { services = [], loading, error } = useServices();
 
@@ -135,8 +137,73 @@ function ServicesPage() {
     navigate(`/services/${category.id}`);
   };
 
+  // --- REAL SEALION API INTEGRATION ---
+  useEffect(() => {
+    const text = searchTerm.trim();
+    const hasChineseChars = /[\u4e00-\u9fa5]/.test(text);
+
+    if (!hasChineseChars) {
+      setTranslatedQuery(text);
+      setIsTranslating(false);
+      return;
+    }
+
+    setIsTranslating(true);
+
+    // Debounce: Wait 800ms after the user STOPS typing before calling the API
+    const timeoutId = setTimeout(async () => {
+      try {
+        const response = await fetch("https://api.sea-lion.ai/v1/chat/completions", {
+          method: "POST",
+          headers: {
+            "Accept": "text/plain, application/json",
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${import.meta.env.VITE_SEALION_API_KEY}`
+          },
+          body: JSON.stringify({
+            model: "aisingapore/Gemma-SEA-LION-v4-27B-IT",
+            max_completion_tokens: 20,
+            messages: [
+              {
+                role: "system",
+                content: "You are a professional translator. Translate the user's Chinese text into simple English. Output ONLY the translated English text. Do not include any explanations, greetings, or punctuation."
+              },
+              {
+                role: "user",
+                content: text
+              }
+            ],
+            temperature: 0.1
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error(`API Request failed with status ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        // Extract the raw translated text
+        const englishTranslation = data.choices[0].message.content.trim().toLowerCase();
+
+        console.log("SeaLion translated:", text, "->", englishTranslation);
+        setTranslatedQuery(englishTranslation);
+
+      } catch (err) {
+        console.error("Translation error:", err);
+        // FIXED: If the API fails, fallback to the original text so we don't get confusing fake results
+        setTranslatedQuery(text);
+      } finally {
+        setIsTranslating(false);
+      }
+    }, 800);
+
+    return () => clearTimeout(timeoutId);
+  }, [searchTerm]);
+
+
   const filteredServices = useMemo(() => {
-    const query = searchTerm.trim().toLowerCase();
+    const query = translatedQuery.trim().toLowerCase();
 
     if (query.length < 2) return [];
 
@@ -181,7 +248,9 @@ function ServicesPage() {
       .filter((service) => service.searchScore >= 20)
       .sort((a, b) => b.searchScore - a.searchScore)
       .slice(0, 4);
-  }, [searchTerm, services]);
+  }, [translatedQuery, services]);
+
+  const isSearchActive = searchTerm.trim().length >= 2 || /[\u4e00-\u9fa5]/.test(searchTerm);
 
   return (
     <div className="services-page">
@@ -190,20 +259,34 @@ function ServicesPage() {
         onSearchChange={setSearchTerm}
       />
 
-      {searchTerm.trim().length >= 2 && (
+      {isSearchActive && (
         <section className="services-search-panel">
           <div className="services-search-panel-header">
             <div>
               <h2>Closest Matches</h2>
-              <p>
-                Showing up to 4 services related to{" "}
-                <strong>"{searchTerm}"</strong>.
+              <p style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '6px' }}>
+                Showing up to 4 services related to <strong>"{searchTerm}"</strong>
+
+                {isTranslating && (
+                  <span style={{ color: '#d97706', fontSize: '13px', fontStyle: 'italic', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <span className="loader" style={{ width: '12px', height: '12px', border: '2px solid #d97706', borderBottomColor: 'transparent', borderRadius: '50%', display: 'inline-block', animation: 'spin 1s linear infinite' }}></span>
+                    Translating with SeaLion AI...
+                  </span>
+                )}
+                {!isTranslating && translatedQuery !== searchTerm && (
+                  <span style={{ color: '#16a34a', fontSize: '13px', backgroundColor: '#dcfce7', padding: '2px 8px', borderRadius: '12px' }}>
+                    Translated as "{translatedQuery}"
+                  </span>
+                )}
               </p>
             </div>
 
             <button
               className="clear-search-btn"
-              onClick={() => setSearchTerm("")}
+              onClick={() => {
+                setSearchTerm("");
+                setTranslatedQuery("");
+              }}
             >
               Clear
             </button>
@@ -304,7 +387,7 @@ function ServicesPage() {
         </section>
       )}
 
-      {searchTerm.trim().length === 1 && (
+      {searchTerm.trim().length === 1 && !/[\u4e00-\u9fa5]/.test(searchTerm) && (
         <p className="search-minimum-hint">
           Type at least 2 characters to search.
         </p>
@@ -448,6 +531,10 @@ function ServicesPage() {
           </article>
         </div>
       </section>
+
+      <style>{`
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+      `}</style>
     </div>
   );
 }
